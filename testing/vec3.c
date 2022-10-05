@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 13:02:35 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/05 13:42:56 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/05 16:35:17 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_vec3  multipl_distance(double t, t_vec3 *v)
     dist.x = t * v->x;
     dist.y = t * v->y;
     dist.z = t * v->z;
-    return dist;
+    return (dist);
 }
 
 double  dot(t_vec3 *u, t_vec3 *v)
@@ -84,4 +84,9 @@ t_vec3 unit_vector(t_vec3 *v)
     len = length(v->x, v->y, v->z);
     uv = multipl_distance(1/len, v);
     return (uv);
+}
+
+t_vec3 division(t_vec3 *v, double t)
+{
+    return (multipl_distance(1/t, v));
 }
