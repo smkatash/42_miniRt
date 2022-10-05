@@ -6,14 +6,14 @@
 #    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/18 09:01:25 by kanykei           #+#    #+#              #
-#    Updated: 2022/10/05 15:07:19 by kanykei          ###   ########.fr        #
+#    Updated: 2022/10/05 22:52:15 by kanykei          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 VPATH	=	src
 NAME = miniRT
 
-SRC = main.c colors.c vec3.c
+SRC = main.c colors.c vec3.c camera.c sphere.c
 
 OBJ = $(addprefix obj/,$(notdir $(SRC:.c=.o)))
 CC = cc
