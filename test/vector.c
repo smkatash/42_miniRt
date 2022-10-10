@@ -6,7 +6,7 @@
 /*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:34:24 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/10/05 11:52:42 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/10/06 14:56:34 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_vector	*new_vector(float x, float y, float z)
 	return(vec);
 }
 
-t_vector	*vec_subtract(t_vector *vec1, t_vector *vec2)
+t_vector	*vec_subtract(t_vector *vec1, t_vector *vec2)//вектор центра сферы вычитаем координаты где объект находится
 {
 	t_vector	*result;
 	result = new_vector(vec1->x - vec2->x, vec1->y - vec2->y, vec1->z - vec2->z);
