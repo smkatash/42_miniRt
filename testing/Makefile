@@ -6,27 +6,27 @@
 #    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/18 09:01:25 by kanykei           #+#    #+#              #
-#    Updated: 2022/10/05 22:52:15 by kanykei          ###   ########.fr        #
+#    Updated: 2022/10/11 09:51:27 by kanykei          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 VPATH	=	src
-NAME = miniRT
+NAME = rtObject
 
-SRC = main.c colors.c vec3.c camera.c sphere.c
+SRC = main.c color.c vec3.c camera.c ray.c 
 
 OBJ = $(addprefix obj/,$(notdir $(SRC:.c=.o)))
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-HEADER = vec3.h
+CC = gcc
+CFLAGS = -Wall -O3 -g -fsanitize=address
+HEADERS = *.h
 RM = rm -r
 RMF = rm -rf
 
 all: ${NAME}
 
-${NAME} : ${OBJ} ${HEADER}
-	@${CC} ${OBJ} -o ${NAME}
-	@echo "miniRT is compiled"
+${NAME} : ${OBJ} ${HEADERS}
+	@${CC} ${OBJ} -o ${NAME} -fsanitize=address
+	@echo "rtObject is compiled"
 	
 obj/%.o: %.c | obj
 	@${CC} ${CFLAGS} -c $< -o $@ 
@@ -40,6 +40,7 @@ clean:
 
 fclean: clean
 	@${RM} ${NAME}
+	@${RM} image.ppm
 	@echo "\033[1;32m executable deleted \033[0m"
 
 re: fclean all

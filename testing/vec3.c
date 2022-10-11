@@ -6,87 +6,100 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 13:02:35 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/05 16:35:17 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/11 09:24:23 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec3.h"
 
-double length_squared(double x, double y, double z) 
+void* addition(t_vec3* new, const t_vec3* u, const t_vec3* v) 
 {
-    return ((x*x) + (y*y) + (z*z));
+    new->x = u->x + v->x;
+    new->y = u->y + v->y;
+    new->z = u->z + v->z;
+    return (new);
 }
 
-double length(double x, double y, double z) 
+void* vector_add_t(t_vec3* new, const t_vec3* v, double t) 
 {
-    return (sqrt(length_squared(x, y , z)));
+    new->x = v->x + t;
+    new->y = v->y + t;
+    new->z = v->z + t;
+    return (new);
 }
 
-t_vec3  addition(t_vec3 *u, t_vec3 *v)
+void* substraction(t_vec3* new, const t_vec3* u, const t_vec3* v) 
 {
-    t_vec3 sum;
-    
-    sum.x = u->x + v->x;
-    sum.y = u->y + v->y;
-    sum.z = u->z + v->z;
-    return sum;
+    new->x = u->x - v->x;
+    new->y = u->y - v->y;
+    new->z = u->z - v->z;
+    return (new);
 }
 
-t_vec3  substraction(t_vec3 *u, t_vec3 *v)
+void* multiply(t_vec3* new, const t_vec3* u, const t_vec3* v) 
 {
-    t_vec3 substr;
-    
-    substr.x = u->x - v->x;
-    substr.y = u->y - v->y;
-    substr.z = u->z - v->z;
-    return substr;
+    new->x = u->x * v->x;
+    new->y = u->y * v->y;
+    new->z = u->z * v->z;
+    return (new);
 }
 
-t_vec3  multipl(t_vec3 *u, t_vec3 *v)
+void* vector_multiply_t(t_vec3* new, const t_vec3* v, double t) 
 {
-    t_vec3 m;
-    
-    m.x = u->x * v->x;
-    m.y = u->y * v->y;
-    m.z = u->z * v->z;
-    return m;
+    new->x = t * v->x;
+    new->y = t * v->y;
+    new->z = t * v->z;
+    return (new);
 }
 
-t_vec3  multipl_distance(double t, t_vec3 *v)
+void* vector_divide_t(t_vec3* new, const t_vec3* v, double t) 
 {
-    t_vec3 dist;
-    
-    dist.x = t * v->x;
-    dist.y = t * v->y;
-    dist.z = t * v->z;
-    return (dist);
+   return (vector_multiply_t(new, v, 1/t));
 }
 
-double  dot(t_vec3 *u, t_vec3 *v)
+double sum_one_vector(const t_vec3* v) 
+{
+    return (v->x + v->y + v->z);
+}
+
+double dot_product(const t_vec3* u, const t_vec3* v) 
 {
     return ((u->x * v->x) + (u->y * v->y) + (u->z * v->z));
 }
 
-t_vec3  cross(t_vec3 *u, t_vec3 *v)
+double length_v3(const t_vec3* v) 
 {
-    t_vec3 cr;
-    cr.x = (u->y * v->z) - (u->z * v->y);
-    cr.y = (u->z * v->x) - (u->x * v->z);
-    cr.z = (u->x * v->y) - (u->y * v->x);
-    return (cr);
+    return (dot_product(v, v));
 }
 
-t_vec3 unit_vector(t_vec3 *v) 
+double length_sqrt(const t_vec3* v) 
 {
-    t_vec3  uv;
-    double  len;
-    
-    len = length(v->x, v->y, v->z);
-    uv = multipl_distance(1/len, v);
-    return (uv);
+    return (sqrt(length_v3(v)));
 }
 
-t_vec3 division(t_vec3 *v, double t)
+void* unit_vector(t_vec3 *new, const t_vec3* v) 
 {
-    return (multipl_distance(1/t, v));
+   double len = length_sqrt(v);
+   return (vector_divide_t(new, v, len));
+}
+
+void* norm_vec3(t_vec3* new, const t_vec3* v) 
+{
+    return (vector_divide_t(new, v, length_sqrt(v)));
+}
+
+void *cross_product(t_vec3* new, const t_vec3* u, const t_vec3* v) 
+{
+    new->x = (u->y*v->z) - (u->z*v->y);
+    new->y = (u->z*v->x) - (u->x*v->z);
+    new->z = (u->x*v->y) - (u->y*v->x);
+    return (new);
+}
+
+void  *vector_set_each(t_vec3 *new, double x, double y, double z)
+{
+    new->x = x;
+    new->y = y;
+    new->z = z;
+    return (new);
 }

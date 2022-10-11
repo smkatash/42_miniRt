@@ -5,29 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 20:34:10 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/05 20:58:31 by kanykei          ###   ########.fr       */
+/*   Created: 2022/10/11 08:14:02 by kanykei           #+#    #+#             */
+/*   Updated: 2022/10/11 08:39:11 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec3.h"
+#include "camera.h"
 
-void    init_position(t_vec3 *pos, double x, double y, double z)
+t_camera *set_camera(t_camera *cam, double ratio)
 {
-    pos->x = x;
-    pos->y = y;
-    pos->z = z;
-}
-
-void init_lower_left(t_vec3 *lower_left_corner, t_vec3 *origin, t_vec3 *horizontal, t_vec3 *vertical, t_vec3 *focal)
-{
-    t_vec3    ptr;
-    t_vec3    hold;
-    t_vec3    hold1;
-
-    ptr = division(horizontal, 2);
-    hold = substraction(origin, &ptr);
-    ptr = division(vertical, 2);
-    hold1 = substraction(&ptr, focal);
-    *lower_left_corner = substraction(&hold, &hold1);
+    t_vec3  temp;
+    t_vec3  temp1;
+    double viewport_height = 5.0;
+    double viewport_width = ratio * viewport_height;
+    double focal_length = 2.0;
+    vector_set_each(&cam->origin, 0, 0, 0);
+    vector_set_each(&cam->horizontal, viewport_width, 0, 0);
+    vector_set_each(&cam->vertical, 0, viewport_height, 0);
+    vector_set_each(&cam->focal, 0, 0, focal_length);
+    
+    vector_divide_t(&temp, &cam->horizontal, 2);
+    substraction(&temp1, &cam->origin, &temp);
+    vector_divide_t(&temp, &cam->vertical, 2);
+    substraction(&cam->lower_left_corner, &temp1, &temp);
+    vector_set_each(&temp, 0, 0, focal_length);
+    substraction(&cam->lower_left_corner, &cam->lower_left_corner, &temp);
+    return (cam);
 }
