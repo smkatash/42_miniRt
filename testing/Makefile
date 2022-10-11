@@ -6,14 +6,14 @@
 #    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/18 09:01:25 by kanykei           #+#    #+#              #
-#    Updated: 2022/10/11 09:51:27 by kanykei          ###   ########.fr        #
+#    Updated: 2022/10/11 10:36:55 by kanykei          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 VPATH	=	src
 NAME = rtObject
 
-SRC = main.c color.c vec3.c camera.c ray.c 
+SRC = main.c color.c vec3.c camera.c ray.c sphere.c
 
 OBJ = $(addprefix obj/,$(notdir $(SRC:.c=.o)))
 CC = gcc

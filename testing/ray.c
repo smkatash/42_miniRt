@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 07:46:23 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/11 09:53:06 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/11 10:25:15 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,6 @@ t_ray   *put_ray(t_ray  *ray, t_camera *cam, double u, double v)
     substraction(&direction, &direction, &ray->origin);
     ray->dir = direction;
     return (ray);
-}
-
-
-static double hit_sphere(const t_color* center, double radius, const t_ray *ray) 
-{
-    t_vec3 oc;
-    double a;
-    double half_b;
-    double c;
-    double discriminant;
-
-    substraction(&oc, &ray->origin, center);
-    a = length_v3(&ray->dir);
-    half_b = dot_product(&oc, &ray->dir);
-    c = length_v3(&oc) - (radius*radius);
-    discriminant = (half_b*half_b) - (a * c);
-    if (discriminant < 0)
-        return (-1.0);
-    else
-        return (((-1 * half_b) - sqrt(discriminant)) / a);
 }
 
 t_color *ray_color(t_color *color, const t_ray *ray)
