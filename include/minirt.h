@@ -3,77 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 12:36:06 by ktashbae          #+#    #+#             */
-/*   Updated: 2022/10/04 12:59:11 by ktashbae         ###   ########.fr       */
+/*   Created: 2022/10/05 11:33:12 by aiarinov          #+#    #+#             */
+/*   Updated: 2022/10/12 16:27:39 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# include <stdio.h>
+# include <unistd.h>
 # include <stdlib.h>
+# include <string.h>
 # include <math.h>
+# include <fcntl.h>
+# include <stdio.h>
+# include "../minilibx/mlx.h"
+# include "../libft/libft.h"
 
-typedef enum	e_type {
-	CAMERA,
-	AMB_LIGHT,
-	LIGHT,
-	SPHERE,
-	PLANE,
-	SQUARE,
-	CYLINDER,
-	TRIANGLE
-}				t_type;
+# define FALSE 0
+# define TRUE 1
+# define FALSE 2
+# define ERROR -1
+# define GNLFAIL -2
 
-typedef struct		s_img
-{
-	void			*ptr;
-	char			*addr;
-	int				bpp;
-	int				size;
-	int				endian;
-}					t_img;
+# define WIN_WIDTH	1000
+# define WIN_HEIGHT	1000
 
-typedef struct		s_resolution
-{
-	int				x;
-	int				y;
-}					t_resolution;
+void	error_message(char *str);
+void	error(void);
 
-typedef struct		s_coordinate
-{
-	double			x;
-	double			y;
-	double			z;
-}					t_coordinate;
+// void	error_exit(int code);
 
-typedef struct		s_shape
-{
-	t_coordinate	point;
-	t_coordinate	basic;
-	t_coordinate	*vertex;
-	short int		qtd_vertex;
-	int				colour;
-	double			ratio;
-	double			diam;
-	double			height;
-	struct s_shape	*next;
-}					t_shape;
+// t_vector	*new_vector(float x, float y, float z);
+// t_vector	*vec_subtract(t_vector *vec1, t_vector *vec2);
+// float	vec_length(t_vector *vec);
+// void	vec_normalize(t_vector *vec);
+// float	vec_dot_product(t_vector *vec1, t_vector *vec2);
 
-typedef struct		s_base
-{
-	char			*line;
-	char			**map;
-	t_resolution	resolution;
-	//  		amb_light;
-	//			cam;
-	//			light;
-	t_shape			*pl;
-	t_shape			*sp;
-	t_shape			*sq;
-}					t_base;
+// t_camera	*new_cam(t_vector *origin, t_vector *direction, float fov);
 
-# endif
+// t_sphere	*new_sphere(t_vector *center, float radius);
+// t_scene	*new_scene(t_camera *cam, t_sphere *sphere);
+// t_vplane	*get_view_plane(float width, float hight, float fov);
+// int	sphere_intersect(t_camera *cam, t_vector *ray, t_sphere *sphere);
+
+// void	ray_tracing(void *mlx, void *window, t_scene *scene);
+#endif

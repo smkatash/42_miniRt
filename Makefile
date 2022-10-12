@@ -3,32 +3,49 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+         #
+#    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 11:29:40 by aiarinov          #+#    #+#              #
-#    Updated: 2022/10/04 13:16:35 by aiarinov         ###   ########.fr        #
+#    Updated: 2022/10/12 16:39:42 by kanykei          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FLAGS = -Wall -Wextra -Werror
+VPATH	=	src
 NAME = minirt
-SRC = main.c
 
-OBJ = $(SRC:.c=.o)
+SRC = main.c get_input_file.c parse_list.c parse_to_scene.c parse_utils.c parsing.c \
+ambient.c camera.c light.c object.c scene.c errors.c
 
-all: $(NAME)
+OBJ = $(addprefix obj/,$(notdir $(SRC:.c=.o)))
+CC = cc
+CFLAGS = -Wall -Wextra -Werror 
+HEADERS = include/*.h
+RM = rm -r
+RMF = rm -rf
 
-$(NAME): $(OBJ)
-	make -C ./libft
-	make -C ./minilibx
-	gcc $(OBJ) ./libft/libft.a -o minirt  $(FLAGS) -L ./minilibx -lmlx -framework OpenGL -framework AppKit
+all: ${NAME}
+
+${NAME} : ${OBJ} ${HEADERS}
+	@make -C ./libft
+	@make -C ./gnL
+	@make -C ./minilibx
+	@cc $(OBJ) /libft/libft.a ./gnL/libgnL.a -o minirt  $(FLAGS) -L ./minilibx -lmlx -framework OpenGL -framework AppKit
+	@echo "\033[1;32m minirt is compiled \033[0m"
+
+obj/%.o: %.c | obj
+	@${CC} ${CFLAGS} -c $< -o $@ 
+
+obj:
+	@mkdir obj
 
 clean:
-	make clean -C ./libft/
-	rm -f $(OBJ)
+	@${RMF} obj
+	@echo "object files are deleted"
 
 fclean: clean
-	make fclean -C ./libft/
-	rm -f $(NAME)
+	@${RM} ${NAME}
+	@echo "executable is deleted"
 
 re: fclean all
+
+.PHONY:	all clean fclean re 
