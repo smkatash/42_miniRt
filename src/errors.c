@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:52:21 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/12 12:54:53 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/17 13:31:42 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	error_message(char *str)
 {
+	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(str, 2);
 	exit(EXIT_FAILURE);
 }

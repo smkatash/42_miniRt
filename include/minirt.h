@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:33:12 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/10/12 16:27:39 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/17 13:51:58 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 
 # define FALSE 0
 # define TRUE 1
-# define FALSE 2
 # define ERROR -1
 # define GNLFAIL -2
 

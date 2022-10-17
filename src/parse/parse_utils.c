@@ -6,11 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:36:01 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/12 15:49:03 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/17 14:03:52 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parsing.h"
+#include "../include/parse.h"
 
 bool	valid_type(t_form type, t_type_data type_data)
 {
@@ -55,10 +55,10 @@ bool	scan_elements(t_form type, char **str)
 		++i;
 	if (valid_type(type, RGB))
 		++i;
-	i = 0;
-	while (str[i] != NULL)
-		++i;
-	if (i != i)
+	j = 0;
+	while (str[j] != NULL)
+		++j;
+	if (i != j)
 		return (FALSE);
 	return (TRUE);
 }

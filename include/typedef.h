@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/12 16:03:20 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/17 13:27:23 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define TYPEDEF_H
 
 # include <stdbool.h>
+# include "../minilibx/mlx.h"
 # define EPSILON 1e-6
 
 typedef struct s_vec3		t_vector;
@@ -120,6 +121,12 @@ typedef struct s_hit_record
 	t_color     color;
 }	t_hit_record;
 
+typedef struct s_ambient
+{
+	double		light_ratio;
+	t_color	    light_color;
+}	t_ambient;
+
 typedef struct s_scene
 {
 	t_screen		screen;
@@ -131,11 +138,6 @@ typedef struct s_scene
 	t_hit_record	record;
 }	t_scene;
 
-typedef struct s_ambient
-{
-	double		light_ratio;
-	t_color	    light_color;
-}	t_ambient;
 
 typedef struct s_light
 {
@@ -164,6 +166,29 @@ typedef struct s_cylinder
 	double		radius2;
 	double		height;
 }	t_cylinder;
+
+typedef struct s_image
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line;
+	int		endian;
+}	t_image;
+
+typedef struct s_xpm_image
+{
+	t_image	data;
+	int		height;
+	int		width;
+}	t_xpm_image;
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	t_image	img;
+}	t_mlx;
 
 typedef bool (*t_obj_hit_f) (t_objlst *objects, t_ray *ray, t_hit_record *rec);
 

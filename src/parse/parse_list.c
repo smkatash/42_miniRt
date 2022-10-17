@@ -6,11 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:02:36 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/12 15:08:20 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/17 13:49:42 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parsing.h"
+#include "../include/parse.h"
 
 t_parse	*new_parse_list(void)
 {

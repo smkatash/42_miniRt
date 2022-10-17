@@ -6,26 +6,36 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/12 16:22:57 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/17 14:10:00 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parsing.h"
+#include "../include/parse.h"
 #include "../gnL/get_next_line.h"
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int		i;
+
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0' && s1[i] != '\0')
+		i++;
+	return (s1[i] - s2[i]);
+}
 
 static t_form	element_type_set(char *s)
 {
-	if (!ft_strcmp(s, "A"))
+	if (ft_strcmp(s, "A"))
 		return (AMBIENT);
-	else if (!ft_strcmp(s, "C"))
+	else if (ft_strcmp(s, "C"))
 		return (CAMERA);
-	else if (!ft_strcmp(s, "L"))
+	else if (ft_strcmp(s, "L"))
 		return (POINT_LIGHT);
-	else if (!ft_strcmp(s, "sp"))
+	else if (ft_strcmp(s, "sp"))
 		return (SPHERE);
-	else if (!ft_strcmp(s, "pl"))
+	else if (ft_strcmp(s, "pl"))
 		return (PLANE);
-	else if (!ft_strcmp(s, "cy"))
+	else if (ft_strcmp(s, "cy"))
 		return (CYLINDER);
 	return (NA);
 }
@@ -65,7 +75,7 @@ static t_parse	*parse_elements(char *line)
 
 	lst = new_parse_list();
 	whitespace = " \t\v\f\r";
-	split_array = ft_split(line, whitespace);
+	split_array = ft_split(line, *whitespace);
 	if (split_array == NULL)
 		error_message("Parse error...\n");
 	else if (split_array[0] == NULL)
@@ -89,15 +99,16 @@ t_objlst	*parse_input_file(t_objlst *objects, int fd)
 	bytes_read = TRUE;
 	while (bytes_read == TRUE)
 	{
-		bytes_read = get_next_line(fd, &line);
+		line = get_next_line(fd);
+		bytes_read = ft_strlen(line) + 1;
 		if (bytes_read == ERROR)
 			error_message("Could not read the file\n");
 		else if (bytes_read == GNLFAIL)
 			error_message("Wrong file format.\n");
-		parsed_list = parse_elements(line);
-		if (parsed_list != NULL)
+		parsed_lst = parse_elements(line);
+		if (parsed_lst != NULL)
 			add_object_list(&objects, \
-			new_object_list(parsed_list, 0, t_color(0, 0, 0)));
+			new_object_list(parsed_lst, 0,(t_color) (0, 0, 0)));
 		if (line != NULL)
 			free(line);
 	}

@@ -6,11 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:51:08 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/12 16:36:45 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/17 13:49:33 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parsing.h"
+#include "../include/parse.h"
 
 int	get_input_file(int argv, char **argc)
 {
