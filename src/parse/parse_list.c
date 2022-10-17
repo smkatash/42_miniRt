@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:02:36 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/17 13:49:42 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/17 14:59:30 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_parse	*new_parse_list(void)
 	return (lst);
 }
 
-void	free_parse_list(t_parse *parse)
+void	free_parse_content(t_parse *parse)
 {
 	if (parse->ident != NULL)
 		free(parse->ident);

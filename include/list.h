@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ambient.c                                          :+:      :+:    :+:   */
+/*   list.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 16:15:38 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/17 15:04:30 by kanykei          ###   ########.fr       */
+/*   Created: 2022/10/17 14:51:25 by kanykei           #+#    #+#             */
+/*   Updated: 2022/10/17 15:01:19 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/scene.h"
+#ifndef LIST_H
+# define LIST_H
 
-t_ambient	set_ambient(t_objlst *objects)
-{
-	t_parse		*parsed_list;
-	t_ambient	ambient;
+#include "parse.h"
 
-	parsed_list = objects->object;
-	ambient.light_ratio = double_get(parsed_list->bri_ratio, 0.0, 1.0);
-	ambient.light_color = vec_int_get(parsed_list->rgb, 0, 255);
-	return (ambient);
-}
+t_objlst    *create_list(void *object, int type, t_color color);
+void        push_back(t_objlst **lst, t_objlst *new);
+void        free_list(t_objlst **lst);
+void        free_parse_list(t_objlst **lst);
+int         list_size(t_objlst *lst);
+
+#endif

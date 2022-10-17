@@ -6,15 +6,15 @@
 #    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 11:29:40 by aiarinov          #+#    #+#              #
-#    Updated: 2022/10/17 14:00:10 by kanykei          ###   ########.fr        #
+#    Updated: 2022/10/17 15:03:56 by kanykei          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-VPATH = src/parse src/scene
+VPATH = src/parse src/scene src/objectlist
 NAME = minirt
 
 SRC = main.c get_input_file.c parse_list.c parse_to_scene.c parse_utils.c parsing.c \
-ambient.c camera.c light.c object.c scene.c errors.c
+ambient.c camera.c light.c object.c scene.c errors.c list.c
 
 OBJ = $(addprefix obj/,$(notdir $(SRC:.c=.o)))
 CC = cc

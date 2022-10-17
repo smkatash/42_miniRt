@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/17 14:10:00 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/17 15:03:33 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,15 +100,13 @@ t_objlst	*parse_input_file(t_objlst *objects, int fd)
 	while (bytes_read == TRUE)
 	{
 		line = get_next_line(fd);
-		bytes_read = ft_strlen(line) + 1;
-		if (bytes_read == ERROR)
+		bytes_read = ft_strlen(line);
+		if (bytes_read == FALSE)
 			error_message("Could not read the file\n");
-		else if (bytes_read == GNLFAIL)
-			error_message("Wrong file format.\n");
 		parsed_lst = parse_elements(line);
 		if (parsed_lst != NULL)
-			add_object_list(&objects, \
-			new_object_list(parsed_lst, 0,(t_color) (0, 0, 0)));
+			push_back(&objects, \
+			create_list(parsed_lst, 0, (t_color){0, 0, 0}));
 		if (line != NULL)
 			free(line);
 	}
