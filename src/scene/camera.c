@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:11:40 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/12 16:15:01 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/18 02:14:10 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ static t_camera
 	camera.horizontal = vec3_mult_scalar(camera.u_dir, camera.viewport_width);
 	camera.vertical = vec3_mult_scalar(camera.v_dir, camera.viewport_height);
 	camera.left_bottom = vec3_minus(camera.origin, vec3_plus(
-				vec3_divide_scalar(vec3_plus(camera.horizontal, camera.vertical), 2),
+				divide_scalar(vec3_plus(camera.horizontal, camera.vertical), 2),
 				camera.w_dir));
 	return (camera);
 }
 
-t_camera	set_camera(t_scene *scene, t_objlist *objects)
+t_camera	set_camera(t_scene *scene, t_objlst *objects)
 {
 	t_parse		*parsed_list;
 	t_camera	camera;
@@ -49,9 +49,9 @@ t_camera	set_camera(t_scene *scene, t_objlist *objects)
 	double		h_fov;
 
 	parsed_list = objects->object;
-	origin = vec_double_get(parsed_list->point, 0, 0);
-	direction = vec_double_get(parsed_list->nor_vec, -1, 1);
-	h_fov = double_get(parsed_list->fov, 0, 180);
+	origin = get_double_vector(parsed_list->point, 0, 0);
+	direction = get_double_vector(parsed_list->nor_vec, -1, 1);
+	h_fov = get_double(parsed_list->fov, 0, 180);
 	camera = init_camera(&scene->screen, origin, direction, h_fov);
 	return (camera);
 }

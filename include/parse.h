@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:03:59 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/17 15:51:49 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/18 02:10:30 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ bool            scan_elements(t_form type, char **str);
 bool            elements_valid_count(t_objlst *objects);
 
 int             ft_strcmp(char *s1, char *s2);
-double          atof(const char *str);
+double          get_double(char *str, double min, double max);
+struct s_vec3	get_int_vector(char *str, int min, int max);
+struct s_vec3	get_double_vector(char *str, double min, double max);
 
 #endif

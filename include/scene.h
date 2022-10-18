@@ -6,14 +6,14 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:01:11 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/17 13:59:28 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/18 02:10:20 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCENE_H
 # define SCENE_H
 
-# include "typedef.h"
+# include "parse.h"
 
 t_scene		*set_scene(int width, int height);
 t_ambient	ambient_set(t_objlst *objects);

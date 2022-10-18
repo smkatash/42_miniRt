@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ambient.c                                          :+:      :+:    :+:   */
+/*   ft_strsep.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 16:15:38 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/18 02:09:19 by kanykei          ###   ########.fr       */
+/*   Created: 2022/10/18 01:51:23 by kanykei           #+#    #+#             */
+/*   Updated: 2022/10/18 02:03:23 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/scene.h"
+#include "libft.h"
 
-t_ambient	set_ambient(t_objlst *objects)
+char	*ft_strsep(char **stringp, const char delim)
 {
-	t_parse		*parsed_list;
-	t_ambient	ambient;
+	char	*begin;
 
-	parsed_list = objects->object;
-	ambient.light_ratio = get_double(parsed_list->bri_ratio, 0.0, 1.0);
-	ambient.light_color = get_int_vector(parsed_list->rgb, 0, 255);
-	return (ambient);
+	begin = *stringp;
+	if (begin == NULL)
+		return (NULL);
+	while (**stringp)
+	{
+		if (**stringp == delim)
+		{
+			**stringp = '\0';
+			(*stringp)++;
+			return (begin);
+		}
+		(*stringp)++;
+	}
+	*stringp = NULL;
+	return (begin);
 }
