@@ -6,22 +6,12 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/17 15:03:33 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/18 09:53:06 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/parse.h"
 #include "../gnL/get_next_line.h"
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	int		i;
-
-	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s1[i] != '\0')
-		i++;
-	return (s1[i] - s2[i]);
-}
 
 static t_form	element_type_set(char *s)
 {

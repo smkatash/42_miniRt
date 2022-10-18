@@ -6,15 +6,16 @@
 #    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 11:29:40 by aiarinov          #+#    #+#              #
-#    Updated: 2022/10/18 02:07:55 by kanykei          ###   ########.fr        #
+#    Updated: 2022/10/18 10:38:41 by kanykei          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-VPATH = src/parse src/scene src/objectlist
+VPATH = src/parse src/scene src/objectlist src/vector
 NAME = minirt
 
 SRC = main.c parse_list.c parse_to_scene.c parse_utils.c parsing.c \
-ambient.c camera.c light.c object.c scene.c errors.c list.c getter.c
+ambient.c camera.c light.c object.c scene.c errors.c list.c getter.c \
+vector_math.c vector_scalar.c vector_setter.c vector_utils.c 
 
 OBJ = $(addprefix obj/,$(notdir $(SRC:.c=.o)))
 CC = cc
