@@ -6,20 +6,20 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:06:55 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/18 02:13:17 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/18 13:24:22 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/scene.h"
 
-void	set_sphere(t_scene *scene, t_objlist *objects)
+void	set_sphere(t_scene *scene, t_objlst *objects)
 {
-	t_objlist	*new_objects;
+	t_objlst	*new_objects;
 	t_parse		*parsed_objects;
 	t_sphere	*sphere;
 
 	parsed_objects = objects->object;
-	new_objects = ft_calloc(sizeof(t_objlist), 0);
+	new_objects = ft_calloc(sizeof(t_objlst), 0);
 	sphere = ft_calloc(sizeof(t_sphere), 0);
 	push_back(&scene->objects, new_objects);
 	sphere->center = get_double_vector(parsed_objects->point, 0, 0);
@@ -30,14 +30,14 @@ void	set_sphere(t_scene *scene, t_objlist *objects)
 	new_objects->object = sphere;
 }
 
-void	set_plane(t_scene *scene, t_objlist *objects)
+void	set_plane(t_scene *scene, t_objlst *objects)
 {
-	t_objlist	*new_objects;
+	t_objlst	*new_objects;
 	t_parse		*parsed_objects;
 	t_plane		*plane;
 
 	parsed_objects = objects->object;
-	new_objects = ft_calloc(sizeof(t_objlist), 0);
+	new_objects = ft_calloc(sizeof(t_objlst), 0);
 	plane = ft_calloc(sizeof(t_plane), 0);
 	push_back(&scene->objects, new_objects);
 	plane->point = get_double_vector(parsed_objects->point, 0, 0);
@@ -47,14 +47,14 @@ void	set_plane(t_scene *scene, t_objlist *objects)
 	new_objects->object = plane;
 }
 
-void	set_cylinder(t_scene *scene, t_objlist *objects)
+void	set_cylinder(t_scene *scene, t_objlst *objects)
 {
-	t_objlist	*new_objects;
+	t_objlst	*new_objects;
 	t_parse		*parsed_objects;
 	t_cylinder	*cylinder;
 
 	parsed_objects = objects->object;
-	new_objects = ft_calloc(sizeof(t_objlist), 0);
+	new_objects = ft_calloc(sizeof(t_objlst), 0);
 	cylinder = ft_calloc(sizeof(t_cylinder), 0);
 	push_back(&scene->objects, new_objects);
 	cylinder->center = get_double_vector(parsed_objects->point, 0, 0);

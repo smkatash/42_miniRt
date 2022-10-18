@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:25:11 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/18 10:39:20 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/18 13:09:50 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,19 @@ double	length(t_vector *vec)
 	return (sqrt(length_sqrd(vec)));
 }
 
-void	*unit_vector(t_vector *vec)
+void	*unit_vector(t_vector *new, t_vector *vec)
 {
-	return (divide_scalar(vec, length(vec)));
+	return (divide_scalar(new, vec, length(vec)));
 }
 
-void	*minimum(t_vector *u, t_vector *v)
+void	*minimum(t_vector *new, t_vector *u, t_vector *v)
 {
+	new = u;
 	if (u->x > v->x)
-		u->x = v->x;
+		new->x = v->x;
 	if (u->y > v->y)
-		u->y = v->y;
+		new->y = v->y;
 	if (u->z > v->z)
-		u->z = v->z;
-	return (u);
+		new->z = v->z;
+	return (new);
 }

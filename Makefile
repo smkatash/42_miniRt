@@ -6,11 +6,11 @@
 #    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 11:29:40 by aiarinov          #+#    #+#              #
-#    Updated: 2022/10/18 10:38:41 by kanykei          ###   ########.fr        #
+#    Updated: 2022/10/18 13:40:28 by kanykei          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-VPATH = src/parse src/scene src/objectlist src/vector
+VPATH = src/parse src/scene src/objectlist src/vector src
 NAME = minirt
 
 SRC = main.c parse_list.c parse_to_scene.c parse_utils.c parsing.c \
@@ -31,10 +31,10 @@ RMF = rm -rf
 all: $(NAME)
 
 $(NAME) : $(OBJ) | $(LIBS) | $(LIBSGNL)
-	$(CC) $(CFLAGS) -o $@ $^ -Llibft -lft -LgnL -lgnL -L ./minilibx -lmlx -framework OpenGL -framework AppKit
+	$(CC) $(OBJ) -Llibft -lft -LgnL -lgnL -L ./minilibx -lmlx -framework OpenGL -framework AppKit
 	@echo "\033[1;32m minirt is compiled \033[0m"
 
-obj/%.o : %.c $(HEADER)| obj
+obj/%.o : %.c | obj
 	$(CC) $(CFLAGS) $(INCFL) $(INCGNL) -c $< -o $@
 
 obj:

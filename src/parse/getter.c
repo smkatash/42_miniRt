@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:10:52 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/18 02:05:46 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/18 13:29:26 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ struct s_vec3	get_int_vector(char *str, int min, int max)
 	if (ft_strsep(&temp, ',') != NULL)
 		error_message("Wrong input parameters.\n");
 	if (min == 0 && max == 255)
-		new_vector = divide_scalar(new_vector, 255);
+		divide_scalar(&new_vector, &new_vector, 255);
 	free(ptr);
 	return (new_vector);
 }
@@ -100,12 +100,12 @@ struct s_vec3	get_double_vector(char *str, double min, double max)
 		error_message("Wrong input parameters.\n");
 	if (min == -1 && max == 1)
 	{
-		if (vector_length(new_vector) == 0.0)
+		if (length(&new_vector) == 0.0)
 			error_message("Normalized vector must came in standard.\n");
-		new_vector = unit_vector(new_vector);
+		unit_vector(&new_vector, &new_vector);
 	}
 	else if (min == 0 && max == 255)
-		new_vector = divide_scalar(new_vector, 255);
+		divide_scalar(&new_vector, &new_vector, 255);
 	free(ptr);
 	return (new_vector);
 }

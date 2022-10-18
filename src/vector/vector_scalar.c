@@ -6,42 +6,42 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:01:33 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/18 10:39:11 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/18 13:30:25 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/vector.h"
 
-void	*add_scalar(t_vector *vec, double t)
+void	*add_scalar(t_vector *new, const t_vector *vec, double t)
 {
-	vec->x += t;
-	vec->y += t;
-	vec->z += t;
-	return (vec);
+	new->x = vec->x + t;
+	new->y = vec->y + t;
+	new->z = vec->x + t;
+	return (new);
 }
 
-void	*minus_scalar(t_vector *vec, double t)
+void	*minus_scalar(t_vector *new, const t_vector *vec, double t)
 {
-	vec->x -= t;
-	vec->y -= t;
-	vec->z -= t;
-	return (vec);
+	new->x = vec->x - t;
+	new->y = vec->y - t;
+	new->z = vec->x - t;
+	return (new);
 }
 
-void	*multiply_scalar(t_vector *vec, double t)
+void	*multiply_scalar(t_vector *new, const t_vector *vec, double t)
 {
-	vec->x *= t;
-	vec->y *= t;
-	vec->z *= t;
-	return (vec);
+	new->x = vec->x * t;
+	new->y = vec->y * t;
+	new->z = vec->x * t;
+	return (new);
 }
 
-void* divide_scalar(const t_vector *vec, double t) 
+void* divide_scalar(t_vector *new, const t_vector *vec, double t) 
 {
    if (t == 0)
    {
-        ft_putstr_fd(2, "Floating point exception\n");
+        ft_putstr_fd("Floating point exception\n", 2);
         exit(EXIT_FAILURE);
    }
-   return (multiply_scalar(vec, 1/t));
+   return (multiply_scalar(new, vec, 1/t));
 }
