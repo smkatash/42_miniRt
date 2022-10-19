@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 06:59:57 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/19 08:32:19 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/19 14:15:55 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static  void ray_trace(t_mlx *mlx, t_scene *scene, int h, int w)
 {
     double		u;
 	double		v;
-	t_color     pixel_color;
+    t_color     pixel_color;
 
     u = (double)w / (WIN_WIDTH - 1);
     v = (double)h / (WIN_HEIGHT - 1);
-    put_ray();
-    color_ray();
-    mlx_pixel_put(&mlx->mlx, mlx->win, WIN_HEIGHT - 1 - h, put_color(pixel_color));
+    put_ray(&scene->ray, scene->camera, u, v);
+    color_ray(&pixel_color, scene);
+    put_color(&mlx->img, mlx->win, WIN_HEIGHT - 1 - h, w, color(pixel_color));
 }
 
 static void free_scene(t_scene *scene)
