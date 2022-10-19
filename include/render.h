@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.c                                           :+:      :+:    :+:   */
+/*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 12:01:46 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/10/12 12:21:53 by kanykei          ###   ########.fr       */
+/*   Created: 2022/10/19 07:05:15 by kanykei           #+#    #+#             */
+/*   Updated: 2022/10/19 07:08:37 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minirt.h"
+#ifndef RENDER_H
+# define RENDER_H
 
-t_sphere	*new_sphere(t_vector *center, float radius)
-{
-	t_sphere	*sphere;
+# include "typedef.h"
+# include "parse.h"
+# include "scene.h"
+# include "vector.h"
+# include "../minilibx/mlx.h"
 
-	sphere = malloc(sizeof(t_sphere));
-	if (!sphere)
-		error_exit(-1);
-	sphere->center = center;
-	sphere->radius = radius;
-	return(sphere);
 
-}
+
+#endif

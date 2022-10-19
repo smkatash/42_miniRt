@@ -6,7 +6,7 @@
 #    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 11:29:40 by aiarinov          #+#    #+#              #
-#    Updated: 2022/10/18 13:40:28 by kanykei          ###   ########.fr        #
+#    Updated: 2022/10/18 22:15:40 by kanykei          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ RMF = rm -rf
 
 all: $(NAME)
 
-$(NAME) : $(OBJ) | $(LIBS) | $(LIBSGNL)
+$(NAME) : $(OBJ) $(LIBS) $(LIBSGNL)
 	$(CC) $(OBJ) -Llibft -lft -LgnL -lgnL -L ./minilibx -lmlx -framework OpenGL -framework AppKit
 	@echo "\033[1;32m minirt is compiled \033[0m"
 
