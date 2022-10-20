@@ -6,7 +6,7 @@
 #    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 14:45:22 by kanykei           #+#    #+#              #
-#    Updated: 2022/10/12 14:45:23 by kanykei          ###   ########.fr        #
+#    Updated: 2022/10/20 23:52:39 by kanykei          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,10 @@ $(NAME): $(OBJ)
 	@$(CC) $(FLAGS) -c $< -o $@
 
 clean:
-	rm -f *.o
+	@rm -f *.o
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 

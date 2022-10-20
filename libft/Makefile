@@ -6,7 +6,7 @@
 #    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/25 16:55:06 by aiarinov          #+#    #+#              #
-#    Updated: 2022/10/18 22:12:47 by kanykei          ###   ########.fr        #
+#    Updated: 2022/10/21 00:03:21 by kanykei          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,20 +26,20 @@ BSOURCE = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 all: $(NAME)
 
 $(NAME):
-	gcc -Werror -Wextra -Wall $(SOURCE) -c
+	@cc -Werror -Wextra -Wall $(SOURCE) -c
 
-	ar -rs $(NAME) *.o
+	@ar -rs $(NAME) *.o
 
 
 clean:
-	rm -f *.o
+	@rm -f *.o
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
 bonus:
-	gcc -Werror -Wextra -Wall $(SOURCE) $(BSOURCE) -c
+	@cc -Werror -Wextra -Wall $(SOURCE) $(BSOURCE) -c
 
-	ar -rs $(NAME) *.o
+	@ar -rs $(NAME) *.o

@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:36:01 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/17 14:03:52 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/20 23:41:12 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool	valid_type(t_form type, t_type_data type_data)
 		return (TRUE);
 	else if (type_data == BRI_RATIO && (type == AMBIENT || type == POINT_LIGHT))
 		return (TRUE);
-	else if (type_data == NOR_VEC && (type == CAMERA || type == PLANE || type == CYLINDER))
+	else if (type_data == NORM_VEC && (type == CAMERA || type == PLANE || type == CYLINDER))
 		return (TRUE);
 	else if (type_data == DIAMETER && (type == SPHERE || type == CYLINDER))
 		return (TRUE);
@@ -45,7 +45,7 @@ bool	scan_elements(t_form type, char **str)
 		++i;
 	if (valid_type(type, BRI_RATIO))
 		++i;
-	if (valid_type(type, NOR_VEC))
+	if (valid_type(type, NORM_VEC))
 		++i;
 	if (valid_type(type, DIAMETER))
 		++i;

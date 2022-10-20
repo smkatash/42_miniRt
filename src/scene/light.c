@@ -6,13 +6,13 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:09:42 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/18 13:24:04 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/20 23:42:12 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/scene.h"
 
-void	light_set(t_scene *scene, t_objlst *objects)
+void	set_light(t_scene *scene, t_objlst *objects)
 {
 	t_objlst	*new_objects;
 	t_parse		*parsed_objects;

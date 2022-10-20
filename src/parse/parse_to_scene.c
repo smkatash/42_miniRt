@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:54:42 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/17 13:49:47 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/20 23:40:51 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ t_scene	*parse_to_scene(t_scene *scene, t_objlst *object_list)
 	{
 		object = object_list->object;
 		if (object->type == AMBIENT)
-			ambient_set(object_list);
+			set_ambient(object_list);
 		else if (object->type == CAMERA)
-			camera_set(scene, object_list);
+			set_camera(scene, object_list);
 		else if (object->type == POINT_LIGHT)
-			light_set(scene, object_list);
+			set_light(scene, object_list);
 		else if (object->type == SPHERE)
-			sphere_set(scene, object_list);
+			set_sphere(scene, object_list);
 		else if (object->type == PLANE)
-			plane_set(scene, object_list);
+			set_plane(scene, object_list);
 		else if (object->type == CYLINDER)
-			cylinder_set(scene, object_list);
+			set_cylinder(scene, object_list);
 		object_list = object_list->next;
 	}
 	return (scene);

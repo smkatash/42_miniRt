@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/18 09:53:06 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/20 23:41:52 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	parse_element_type(t_parse *lst, char **str)
 		lst->point = str[i++];
 	if (valid_type(lst->type, BRI_RATIO))
 		lst->bri_ratio = str[i++];
-	if (valid_type(lst->type, NOR_VEC))
+	if (valid_type(lst->type, NORM_VEC))
 		lst->nor_vec = str[i++];
 	if (valid_type(lst->type, DIAMETER))
 		lst->diameter = str[i++];

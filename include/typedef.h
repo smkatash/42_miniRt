@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/20 12:39:12 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/20 23:14:10 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef enum e_type_data
 {
 	POINT = 0,
 	BRI_RATIO = 1,
-	NOR_VEC = 2,
+	NORM_VEC = 2,
 	DIAMETER = 3,
 	HEIGHT = 4,
 	FOV = 5,
@@ -50,18 +50,12 @@ struct s_vec3
 	double	z;
 };
 
-typedef enum e_root_type
-{
-	ALPHA = 0,
-	BETA = 1,
-}	t_root_type;
-
-typedef struct s_eq
+typedef struct s_equation
 {
 	double	a;
 	double	half_b;
 	double	c;
-}	t_eq;
+}	t_equation;
 
 typedef struct s_parse
 {
