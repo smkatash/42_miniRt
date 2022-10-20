@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/17 13:27:23 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/20 12:39:12 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ typedef struct s_ray
 	t_vector	direction;
 }	t_ray;
 
-typedef struct s_hit_record
+typedef struct s_record
 {
 	t_point	    point;
 	t_vector	normal;
@@ -119,7 +119,7 @@ typedef struct s_hit_record
 	double		t;
 	bool		front_face;
 	t_color     color;
-}	t_hit_record;
+}	t_record;
 
 typedef struct s_ambient
 {
@@ -135,7 +135,7 @@ typedef struct s_scene
 	t_objlst		*lights;
 	t_ambient		ambient;
 	t_ray			ray;
-	t_hit_record	record;
+	t_record		record;
 }	t_scene;
 
 
@@ -190,6 +190,6 @@ typedef struct s_mlx
 	t_image	img;
 }	t_mlx;
 
-typedef bool (*t_obj_hit_f) (t_objlst *objects, t_ray *ray, t_hit_record *rec);
+typedef bool (*t_hittable) (t_objlst *objects, t_ray *ray, t_record *record);
 
 #endif

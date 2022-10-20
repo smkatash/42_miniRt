@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 06:59:57 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/19 14:15:55 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/20 11:33:57 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ void    render_image(t_mlx *mlx, t_scene *scene)
         }
         h--;
     }
-    free_scene(scene);
     mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
+    free_scene(scene);
 }
