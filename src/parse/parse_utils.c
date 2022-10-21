@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:36:01 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/20 23:41:12 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/21 15:44:05 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@ bool	valid_type(t_form type, t_type_data type_data)
 	if (type_data == POINT && \
 	(type == CAMERA || type == POINT_LIGHT || type == SPHERE || type == PLANE || \
 	type == CYLINDER))
-		return (TRUE);
+		return (true);
 	else if (type_data == BRI_RATIO && (type == AMBIENT || type == POINT_LIGHT))
-		return (TRUE);
+		return (true);
 	else if (type_data == NORM_VEC && (type == CAMERA || type == PLANE || type == CYLINDER))
-		return (TRUE);
+		return (true);
 	else if (type_data == DIAMETER && (type == SPHERE || type == CYLINDER))
-		return (TRUE);
+		return (true);
 	else if (type_data == HEIGHT && (type == CYLINDER))
-		return (TRUE);
+		return (true);
 	else if (type_data == FOV && (type == CAMERA))
-		return (TRUE);
+		return (true);
 	else if (type_data == RGB && \
 	(type == AMBIENT || type == POINT_LIGHT || type == SPHERE || type == PLANE || \
 	type == CYLINDER))
-		return (TRUE);
-	return (FALSE);
+		return (true);
+	return (false);
 }
 
 bool	scan_elements(t_form type, char **str)
@@ -56,11 +56,11 @@ bool	scan_elements(t_form type, char **str)
 	if (valid_type(type, RGB))
 		++i;
 	j = 0;
-	while (str[j] != NULL)
+	while (str[j])
 		++j;
 	if (i != j)
-		return (FALSE);
-	return (TRUE);
+		return (false);
+	return (true);
 }
 
 bool	elements_valid_count(t_objlst *objects)
@@ -85,6 +85,6 @@ bool	elements_valid_count(t_objlst *objects)
 		objects = objects->next;
 	}
 	if (ambinet_count == 1 && light_count == 1 && camera_count == 1)
-		return (TRUE);
-	return (FALSE);
+		return (true);
+	return (false);
 }

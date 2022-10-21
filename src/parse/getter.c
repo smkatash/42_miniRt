@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:10:52 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/18 13:29:26 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/21 15:39:56 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ struct s_vec3	get_double_vector(char *str, double min, double max)
 	if (min == -1 && max == 1)
 	{
 		if (length(&new_vector) == 0.0)
-			error_message("Normalized vector must came in standard.\n");
+			error_message("Wrong input range: normalized vector is zero\n");
 		unit_vector(&new_vector, &new_vector);
 	}
 	else if (min == 0 && max == 255)

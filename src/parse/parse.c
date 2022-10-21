@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/20 23:41:52 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/21 16:01:09 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 
 static t_form	element_type_set(char *s)
 {
-	if (ft_strcmp(s, "A"))
+	if (!ft_strcmp(s, "A"))
 		return (AMBIENT);
-	else if (ft_strcmp(s, "C"))
+	else if (!ft_strcmp(s, "C"))
 		return (CAMERA);
-	else if (ft_strcmp(s, "L"))
+	else if (!ft_strcmp(s, "L"))
 		return (POINT_LIGHT);
-	else if (ft_strcmp(s, "sp"))
+	else if (!ft_strcmp(s, "sp"))
 		return (SPHERE);
-	else if (ft_strcmp(s, "pl"))
+	else if (!ft_strcmp(s, "pl"))
 		return (PLANE);
-	else if (ft_strcmp(s, "cy"))
+	else if (!ft_strcmp(s, "cy"))
 		return (CYLINDER);
 	return (NA);
 }
@@ -39,7 +39,7 @@ static void	parse_element_type(t_parse *lst, char **str)
 	lst->type = element_type_set(str[0]);
 	if (lst->type == NA)
 		error_message("Invalid element type.\n");
-	if (scan_elements(lst->type, str) == FALSE)
+	if (scan_elements(lst->type, str) == false)
 		error_message("Invalid element type.\n");
 	if (valid_type(lst->type, POINT))
 		lst->point = str[i++];
@@ -66,9 +66,9 @@ static t_parse	*parse_elements(char *line)
 	lst = new_parse_list();
 	whitespace = " \t\v\f\r";
 	split_array = ft_split(line, *whitespace);
-	if (split_array == NULL)
+	if (!split_array)
 		error_message("Parse error...\n");
-	else if (split_array[0] == NULL)
+	else if (!split_array[0])
 	{
 		free(lst);
 		return (free_split(split_array));
@@ -86,21 +86,21 @@ t_objlst	*parse_input_file(t_objlst *objects, int fd)
 
 	objects = NULL;
 	parsed_lst = NULL;
-	bytes_read = TRUE;
-	while (bytes_read == TRUE)
+	bytes_read = true;
+	while (bytes_read == true)
 	{
 		line = get_next_line(fd);
 		bytes_read = ft_strlen(line);
-		if (bytes_read == FALSE)
+		if (!bytes_read)
 			error_message("Could not read the file\n");
 		parsed_lst = parse_elements(line);
-		if (parsed_lst != NULL)
+		if (parsed_lst)
 			push_back(&objects, \
 			create_list(parsed_lst, 0, (t_color){0, 0, 0}));
-		if (line != NULL)
+		if (line)
 			free(line);
 	}
-	if (elements_valid_count(objects) == FALSE)
+	if (elements_valid_count(objects) == false)
 		error_message("Wrong input data: ambient, light and camera.\n");
 	return (objects);
 }
