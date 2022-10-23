@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 12:22:20 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/20 23:08:28 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/24 00:29:02 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,16 @@ static void    *hit_object_type(t_objlst object)
 	return (false);
 }
 
-static bool hit_object(t_objlst *objects)
+static bool hit_object(t_objlst *objects, t_ray *ray, t_record *record)
 {
     bool        hit_;
+    const   t_hittable   hit_object = hit_object_type(*objects);
 
-    hit_ = hit_object_type(*objects);
+    hit_ = false | hit_object(objects, ray, record);
     return (hit_);
 }
 
-bool    hit(t_objlst *objects, t_record *record)
+bool    hit(t_objlst *objects, t_ray *ray, t_record *record)
 {
     bool        hit_;
     t_record    temp;
@@ -66,7 +67,7 @@ bool    hit(t_objlst *objects, t_record *record)
     temp = *record;
     while (objects)
     {
-        if (hit_object(objects))
+        if (hit_object(objects, ray, record))
         {
             hit_ = true;
             temp.tmax = temp.t;

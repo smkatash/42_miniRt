@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 16:26:28 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/21 18:51:15 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/24 00:18:06 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void *point_and_light(t_scene *scene, t_objlst *lights, t_color *illum)
     t = length(&dir);
     unit_vector(&dir, &dir);
     if (overcast_shadow(scene, &dir, t))
-        return (&(t_color){0, 0, 0});
+        return (illum);
     lambertian_diffuse(scene, lights, &dir, &diffuse);
     phong_specular(scene, lights, &dir, &specular);
     addition(illum, &diffuse, &specular);
@@ -57,15 +57,18 @@ void *phong_model(t_scene *scene, t_color *pxl)
     t_color  ambient;
 
     lights = scene->lights;
+    illumination = (t_color){0, 0, 0};
     while (lights)
     {
         if (lights->type == POINT_LIGHT)
         {
             point_and_light(scene, lights, &illumination);
             addition(&illumination, &illumination, &(t_color){0, 0, 0});
+            printf("%f %f %f\n", illumination.x, illumination.y, illumination.z);
         }
         lights = lights->next;
     }
+    //printf("%f %f %f\n", pxl->x, pxl->y, pxl->z);
     multiply_scalar(&ambient, &scene->ambient.light_color, scene->ambient.light_ratio);
     addition(&illumination, &illumination, &ambient);
     multiply(&illumination, &illumination, &scene->record.color);

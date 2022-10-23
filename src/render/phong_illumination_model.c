@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 17:11:33 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/21 18:55:37 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/24 00:31:03 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool    overcast_shadow(t_scene *scene, t_vector *light_dir, double t)
     addition(&shadow.origin, &shadow.origin, &scene->record.point);
 	shadow_hit.tmin = 0;
 	shadow_hit.tmax = t;
-	if (hit(scene->objects, &shadow_hit))
+	if (hit(scene->objects, &shadow, &shadow_hit))
 		return (true);
 	return (false);
 }

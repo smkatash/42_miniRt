@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:59:46 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/23 18:52:36 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/23 23:53:24 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ t_scene	*set_scene(int width, int height)
 	scene->screen = set_screen(width, height);
 	scene->objects = NULL;
 	scene->lights = NULL;
-	
 	return (scene);
 }

@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/23 16:58:03 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/24 00:44:25 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void	parse_element_type(t_parse *lst, char **str)
 	int		i;
 
 	lst->ident = str[0];
+	printf("%s\n", *str);
 	lst->type = element_type_set(str[0]);
 	i = 1;
 	if (lst->type == NA)
@@ -65,6 +66,7 @@ static void	*parse_elements(char **line)
 
 	lst = new_parse_list();
 	whitespace = " \t\v\f\r";
+	//reader needed
 	split_array = ft_split(*line, *whitespace);
 	if (!split_array)
 		error_message("Parse error...\n");

@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:45:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/22 18:58:35 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/24 00:04:16 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static unsigned int clamp(double c) 
 {
-	int	pxl_clr;
+	unsigned int	pxl_clr;
 
 	pxl_clr = (unsigned int)(256  * c);
 	if (pxl_clr > 255)
@@ -27,9 +27,9 @@ unsigned int	color(t_color pixel_color)
 {
 	unsigned int	color;
 
-   	color = 0 | clamp(pixel_color.x) << 16;
-	color = 0 | clamp(pixel_color.y) << 8;
-	color = clamp(pixel_color.z);
+	color = 0 | clamp(pixel_color.x) << 16;
+	color = color | clamp(pixel_color.y) << 8;
+	color = color | clamp(pixel_color.z);
 	return (color);
 }
 

@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 07:05:15 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/23 18:50:48 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/24 00:29:29 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ unsigned int     color(t_color pixel_color);
 
 void	set_face_normal(t_ray *ray, t_record *record);
 double  nearest_root(t_equation *eq, int range);
-bool    hit(t_objlst *objects, t_record *record);
+bool    hit(t_objlst *objects, t_ray *ray, t_record *record);
 bool    hit_sphere(t_objlst *objects, t_ray *ray, t_record *record);
 bool    hit_plane(t_objlst *objects, t_ray *ray, t_record *record);
 bool    hit_cylinder(t_objlst *objects, t_ray *ray, t_record *record);
