@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:11:40 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/18 13:23:39 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/23 18:35:45 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_camera
 	field_width = tan(theta / 2) * 2.0;
 	multiply_scalar(&camera.w_dir, &direction, -1);
 	// Check coordinate
-	coordinates_set(&camera.u_dir, &camera.v_dir, camera.w_dir);
+	coordinates_set(&camera.u_dir, &camera.v_dir, &camera.w_dir);
 	camera.origin = origin;
 	camera.viewport_width = field_width;
 	camera.viewport_height = field_width * screen->aspect_ratio;

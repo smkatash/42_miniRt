@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/21 16:01:09 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/23 16:58:03 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static void	parse_element_type(t_parse *lst, char **str)
 {
 	int		i;
 
-	i = 1;
 	lst->ident = str[0];
 	lst->type = element_type_set(str[0]);
+	i = 1;
 	if (lst->type == NA)
 		error_message("Invalid element type.\n");
 	if (scan_elements(lst->type, str) == false)
@@ -57,7 +57,7 @@ static void	parse_element_type(t_parse *lst, char **str)
 		lst->rgb = str[i++];
 }
 
-static t_parse	*parse_elements(char *line)
+static void	*parse_elements(char **line)
 {
 	t_parse		*lst;
 	char		*whitespace;
@@ -65,7 +65,7 @@ static t_parse	*parse_elements(char *line)
 
 	lst = new_parse_list();
 	whitespace = " \t\v\f\r";
-	split_array = ft_split(line, *whitespace);
+	split_array = ft_split(*line, *whitespace);
 	if (!split_array)
 		error_message("Parse error...\n");
 	else if (!split_array[0])
@@ -78,29 +78,35 @@ static t_parse	*parse_elements(char *line)
 	return (lst);
 }
 
-t_objlst	*parse_input_file(t_objlst *objects, int fd)
+void	*parse_input_file(t_objlst **objects, int fd)
 {
 	t_parse		*parsed_lst;
 	char		*line;
 	int 	    bytes_read;
 
-	objects = NULL;
 	parsed_lst = NULL;
-	bytes_read = true;
-	while (bytes_read == true)
+	bytes_read = 1;
+	while (bytes_read != 0)
 	{
 		line = get_next_line(fd);
-		bytes_read = ft_strlen(line);
-		if (!bytes_read)
-			error_message("Could not read the file\n");
-		parsed_lst = parse_elements(line);
-		if (parsed_lst)
-			push_back(&objects, \
-			create_list(parsed_lst, 0, (t_color){0, 0, 0}));
-		if (line)
-			free(line);
+		if (line != NULL)
+		{
+			bytes_read = ft_strlen(line);
+			if (bytes_read == 0)
+				error_message("Could not read the file\n");
+			if (line[0] != '\n')
+			{
+				parsed_lst = parse_elements(&line);
+				if (parsed_lst)
+					push_back(objects, create_list(parsed_lst, parsed_lst->type, (t_color){0, 0, 0}));
+			}
+		}
+		else
+			bytes_read = 0;
+			
 	}
-	if (elements_valid_count(objects) == false)
+	free(line);
+	if (elements_valid_count(*objects) == false)
 		error_message("Wrong input data: ambient, light and camera.\n");
-	return (objects);
+	return (*objects);
 }

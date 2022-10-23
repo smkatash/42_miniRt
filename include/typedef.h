@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/20 23:14:10 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/23 16:43:22 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define TYPEDEF_H
 
 # include <stdbool.h>
+# include <stdio.h>
 # include "../minilibx/mlx.h"
 # define EPSILON 1e-6
 

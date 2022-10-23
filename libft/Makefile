@@ -6,7 +6,7 @@
 #    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/25 16:55:06 by aiarinov          #+#    #+#              #
-#    Updated: 2022/10/21 00:03:21 by kanykei          ###   ########.fr        #
+#    Updated: 2022/10/22 16:14:48 by kanykei          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,23 +23,25 @@ SOURCE = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_str
 BSOURCE = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
 			ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c \
 
+.SILENT:
+
 all: $(NAME)
 
 $(NAME):
-	@cc -Werror -Wextra -Wall $(SOURCE) -c
+	cc -Werror -Wextra -Wall $(SOURCE) -c
 
-	@ar -rs $(NAME) *.o
+	ar -rc $(NAME) *.o
 
 
 clean:
-	@rm -f *.o
+	rm -f *.o
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
 bonus:
-	@cc -Werror -Wextra -Wall $(SOURCE) $(BSOURCE) -c
+	cc -Werror -Wextra -Wall $(SOURCE) $(BSOURCE) -c
 
-	@ar -rs $(NAME) *.o
+	ar -rc $(NAME) *.o

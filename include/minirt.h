@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:33:12 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/10/17 13:51:58 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/22 18:31:17 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@
 # include <stdio.h>
 # include "../minilibx/mlx.h"
 # include "../libft/libft.h"
-
-# define FALSE 0
-# define TRUE 1
-# define ERROR -1
-# define GNLFAIL -2
 
 # define WIN_WIDTH	1000
 # define WIN_HEIGHT	1000

@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:09:42 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/20 23:42:12 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/23 17:58:38 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	set_light(t_scene *scene, t_objlst *objects)
 	t_light		*light;
 
 	parsed_objects = objects->object;
-	new_objects = ft_calloc(sizeof(t_objlst), 0);
-	light = ft_calloc(sizeof(t_light), 0);
+	new_objects = malloc(sizeof(t_objlst));
+	light = malloc(sizeof(t_light));
 	push_back(&scene->lights, new_objects);
 	light->origin = get_double_vector(parsed_objects->point, 0, 0);
 	light->bright_ratio = get_double(parsed_objects->bri_ratio, 0.0, 1.0);

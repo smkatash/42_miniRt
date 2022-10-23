@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 01:14:46 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/18 02:02:45 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/23 13:37:52 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,13 @@ double ft_atof(const char *str)
     int     ch;
     double  fl = 0.0;
     int     fpoint = 0;
+    int     neg = 1;
 
+    if (str[0] == '-')
+    {
+        neg = -1;
+        str++;
+    }
     while ((ch = *str++) != '\0' && ft_isdigit(ch))
     {
         fl = fl * 10.0 + (ch - '0');
@@ -72,5 +78,5 @@ double ft_atof(const char *str)
     }
     define_sign(ch, (char*)str, &fpoint);
     define_fpoint(&fl, fpoint);
-    return (fl);
+    return (fl*neg);
 }

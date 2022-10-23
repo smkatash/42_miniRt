@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:50:06 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/17 15:00:19 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/23 18:19:00 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_objlst    *create_list(void *object, int type, t_color color)
 {
 	t_objlst	*new;
 
-	new = ft_calloc(sizeof(t_objlst), 0);
+	new = malloc(sizeof(t_objlst));
 	new->type = type;
 	new->object = object;
 	new->color = color;
@@ -68,7 +68,6 @@ void	free_parse_list(t_objlst **lst)
 	{
 		temp = head;
 		head = head->next;
-		free_parse_list(temp->object);
 		free(temp->object);
 		free(temp);
 	}

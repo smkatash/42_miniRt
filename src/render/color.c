@@ -6,30 +6,30 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:45:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/20 22:58:03 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/22 18:58:35 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/render.h"
 
-static double clamp(double x, double min, double max) 
+static unsigned int clamp(double c) 
 {
-	if (x < min)
-		return (min);
-	if (x > max)
-		return max;
-	return (x);
+	int	pxl_clr;
+
+	pxl_clr = (unsigned int)(256  * c);
+	if (pxl_clr > 255)
+		pxl_clr = 255;
+	return (pxl_clr);
 }
 
 // Check again
-int	color(t_color pixel_color)
+unsigned int	color(t_color pixel_color)
 {
-	int	color;
+	unsigned int	color;
 
-	color = 0;
-    pixel_color.x = 256 * clamp(pixel_color.x, 0.0, 0.999);
-	pixel_color.y = 256 * clamp(pixel_color.y, 0.0, 0.999);
-	pixel_color.z = 256 * clamp(pixel_color.z, 0.0, 0.999);
+   	color = 0 | clamp(pixel_color.x) << 16;
+	color = 0 | clamp(pixel_color.y) << 8;
+	color = clamp(pixel_color.z);
 	return (color);
 }
 

@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:01:33 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/18 13:30:25 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/23 17:52:06 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	*multiply_scalar(t_vector *new, const t_vector *vec, double t)
 {
 	new->x = vec->x * t;
 	new->y = vec->y * t;
-	new->z = vec->x * t;
+	new->z = vec->z * t;
 	return (new);
 }
 

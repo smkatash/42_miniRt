@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:06:55 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/18 13:24:22 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/23 18:14:21 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	set_sphere(t_scene *scene, t_objlst *objects)
 	t_sphere	*sphere;
 
 	parsed_objects = objects->object;
-	new_objects = ft_calloc(sizeof(t_objlst), 0);
-	sphere = ft_calloc(sizeof(t_sphere), 0);
+	new_objects = malloc(sizeof(t_objlst));
+	sphere = malloc(sizeof(t_sphere));
 	push_back(&scene->objects, new_objects);
 	sphere->center = get_double_vector(parsed_objects->point, 0, 0);
 	sphere->radius = get_double(parsed_objects->diameter, 0, INFINITY) / 2;
@@ -37,8 +37,8 @@ void	set_plane(t_scene *scene, t_objlst *objects)
 	t_plane		*plane;
 
 	parsed_objects = objects->object;
-	new_objects = ft_calloc(sizeof(t_objlst), 0);
-	plane = ft_calloc(sizeof(t_plane), 0);
+	new_objects = malloc(sizeof(t_objlst));
+	plane = malloc(sizeof(t_plane));
 	push_back(&scene->objects, new_objects);
 	plane->point = get_double_vector(parsed_objects->point, 0, 0);
 	plane->normal = get_double_vector(parsed_objects->nor_vec, -1, 1);
@@ -54,8 +54,8 @@ void	set_cylinder(t_scene *scene, t_objlst *objects)
 	t_cylinder	*cylinder;
 
 	parsed_objects = objects->object;
-	new_objects = ft_calloc(sizeof(t_objlst), 0);
-	cylinder = ft_calloc(sizeof(t_cylinder), 0);
+	new_objects = malloc(sizeof(t_objlst));
+	cylinder = malloc(sizeof(t_cylinder));
 	push_back(&scene->objects, new_objects);
 	cylinder->center = get_double_vector(parsed_objects->point, 0, 0);
 	cylinder->normal = get_double_vector(parsed_objects->nor_vec, -1, 1);

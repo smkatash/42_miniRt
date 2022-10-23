@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:10:52 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/21 15:39:56 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/23 18:12:38 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ int	get_input_file(int argv, char **argc)
 	return (fd);
 }
 
-double	get_double(char *str, double min, double max)
+double	get_double(const char *str, double min, double max)
 {
 	double	num;
 
 	num = ft_atof(str);
-	if (!num)
-		error_message("Wrong input format.\n");
+	// if (num)
+	// 	error_message("Wrong input format.\n");
 	if (min == 0 && max == 0)
 		return (num);
 	else if (min == 0 && max == INFINITY && num < 0)
@@ -59,8 +59,8 @@ static int	strtoi(char *str, int min, int max)
 	int		num;
 
 	num = ft_atoi(str);
-	if (!num)
-		error_message("Wrong input parameters.\n");
+	// if (!num)
+	// 	error_message("Wrong input parameters.\n");
 	if (num < min || num > max)
 		error_message("Wrong input range.\n");
 	return (num);

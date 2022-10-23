@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:02:36 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/17 14:59:30 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/22 19:19:29 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_parse	*new_parse_list(void)
 {
 	t_parse		*lst;
 
-	lst = ft_calloc(sizeof(t_parse), 0);
+	lst = malloc(sizeof(t_parse));
 	return (lst);
 }
 

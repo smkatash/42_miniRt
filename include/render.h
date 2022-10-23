@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 07:05:15 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/21 18:48:50 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/23 18:50:48 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void    *lambertian_diffuse(t_scene *scene, t_objlst *lights, t_vector *light_di
 void    *phong_specular(t_scene *scene, t_objlst *lights, t_vector *light_dir, t_color *spec_com);
 
 void    put_color(t_image *image, int h, int w, int color);
-int     color(t_color pixel_color);
+unsigned int     color(t_color pixel_color);
 
 void	set_face_normal(t_ray *ray, t_record *record);
 double  nearest_root(t_equation *eq, int range);

@@ -6,11 +6,12 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:59:46 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/12 16:06:46 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/23 18:52:36 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/scene.h"
+#include <stdlib.h>
 
 static t_screen	set_screen(int width, int height)
 {
@@ -26,7 +27,10 @@ t_scene	*set_scene(int width, int height)
 {
 	t_scene		*scene;
 
-	scene = ft_calloc(sizeof(t_scene), 0);
+	scene = malloc(sizeof(t_scene));
 	scene->screen = set_screen(width, height);
+	scene->objects = NULL;
+	scene->lights = NULL;
+	
 	return (scene);
 }
