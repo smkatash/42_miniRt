@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 17:11:33 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/24 15:21:21 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/24 22:58:01 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ bool    overcast_shadow(t_scene *scene, t_vector *light_dir, double t)
 	shadow.direction = *light_dir;
     multiply_scalar(&shadow.origin, light_dir, EPSILON);
     addition(&shadow.origin, &shadow.origin, &scene->record.point);
-    // printf("sh %f %f %f\n", shadow.direction.x, shadow.direction.y, shadow.direction.z);
-    // printf("sh %f %f %f\n", shadow.origin.x, shadow.origin.y, shadow.origin.z);
     shadow_hit.tmin = 0;
 	shadow_hit.tmax = t;
 	if (hit(scene->objects, &shadow, &shadow_hit))
@@ -31,7 +29,6 @@ bool    overcast_shadow(t_scene *scene, t_vector *light_dir, double t)
 
 // diffuse = Kd * (N dot L)
 // Kd is the diffuse reflection constant
-
 void    *lambertian_diffuse(t_scene *scene, t_objlst *lights, t_vector *light_dir, t_color *diff_comp)
 {
     double  Kd;
@@ -57,8 +54,8 @@ void    *phong_specular(t_scene *scene, t_objlst *lights, t_vector *light_dir, t
 {
     t_vector        V;
     t_vector        R;
-    const double    Ks = 0.1;
-    const double    n = 50;
+    const double    Ks = 0.15;
+    const double    n = 250;
     double          specular;
     
     multiply_scalar(&V, &scene->ray.direction, -1);

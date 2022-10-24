@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 16:26:28 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/24 15:26:29 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/24 21:25:45 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,10 @@ static void *point_and_light(t_scene *scene, t_objlst *lights, t_color *illum)
 
     lightning = (t_light *)lights->object;
     subtraction(&dir, &lightning->origin, &scene->record.point);
-    // printf("or: %f %f %f\n", lightning->origin.x, lightning->origin.y, lightning->origin.z);
-    // printf("record: %f %f %f\n", scene->record.point.x, scene->record.point.y, scene->record.point.z);
-    // printf("ldir: %f %f %f\n", dir.x, dir.y, dir.z);
     t = length(&dir);
     unit_vector(&dir, &dir);
     if (overcast_shadow(scene, &dir, t))
-        return (illum);
+        return (illum = &(t_color){0, 0, 0});
     lambertian_diffuse(scene, lights, &dir, &diffuse);
     phong_specular(scene, lights, &dir, &specular);
     addition(illum, &diffuse, &specular);
@@ -56,25 +53,21 @@ static void *point_and_light(t_scene *scene, t_objlst *lights, t_color *illum)
 void *phong_model(t_scene *scene, t_color *pxl)
 {
     t_objlst *lights;
-    t_color  illumination;
     t_color  ambient;
 
-    //illumination = (t_color){0, 0, 0};
     lights = scene->lights;
     while (lights)
     {
         if (lights->type == POINT_LIGHT)
         {
-            point_and_light(scene, lights, &illumination);
-            addition(&illumination, &illumination, &(t_color){0, 0, 0});
-            //printf("illum %f %f %f\n", illumination.x, illumination.y, illumination.z);
+            point_and_light(scene, lights, pxl);
+            addition(pxl, pxl, &(t_color){0, 0, 0});
         }
         lights = lights->next;
     }
     multiply_scalar(&ambient, &scene->ambient.light_color, scene->ambient.light_ratio);
-    addition(&illumination, &illumination, &ambient);
-    multiply(&illumination, &illumination, &scene->record.color);
-    minimum(pxl, &illumination, &(t_color){1, 1, 1});
-    //printf("pxl: %f %f %f\n", pxl->x, pxl->y, pxl->z);
+    addition(pxl, pxl, &ambient);
+    multiply(pxl, pxl, &scene->record.color);
+    minimum(pxl, pxl, &(t_color){1, 1, 1});
     return (pxl);
 }

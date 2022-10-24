@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/24 16:20:12 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 00:21:23 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@
 # include <stdio.h>
 # include "../minilibx/mlx.h"
 # define EPSILON 1e-6
-# define WIN_WIDTH	400
-# define WIN_HEIGHT	400
+# define WIN_WIDTH	800
+# define WIN_HEIGHT	800
+# define ESC		53
+
+
 typedef struct s_vec3		t_vector;
 typedef struct s_vec3		t_point;
 typedef struct s_vec3		t_color;

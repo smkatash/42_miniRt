@@ -6,7 +6,7 @@
 #    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 11:29:40 by aiarinov          #+#    #+#              #
-#    Updated: 2022/10/22 23:29:41 by kanykei          ###   ########.fr        #
+#    Updated: 2022/10/25 00:35:35 by kanykei          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ VPATH 	:= src src/parse src/scene src/objectlist src/vector src/render
 NAME 	:= minirt
 
 SRC 	:= main.c parse_list.c parse_to_scene.c parse_utils.c parse.c \
-ambient.c camera.c light.c object.c scene.c errors.c list.c getter.c \
+ambient.c camera.c light.c object.c scene.c utils.c list.c getter.c \
 vector_math.c vector_scalar.c vector_setter.c vector_utils.c \
 color.c hittable.c ray.c render.c hit_cylinder.c hit_plane.c hit_sphere.c \
 illumination.c phong_illumination_model.c

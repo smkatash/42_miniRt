@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:45:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/24 16:23:40 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/24 17:15:22 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ static unsigned int clamp(double c)
 }
 
 // Check again
-unsigned int	color(t_color pixel_color)
+unsigned int	color(t_color *pixel_color)
 {
 	unsigned int	color;
 
-	color = 0 | clamp(pixel_color.x) << 16;
-	color = color | clamp(pixel_color.y) << 8;
-	color = color | clamp(pixel_color.z);
+	color = 0 | clamp(pixel_color->x) << 16;
+	color = color | clamp(pixel_color->y) << 8;
+	color = color | clamp(pixel_color->z);
 	return (color);
 }
 

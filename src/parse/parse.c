@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/24 13:17:27 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 00:33:40 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ static void	*parse_elements(char **line)
 
 	lst = new_parse_list();
 	whitespace = " \t\v\f\r";
-	//reader needed
 	split_array = ft_splitter(*line, whitespace);
 	if (!split_array)
 		error_message("Parse error...\n");
@@ -110,4 +109,15 @@ void	*parse_input_file(t_objlst **objects, int fd)
 	if (elements_valid_count(*objects) == false)
 		error_message("Wrong input data: ambient, light and camera.\n");
 	return (*objects);
+}
+
+t_scene	*parse_input_set_scene(t_scene *scene, int fd)
+{
+	t_objlst	*object_list;
+	
+	object_list = NULL;
+	parse_input_file(&object_list, fd);
+	parse_to_scene(&scene, object_list);
+	free_parse_list(&object_list);
+	return (scene);
 }
