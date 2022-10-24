@@ -6,12 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 06:59:57 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/24 21:04:08 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 01:30:22 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/render.h"
-#include <stdio.h>
 
 static  void ray_trace(t_mlx *mlx, t_scene *scene, int h, int w)
 {

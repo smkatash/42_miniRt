@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:28:22 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/10/25 00:43:28 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 00:56:31 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	main(int argv, char **argc)
 	t_scene			*scene;
 	t_mlx			mlx;
 
-	scene = NULL;
 	fd = get_input_file(argv, argc);
+	scene = NULL;
 	scene = parse_input_set_scene(scene, fd);
 	init_window(&mlx);
 	render_image(&mlx, scene);

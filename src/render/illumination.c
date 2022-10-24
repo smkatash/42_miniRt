@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 16:26:28 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/24 21:25:45 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 01:37:55 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void *phong_model(t_scene *scene, t_color *pxl)
     lights = scene->lights;
     while (lights)
     {
-        if (lights->type == POINT_LIGHT)
+        if (lights->type == LIGHT)
         {
             point_and_light(scene, lights, pxl);
             addition(pxl, pxl, &(t_color){0, 0, 0});

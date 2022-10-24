@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:45:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/24 17:15:22 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 01:31:01 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static unsigned int clamp(double c)
 	return (pxl_clr);
 }
 
-// Check again
 unsigned int	color(t_color *pixel_color)
 {
 	unsigned int	color;

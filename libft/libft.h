@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 13:30:19 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/10/18 09:54:04 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 01:09:56 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,10 @@ t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
+// Minirt helper functions
 double	ft_atof(const char *str);
 char	*ft_strsep(char **stringp, const char delim);
 int		ft_strcmp(char *s1, char *s2);
+char	**ft_split_set(char const *s, char *charset);
 
 #endif

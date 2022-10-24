@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 00:33:40 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 01:36:56 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static t_form	element_type_set(char *s)
 	else if (!ft_strcmp(s, "C"))
 		return (CAMERA);
 	else if (!ft_strcmp(s, "L"))
-		return (POINT_LIGHT);
+		return (LIGHT);
 	else if (!ft_strcmp(s, "sp"))
 		return (SPHERE);
 	else if (!ft_strcmp(s, "pl"))
@@ -65,7 +65,7 @@ static void	*parse_elements(char **line)
 
 	lst = new_parse_list();
 	whitespace = " \t\v\f\r";
-	split_array = ft_splitter(*line, whitespace);
+	split_array = ft_split_set(*line, whitespace);
 	if (!split_array)
 		error_message("Parse error...\n");
 	else if (!split_array[0])
@@ -103,7 +103,6 @@ void	*parse_input_file(t_objlst **objects, int fd)
 		}
 		else
 			bytes_read = 0;
-			
 	}
 	free(line);
 	if (elements_valid_count(*objects) == false)

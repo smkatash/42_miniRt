@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:50:06 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/23 18:19:00 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 01:24:14 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_objlst    *create_list(void *object, int type, t_color color)
 	t_objlst	*new;
 
 	new = malloc(sizeof(t_objlst));
+	if (!new)
+		return (NULL);
 	new->type = type;
 	new->object = object;
 	new->color = color;

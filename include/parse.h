@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:03:59 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 00:34:15 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 01:10:50 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_parse         *free_split(char **str);
 bool	        valid_type(t_form type, t_type_data type_data);
 bool            scan_elements(t_form type, char **str);
 bool            elements_valid_count(t_objlst *objects);
-char	        **ft_splitter(char const *s, char *charset);
 
 // Getters
 double          get_double(const char *str, double min, double max);

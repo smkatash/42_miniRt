@@ -6,11 +6,11 @@
 #    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 11:29:40 by aiarinov          #+#    #+#              #
-#    Updated: 2022/10/25 00:35:35 by kanykei          ###   ########.fr        #
+#    Updated: 2022/10/25 01:40:30 by kanykei          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-VPATH 	:= src src/parse src/scene src/objectlist src/vector src/render
+VPATH 	:= src src/parse src/scene src/utils src/vector src/render
 
 NAME 	:= minirt
 

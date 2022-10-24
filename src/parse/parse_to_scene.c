@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:54:42 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/23 18:43:14 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 01:36:28 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	*parse_to_scene(t_scene **scene, t_objlst *object_list)
 			(*scene)->ambient = set_ambient(object_list);
 		else if (object->type == CAMERA)
 			(*scene)->camera = set_camera(*scene, object_list);
-		else if (object->type == POINT_LIGHT)
+		else if (object->type == LIGHT)
 			set_light(*scene, object_list);
 		else if (object->type == SPHERE)
 			set_sphere(*scene, object_list);
