@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:33:12 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/10/24 00:01:25 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/24 16:20:05 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@
 # include <stdio.h>
 # include "../minilibx/mlx.h"
 # include "../libft/libft.h"
-
-# define WIN_WIDTH	400
-# define WIN_HEIGHT	400
 
 void	error_message(char *str);
 void	error(void);

@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:45:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/24 00:04:16 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/24 16:23:40 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ unsigned int	color(t_color pixel_color)
 	return (color);
 }
 
-void    put_color(t_image *image, int h, int w, int color)
+void    put_color(t_image *image, int h, int w, unsigned int color)
 {
     char        *dst;
 

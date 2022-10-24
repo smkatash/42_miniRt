@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 07:05:15 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/24 00:29:29 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/24 15:58:34 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ bool    overcast_shadow(t_scene *scene, t_vector *light_dir, double t);
 void    *lambertian_diffuse(t_scene *scene, t_objlst *lights, t_vector *light_dir, t_color *diff_comp);
 void    *phong_specular(t_scene *scene, t_objlst *lights, t_vector *light_dir, t_color *spec_com);
 
-void    put_color(t_image *image, int h, int w, int color);
+void    put_color(t_image *image, int h, int w, unsigned int color);
 unsigned int     color(t_color pixel_color);
 
 void	set_face_normal(t_ray *ray, t_record *record);

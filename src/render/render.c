@@ -6,18 +6,19 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 06:59:57 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/24 00:19:37 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/24 16:17:56 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/render.h"
+#include <stdio.h>
 
 static  void ray_trace(t_mlx *mlx, t_scene *scene, int h, int w)
 {
     double		u;
 	double		v;
     t_color     pixel_color;
-    int         col;
+    unsigned int         col;
     u = (double)w / (WIN_WIDTH - 1);
     v = (double)h / (WIN_HEIGHT - 1);
     put_ray(&scene->ray, &scene->camera, u, v);

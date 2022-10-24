@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:28:22 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/10/23 18:53:30 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/24 16:25:11 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 static void	init_window(t_mlx *mlx)
 {
 	mlx->mlx = mlx_init();
-	mlx->img.img = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
+	mlx->img.img = mlx_new_image(mlx->mlx, WIN_WIDTH, WIN_HEIGHT);
 	mlx->img.addr = mlx_get_data_addr(
 			mlx->img.img, &mlx->img.bpp, &mlx->img.line, &mlx->img.endian);
 	mlx->win = mlx_new_window(mlx->mlx, WIN_WIDTH, WIN_HEIGHT, "miniRT");
