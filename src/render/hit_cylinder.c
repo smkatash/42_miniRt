@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:48:40 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/20 23:23:10 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/24 15:18:38 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void    *intersection(t_equation *eq, t_objlst *objects, t_ray *ray)
     dot_oc_cy = dot_product(&oc, &cylinder->normal);
     eq->a = length_sqrd(&ray->direction) - (dot_ray_cy * dot_ray_cy);
     eq->half_b = dot_product(&ray->direction, &oc) - (dot_ray_cy * dot_oc_cy);
-    eq->a = length_sqrd(&oc) - cylinder->radius2 - (dot_oc_cy * dot_oc_cy);
+    eq->c = length_sqrd(&oc) - cylinder->radius2 - (dot_oc_cy * dot_oc_cy);
     return (eq);
 }
 

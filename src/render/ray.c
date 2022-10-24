@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 14:16:08 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/24 00:30:07 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/24 14:00:36 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void    *color_ray(t_color *pxl, t_scene *scene)
     multiply_scalar(&temp, &(t_color){1.0, 1.0, 1.0}, d);
     multiply_scalar(pxl, &(t_color){0.5, 0.7, 1.0}, t);
     addition(pxl, pxl, &temp);
-    printf("%f %f %f\n", pxl->x, pxl->y, pxl->z);
     return (pxl);
 }
 
@@ -55,5 +54,6 @@ void	*put_ray(t_ray *ray, t_camera *camera, double u, double v)
     multiply_scalar(&temp, &camera->vertical, v);
     addition(&ray->direction, &ray->direction, &temp);
     subtraction(&ray->direction, &ray->direction, &camera->origin);
+    unit_vector(&ray->direction, &ray->direction);
 	return (ray);
 }

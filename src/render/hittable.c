@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 12:22:20 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/24 00:29:02 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/24 15:18:22 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ bool    hit(t_objlst *objects, t_ray *ray, t_record *record)
     temp = *record;
     while (objects)
     {
-        if (hit_object(objects, ray, record))
+        if (hit_object(objects, ray, &temp))
         {
             hit_ = true;
             temp.tmax = temp.t;

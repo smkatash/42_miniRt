@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 15:26:23 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/20 23:28:44 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/24 15:17:57 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void    *intersection(t_equation *eq, t_objlst *objects, t_ray *ray)
     subtraction(&oc, &ray->origin, &sphere->center);
     eq->a = length_sqrd(&ray->direction);
     eq->half_b = dot_product(&ray->direction, &oc);
-    eq->a = length_sqrd(&oc) - sphere->radius2;
+    eq->c = length_sqrd(&oc) - sphere->radius2;
     return (eq);
 }
 

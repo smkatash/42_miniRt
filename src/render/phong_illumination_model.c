@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 17:11:33 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/24 00:31:03 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/24 15:21:21 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ bool    overcast_shadow(t_scene *scene, t_vector *light_dir, double t)
 	shadow.direction = *light_dir;
     multiply_scalar(&shadow.origin, light_dir, EPSILON);
     addition(&shadow.origin, &shadow.origin, &scene->record.point);
-	shadow_hit.tmin = 0;
+    // printf("sh %f %f %f\n", shadow.direction.x, shadow.direction.y, shadow.direction.z);
+    // printf("sh %f %f %f\n", shadow.origin.x, shadow.origin.y, shadow.origin.z);
+    shadow_hit.tmin = 0;
 	shadow_hit.tmax = t;
 	if (hit(scene->objects, &shadow, &shadow_hit))
 		return (true);
