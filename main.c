@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:28:22 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/10/25 00:56:31 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 10:20:17 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 
 int	main(int argv, char **argc)
 {
-	int				fd;
-	t_scene			*scene;
-	t_mlx			mlx;
+	int		fd;
+	t_scene	*scene;
+	t_mlx	mlx;
 
 	fd = get_input_file(argv, argc);
 	scene = NULL;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:36:01 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 01:36:45 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 10:45:37 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ bool	valid_type(t_form type, t_type_data type_data)
 		return (true);
 	else if (type_data == BRI_RATIO && (type == AMBIENT || type == LIGHT))
 		return (true);
-	else if (type_data == NORM_VEC && (type == CAMERA || type == PLANE || type == CYLINDER))
+	else if (type_data == NORM_VEC && (type == CAMERA || type == PLANE
+			|| type == CYLINDER))
 		return (true);
 	else if (type_data == DIAMETER && (type == SPHERE || type == CYLINDER))
 		return (true);
@@ -68,7 +69,7 @@ bool	elements_valid_count(t_objlst *objects)
 	int		ambinet_count;
 	int		light_count;
 	int		camera_count;
-	t_parse *parse;
+	t_parse	*parse;
 
 	ambinet_count = 0;
 	light_count = 0;

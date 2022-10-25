@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   typedef.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 01:35:38 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 09:57:50 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef enum e_type_data
 	HEIGHT = 4,
 	FOV = 5,
 	RGB = 6,
-}   t_type_data;
+}	t_type_data;
 
 struct s_vec3
 {
@@ -63,7 +63,7 @@ typedef struct s_equation
 
 typedef struct s_parse
 {
-	t_form      type;
+	t_form		type;
 	char		*ident;
 	char		*bri_ratio;
 	char		*point;
@@ -76,8 +76,8 @@ typedef struct s_parse
 
 typedef struct s_objlist
 {
-	t_form	    type;
-	t_color	    color;
+	t_form		type;
+	t_color		color;
 	void		*object;
 	void		*next;
 }	t_objlst;
@@ -91,7 +91,7 @@ typedef struct s_screen
 
 typedef struct s_camera
 {
-	t_point	    origin;
+	t_point		origin;
 	double		viewport_height;
 	double		viewport_width;
 	t_vector	w_dir;
@@ -99,30 +99,30 @@ typedef struct s_camera
 	t_vector	v_dir;
 	t_vector	horizontal;
 	t_vector	vertical;
-	t_point     left_bottom;
+	t_point		left_bottom;
 }	t_camera;
 
 typedef struct s_ray
 {
-	t_point     origin;
+	t_point		origin;
 	t_vector	direction;
 }	t_ray;
 
 typedef struct s_record
 {
-	t_point	    point;
+	t_point		point;
 	t_vector	normal;
 	double		tmin;
 	double		tmax;
 	double		t;
 	bool		front_face;
-	t_color     color;
+	t_color		color;
 }	t_record;
 
 typedef struct s_ambient
 {
 	double		light_ratio;
-	t_color	    light_color;
+	t_color		light_color;
 }	t_ambient;
 
 typedef struct s_scene
@@ -136,29 +136,28 @@ typedef struct s_scene
 	t_record		record;
 }	t_scene;
 
-
 typedef struct s_light
 {
-	t_point	    origin;
+	t_point		origin;
 	double		bright_ratio;
 }	t_light;
 
 typedef struct s_sphere
 {
-	t_point	    center;
+	t_point		center;
 	double		radius;
 	double		radius2;
 }	t_sphere;
 
 typedef struct s_plane
 {
-	t_point     point;
+	t_point		point;
 	t_vector	normal;
 }	t_plane;
 
 typedef struct s_cylinder
 {
-	t_point     center;
+	t_point		center;
 	t_vector	normal;
 	double		radius;
 	double		radius2;
@@ -188,6 +187,6 @@ typedef struct s_mlx
 	t_image	img;
 }	t_mlx;
 
-typedef bool (*t_hittable) (t_objlst *objects, t_ray *ray, t_record *record);
+typedef bool	(*t_hittable)(t_objlst *objects, t_ray *ray, t_record *record);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:11:40 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 01:29:45 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 10:23:38 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static double	degree_to_radian(double degree)
 }
 
 static t_camera
-	init_camera(t_screen *screen, t_point origin, t_vector direction, double h_fov)
+	init_camera(t_screen *screen, t_point origin, t_vector direction,
+			double h_fov)
 {
 	t_camera	camera;
 	double		field_width;
@@ -37,7 +38,7 @@ static t_camera
 	// LLB calculation
 	addition(&camera.left_bottom, &camera.horizontal, &camera.vertical);
 	divide_scalar(&camera.left_bottom, &camera.left_bottom, 2);
-	addition(&camera.left_bottom,  &camera.left_bottom, &camera.w_dir);
+	addition(&camera.left_bottom, &camera.left_bottom, &camera.w_dir);
 	subtraction(&camera.left_bottom, &camera.origin, &camera.left_bottom);
 	return (camera);
 }
@@ -46,7 +47,7 @@ t_camera	set_camera(t_scene *scene, t_objlst *objects)
 {
 	t_parse		*parsed_list;
 	t_camera	camera;
-	t_point	    origin;
+	t_point		origin;
 	t_vector	direction;
 	double		h_fov;
 

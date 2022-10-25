@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 01:36:56 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 10:45:15 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ static void	*parse_elements(char **line)
 
 void	*parse_input_file(t_objlst **objects, int fd)
 {
-	t_parse		*parsed_lst;
-	char		*line;
-	int 	    bytes_read;
+	t_parse	*parsed_lst;
+	char	*line;
+	int		bytes_read;
 
 	parsed_lst = NULL;
 	bytes_read = 1;
@@ -98,7 +98,8 @@ void	*parse_input_file(t_objlst **objects, int fd)
 			{
 				parsed_lst = parse_elements(&line);
 				if (parsed_lst)
-					push_back(objects, create_list(parsed_lst, parsed_lst->type, (t_color){0, 0, 0}));
+					push_back(objects, create_list(parsed_lst, parsed_lst->type,
+							(t_color){0, 0, 0}));
 			}
 		}
 		else
@@ -113,7 +114,7 @@ void	*parse_input_file(t_objlst **objects, int fd)
 t_scene	*parse_input_set_scene(t_scene *scene, int fd)
 {
 	t_objlst	*object_list;
-	
+
 	object_list = NULL;
 	parse_input_file(&object_list, fd);
 	parse_to_scene(&scene, object_list);

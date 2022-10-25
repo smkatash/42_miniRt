@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:02:36 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 01:23:34 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 10:02:56 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	free_parse_content(t_parse *parse)
 		free(parse->rgb);
 }
 
-t_parse *free_split(char **str)
+t_parse	*free_split(char **str)
 {
 	int		idx;
 

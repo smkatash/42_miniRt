@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:33:12 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/10/25 00:35:03 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 09:49:35 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	error_message(char *str);
 void	error(void);
 
 void	init_window(t_mlx *mlx);
-int     close_window(char *message);
-int     exit_window(int keycode, t_mlx *mlx);
+int		close_window(char *message);
+int		exit_window(int keycode, t_mlx *mlx);
 
 #endif

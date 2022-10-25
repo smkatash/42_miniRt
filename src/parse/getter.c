@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   getter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:10:52 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 09:32:55 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 10:01:18 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	strtoi(char *str, int min, int max)
 
 	num = ft_atoi(str);
 	if (num > INT_MAX || INT_MIN > num)
-	 	error_message("Wrong input format.\n");
+		error_message("Wrong input format.\n");
 	if (num < min || num > max)
 		error_message("Wrong input range.\n");
 	return (num);
