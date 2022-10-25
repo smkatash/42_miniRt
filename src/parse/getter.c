@@ -6,12 +6,13 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:10:52 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 01:21:26 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/25 09:32:55 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/parse.h"
 #include <float.h>
+#include <limits.h>
 
 int	get_input_file(int argv, char **argc)
 {
@@ -40,7 +41,7 @@ double	get_double(const char *str, double min, double max)
 	double	num;
 
 	num = ft_atof(str);
-	if (num >= DBL_MAX || DBL_MIN > DBL_MIN)
+	if (num > DBL_MAX || num < -DBL_MAX)
 		error_message("Wrong input format.\n");
 	if (min == 0 && max == 0)
 		return (num);
@@ -60,7 +61,7 @@ static int	strtoi(char *str, int min, int max)
 	int		num;
 
 	num = ft_atoi(str);
-	if (num >= DBL_MAX || DBL_MIN > num)
+	if (num > INT_MAX || INT_MIN > num)
 	 	error_message("Wrong input format.\n");
 	if (num < min || num > max)
 		error_message("Wrong input range.\n");
