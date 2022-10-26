@@ -3,32 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:45:15 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:23:38 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/parse.h"
 #include "../gnL/get_next_line.h"
-
-static t_form	element_type_set(char *s)
-{
-	if (!ft_strcmp(s, "A"))
-		return (AMBIENT);
-	else if (!ft_strcmp(s, "C"))
-		return (CAMERA);
-	else if (!ft_strcmp(s, "L"))
-		return (LIGHT);
-	else if (!ft_strcmp(s, "sp"))
-		return (SPHERE);
-	else if (!ft_strcmp(s, "pl"))
-		return (PLANE);
-	else if (!ft_strcmp(s, "cy"))
-		return (CYLINDER);
-	return (NA);
-}
 
 static void	parse_element_type(t_parse *lst, char **str)
 {
@@ -78,6 +61,17 @@ static void	*parse_elements(char **line)
 	return (lst);
 }
 
+static void	parse_line(char *line, t_parse *plist, t_objlst **objects)
+{
+	if (line[0] != '\n')
+	{
+		plist = parse_elements(&line);
+		if (plist)
+			push_back(objects, create_list(plist, plist->type,
+					(t_color){0, 0, 0}));
+	}
+}
+
 void	*parse_input_file(t_objlst **objects, int fd)
 {
 	t_parse	*parsed_lst;
@@ -94,13 +88,7 @@ void	*parse_input_file(t_objlst **objects, int fd)
 			bytes_read = ft_strlen(line);
 			if (bytes_read == 0)
 				error_message("Could not read the file\n");
-			if (line[0] != '\n')
-			{
-				parsed_lst = parse_elements(&line);
-				if (parsed_lst)
-					push_back(objects, create_list(parsed_lst, parsed_lst->type,
-							(t_color){0, 0, 0}));
-			}
+			parse_line(line, parsed_lst, objects);
 		}
 		else
 			bytes_read = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:36:01 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:45:37 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:21:23 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,21 @@ bool	elements_valid_count(t_objlst *objects)
 	if (ambinet_count == 1 && light_count == 1 && camera_count == 1)
 		return (true);
 	return (false);
+}
+
+t_form	element_type_set(char *s)
+{
+	if (!ft_strcmp(s, "A"))
+		return (AMBIENT);
+	else if (!ft_strcmp(s, "C"))
+		return (CAMERA);
+	else if (!ft_strcmp(s, "L"))
+		return (LIGHT);
+	else if (!ft_strcmp(s, "sp"))
+		return (SPHERE);
+	else if (!ft_strcmp(s, "pl"))
+		return (PLANE);
+	else if (!ft_strcmp(s, "cy"))
+		return (CYLINDER);
+	return (NA);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hittable.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 12:22:20 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:26:48 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:02:19 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	*hit_object_type(t_objlst object)
 
 static bool	hit_object(t_objlst *objects, t_ray *ray, t_record *record)
 {
-	bool	hit_;
+	bool				hit_;
 	const t_hittable	hit_object = hit_object_type(*objects);
 
 	hit_ = false | hit_object(objects, ray, record);

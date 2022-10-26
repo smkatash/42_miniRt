@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:03:59 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 09:51:00 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/10/26 12:21:55 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_parse			*free_split(char **str);
 bool			valid_type(t_form type, t_type_data type_data);
 bool			scan_elements(t_form type, char **str);
 bool			elements_valid_count(t_objlst *objects);
+t_form	        element_type_set(char *s);
 
 // Getters
 double			get_double(const char *str, double min, double max);
