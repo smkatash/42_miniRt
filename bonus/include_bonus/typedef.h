@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/29 04:12:18 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/29 04:11:38 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,14 @@
 # define WIN_WIDTH	800
 # define WIN_HEIGHT	800
 # define ESC		53
+# define RGB_COLOR	7
+# define CHECKBOARD 8
+# define BUMPMAP	9
 
 typedef struct s_vec	t_vector;
 typedef struct s_vec	t_point;
 typedef struct s_vec	t_color;
+typedef double	(*t_mat)[3];
 
 typedef enum e_form
 {
@@ -34,6 +38,7 @@ typedef enum e_form
 	SPHERE,
 	PLANE,
 	CYLINDER,
+	HYPER,
 }			t_form;
 
 typedef enum e_type_data
@@ -108,11 +113,16 @@ typedef struct s_record
 {
 	t_point		point;
 	t_vector	normal;
+	t_vector	u_dir;
+	t_vector	v_dir;
 	t_color		color;
+	t_object	*objects;
+	bool		front_face;
 	double		tmin;
 	double		tmax;
 	double		t;
-	bool		front_face;
+	double		u;
+	double		v;
 }	t_record;
 
 // Ray
@@ -148,6 +158,16 @@ typedef struct s_scene
 }				t_scene;
 
 // Objects
+typedef struct s_hyper
+{
+	t_point		center;
+	double		radius;
+	double		radius2;
+	double		kd;
+	double		ks;
+	double		ksn;
+}				t_hyper;
+
 typedef struct s_sphere
 {
 	t_point		center;
@@ -169,6 +189,14 @@ typedef struct s_cylinder
 	double		radius2;
 	double		height;
 }				t_cylinder;
+
+typedef	struct s_object
+{
+	t_plane		*plane;
+	t_sphere	*sphere;
+	t_cylinder	*cylinder;
+	t_hyper		*boloid;
+}
 
 // MLX
 typedef struct s_image
@@ -193,6 +221,26 @@ typedef struct s_mlx
 	void		*win;
 	t_image		img;
 }				t_mlx;
+
+typedef struct s_checkboard
+{
+	t_color		color;
+	int			width;
+	int			height;
+}	t_checkboard;
+
+typedef struct s_bumpmap
+{
+	t_xpm_image	*surface;
+	t_xpm_image	*map;
+}	t_bumpmap;
+
+typedef struct s_texture
+{
+	t_color			color;
+	t_checkboard	*checkboard;
+	t_bumpmap		*map;
+}	t_texture;
 
 typedef bool			(*t_hittable) \
 	(t_objlst *objects, t_ray *ray, t_record *record);
