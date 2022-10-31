@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:06:55 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/31 16:18:30 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/31 17:05:39 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,21 +112,18 @@ void	set_objects(t_scene *scene, t_objlst *object_list, void *mlx)
 {
 	t_parse		*parsed_object;
 	t_objlst	*new_objects;
-	t_object	*object;
 
 	parsed_object = object_list->object;
 	new_objects = malloc(sizeof(t_objlst));
-	object = malloc(sizeof(t_object));
-	if (!new_objects || !object)
+	if (!new_objects)
 		return (NULL);
 	push_back(&scene->objects, new_objects);
-	if (parsed_object->type == SPHERE)
-		object = set_sphere(parsed_object);
-	else if (parsed_object->type == PLANE)
-		object = set_plane(parsed_object);
-	else if (parsed_object->type == CYLINDER)
-		object = set_cylinder(parsed_object);
 	new_objects->type = parsed_object->type;
+	if (new_objects->type == SPHERE)
+		new_objects->object = set_sphere(parsed_object);
+	else if (new_objects->type == PLANE)
+		new_objects->object = set_plane(parsed_object);
+	else if (new_objects->type == CYLINDER)
+		new_objects->object = set_cylinder(parsed_object);
 	set_texture(new_objects, parsed_object, mlx);
-	new_objects->object = object;
 }

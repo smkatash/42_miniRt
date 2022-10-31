@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 15:26:23 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:37:19 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/10/31 18:45:27 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/render.h"
+
+// 𝑣 = 𝜃 / 𝜋
+// 𝜃=acos(−𝑦)
+// 𝑢 = 𝜙 / 2𝜋
+// 𝜙= atan2(−𝑧,𝑥)+𝜋
+void	set_sphere_uv(t_record *p)
+{
+	double	theta;
+	double	phi;
+
+	coordinates_set(&p->u_dir, &p->v_dir, p->normal);
+	theta = acos(-1 * &p->normal.y);
+	record->v = theta / M_PI;
+	phi = atan2(-1 * &record->normal.z, &record->normal.x) + M_PI;
+	record->u = phi / (2 * M_PI);
+}
 
 static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 					double root)
@@ -19,13 +35,15 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 
 	if (isnan(root) || root > record->tmax || root < record->tmin)
 		return (false);
-	sphere = (t_sphere *)objects->object;
+	sphere = objects->object;
+	record->objects = sphere;
 	record->t = root;
 	ray_at(&record->point, ray, root);
 	unit_vector(&record->normal, subtraction(&record->normal, &record->point,
 			&sphere->center));
 	set_face_normal(ray, record);
-	record->color = objects->color;
+	set_sphere_uv(record);
+	set_hit_texture(record, objects);
 	return (true);
 }
 

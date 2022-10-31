@@ -3,14 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   hit_plane.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:25:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:08:46 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/10/31 18:19:37 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/render.h"
+
+double	fmod_dot(t_vector *v, t_vector *u)
+{
+	double	t;
+
+	t = fmod(dot_product(v, u), 1);
+	if (t < 0)
+		return (t + 1);
+	return (t);
+}
+
+void	set_plane_uv(t_record *p)
+{
+	double	theta;
+	double	phi;
+
+	coordinates_set(&p->u_dir, &p->v_dir, p->normal);
+	record->v = fmod_dot(&p->point, &p->v_dir);
+	record->v = fmod_dot(&p->point, &p->u_dir);
+}
 
 bool	hit_plane(t_objlst *objects, t_ray *ray, t_record *record)
 {
@@ -30,9 +50,11 @@ bool	hit_plane(t_objlst *objects, t_ray *ray, t_record *record)
 	if (root > record->tmax || root < record->tmin)
 		return (false);
 	record->t = root;
+	record->objects = plane;
 	ray_at(&record->point, ray, root);
 	record->normal = plane->normal;
 	set_face_normal(ray, record);
-	record->color = objects->color;
+	set_plane_uv(record);
+	set_hit_texture(record, objects);
 	return (true);
 }
