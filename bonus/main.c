@@ -6,11 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:28:22 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/10/29 03:37:54 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/30 22:00:50 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt_bonus.h"
+#include "include/minirt.h"
 #include "include/parse.h"
 #include "include/scene.h"
 #include "include/render.h"

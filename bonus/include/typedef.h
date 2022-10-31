@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/29 04:11:38 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/30 22:06:58 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,10 @@
 # define WIN_WIDTH	800
 # define WIN_HEIGHT	800
 # define ESC		53
-# define RGB_COLOR	7
-# define CHECKBOARD 8
-# define BUMPMAP	9
 
-typedef struct s_vec	t_vector;
-typedef struct s_vec	t_point;
-typedef struct s_vec	t_color;
+typedef struct s_vec3	t_vector;
+typedef struct s_vec3	t_point;
+typedef struct s_vec3	t_color;
 typedef double	(*t_mat)[3];
 
 typedef enum e_form
@@ -50,9 +47,20 @@ typedef enum e_type_data
 	HEIGHT,
 	FOV,
 	RGB,
+	KD,
+	KS,
+	KSN,
 }			t_type_data;
 
-struct s_vec
+typedef enum e_etexture
+{
+	UNDEF = -1,
+	COLOR,
+	CHECKBOARD,
+	BUMPMAP,
+}	t_etexture;
+
+struct s_vec3
 {
 	double		x;
 	double		y;
@@ -77,6 +85,16 @@ typedef struct s_parse
 	char		*height;
 	char		*fov;
 	char		*rgb;
+	char		*KD;
+	char		*KS;
+	char		*KSN;
+	t_etexture	text_type;
+	char		*texture_ident;
+	char		*texture_img;
+	char		*bump_img;
+	char		*xcolor;
+	char		*xwidth;
+	char		*xheight;
 }	t_parse;
 
 typedef struct s_objlist
@@ -108,23 +126,6 @@ typedef struct s_camera
 	double		viewport_width;
 }	t_camera;
 
-// Record info
-typedef struct s_record
-{
-	t_point		point;
-	t_vector	normal;
-	t_vector	u_dir;
-	t_vector	v_dir;
-	t_color		color;
-	t_object	*objects;
-	bool		front_face;
-	double		tmin;
-	double		tmax;
-	double		t;
-	double		u;
-	double		v;
-}	t_record;
-
 // Ray
 typedef struct s_ray
 {
@@ -144,18 +145,6 @@ typedef struct s_light
 	t_point		origin;
 	double		bright_ratio;
 }	t_light;
-
-// Scene
-typedef struct s_scene
-{
-	t_screen	screen;
-	t_camera	camera;
-	t_objlst	*objects;
-	t_objlst	*lights;
-	t_ambient	ambient;
-	t_ray		ray;
-	t_record	record;
-}				t_scene;
 
 // Objects
 typedef struct s_hyper
@@ -196,7 +185,36 @@ typedef	struct s_object
 	t_sphere	*sphere;
 	t_cylinder	*cylinder;
 	t_hyper		*boloid;
-}
+}				t_object;
+
+// Record info
+typedef struct s_record
+{
+	t_point		point;
+	t_vector	normal;
+	t_vector	u_dir;
+	t_vector	v_dir;
+	t_color		color;
+	t_object	*objects;
+	bool		front_face;
+	double		tmin;
+	double		tmax;
+	double		t;
+	double		u;
+	double		v;
+}	t_record;
+
+// Scene
+typedef struct s_scene
+{
+	t_screen	screen;
+	t_camera	camera;
+	t_objlst	*objects;
+	t_objlst	*lights;
+	t_ambient	ambient;
+	t_ray		ray;
+	t_record	record;
+}				t_scene;
 
 // MLX
 typedef struct s_image
@@ -224,9 +242,9 @@ typedef struct s_mlx
 
 typedef struct s_checkboard
 {
-	t_color		color;
-	int			width;
-	int			height;
+	t_color		xcolor;
+	int			xwidth;
+	int			xheight;
 }	t_checkboard;
 
 typedef struct s_bumpmap

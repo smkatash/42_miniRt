@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:36:01 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/26 12:21:23 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/31 12:59:33 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ bool	valid_type(t_form type, t_type_data type_data)
 		return (true);
 	else if (type_data == FOV && (type == CAMERA))
 		return (true);
-	else if (type_data == RGB && \
-	(type == AMBIENT || type == LIGHT || type == SPHERE || type == PLANE || \
-	type == CYLINDER))
+	else if (type_data == RGB && (type == AMBIENT || type == LIGHT ))
+		return (true);
+	else if ((type_data == KD || type_data == KS || type_data == KSN) && \
+	(type == SPHERE || type == PLANE || type == CYLINDER))
 		return (true);
 	return (false);
 }
@@ -54,12 +55,10 @@ bool	scan_elements(t_form type, char **str)
 		++i;
 	if (valid_type(type, FOV))
 		++i;
-	if (valid_type(type, RGB))
-		++i;
 	j = 0;
 	while (str[j])
 		++j;
-	if (i != j)
+	if (i > j)
 		return (false);
 	return (true);
 }
@@ -85,7 +84,7 @@ bool	elements_valid_count(t_objlst *objects)
 			++camera_count;
 		objects = objects->next;
 	}
-	if (ambinet_count == 1 && light_count == 1 && camera_count == 1)
+	if (ambinet_count == 1 && light_count >= 1 && camera_count == 1)
 		return (true);
 	return (false);
 }

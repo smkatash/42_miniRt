@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:03:59 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/29 03:37:27 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/30 22:06:51 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "typedef.h"
 # include "scene.h"
-# include "minirt_bonus.h"
+# include "minirt.h"
 # include "list.h"
 # include "../libs/libft/libft.h"
 

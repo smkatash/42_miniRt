@@ -6,12 +6,64 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/26 12:23:38 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/31 13:47:44 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/parse.h"
 #include "../gnL/get_next_line.h"
+
+t_etexture	object_texture(char **str, int len, int i)
+{
+	if (ft_strcmp(str[i], "-rgb") == 0)
+	{
+		if (len == i + 5)
+			return (COLOR);
+	}
+	else if (ft_strcmp(str[i], "-ck") == 0)
+	{
+		if (len == i + 8)
+			return (CHECKBOARD);
+	}
+	else if (ft_strcmp(str[i], "-bmp") == 0)
+	{
+		if (len == i + 6 || len == i + 5)
+			return (BUMPMAP);
+	}
+	return (UNDEF);
+}
+
+t_etexture	color_texture(int len, int i)
+{
+	if (len == i + 1)
+		return (COLOR);
+	return (UNDEF);
+}
+
+t_etexture	get_texture_type(t_parse *lst, char **str, int i)
+{
+	int		line_len;
+
+	line_len = 0;
+	(void)lst;
+	while (str[line_len] != NULL)
+		++line_len;
+	if (line_len <= i)
+		return (UNDEF);
+	if (lst->type == SPHERE || lst->type == PLANE || lst->type == CYLINDER)
+		return (object_texture(str, line_len, i));
+	else if (lst->type == AMBIENT || lst->type == POINT)
+		return (color_texture(line_len, i));
+	return (UNDEF);
+}
+
+void	parse_element_texture(t_parse *lst, char **str, int i)
+{
+	lst->text_type = get_texture_type(lst, str, i);
+	printf("%d\n", lst->text_type);
+	exit (0);
+}
+
 
 static void	parse_element_type(t_parse *lst, char **str)
 {
@@ -19,6 +71,7 @@ static void	parse_element_type(t_parse *lst, char **str)
 
 	lst->ident = str[0];
 	lst->type = element_type_set(str[0]);
+	printf("%s\n",lst->ident);
 	i = 1;
 	if (lst->type == NA)
 		error_message("Invalid element type.\n");
@@ -36,8 +89,7 @@ static void	parse_element_type(t_parse *lst, char **str)
 		lst->height = str[i++];
 	if (valid_type(lst->type, FOV))
 		lst->fov = str[i++];
-	if (valid_type(lst->type, RGB))
-		lst->rgb = str[i++];
+	parse_element_texture(lst, str, i);
 }
 
 static void	*parse_elements(char **line)
