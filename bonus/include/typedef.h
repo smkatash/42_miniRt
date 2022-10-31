@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/30 22:06:58 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/31 14:56:46 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,12 +162,18 @@ typedef struct s_sphere
 	t_point		center;
 	double		radius;
 	double		radius2;
+	double		kd;
+	double		ks;
+	double		ksn;
 }				t_sphere;
 
 typedef struct s_plane
 {
 	t_point		point;
 	t_vector	normal;
+	double		kd;
+	double		ks;
+	double		ksn;
 }				t_plane;
 
 typedef struct s_cylinder
@@ -177,6 +183,9 @@ typedef struct s_cylinder
 	double		radius;
 	double		radius2;
 	double		height;
+	double		kd;
+	double		ks;
+	double		ksn;
 }				t_cylinder;
 
 typedef	struct s_object

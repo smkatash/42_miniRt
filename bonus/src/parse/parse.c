@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/31 13:47:44 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/31 15:40:43 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,10 @@ t_etexture	get_texture_type(t_parse *lst, char **str, int i)
 		return (UNDEF);
 	if (lst->type == SPHERE || lst->type == PLANE || lst->type == CYLINDER)
 		return (object_texture(str, line_len, i));
-	else if (lst->type == AMBIENT || lst->type == POINT)
+	else if (lst->type == AMBIENT || lst->type == LIGHT)
 		return (color_texture(line_len, i));
 	return (UNDEF);
 }
-
-void	parse_element_texture(t_parse *lst, char **str, int i)
-{
-	lst->text_type = get_texture_type(lst, str, i);
-	printf("%d\n", lst->text_type);
-	exit (0);
-}
-
 
 static void	parse_element_type(t_parse *lst, char **str)
 {
@@ -71,7 +63,6 @@ static void	parse_element_type(t_parse *lst, char **str)
 
 	lst->ident = str[0];
 	lst->type = element_type_set(str[0]);
-	printf("%s\n",lst->ident);
 	i = 1;
 	if (lst->type == NA)
 		error_message("Invalid element type.\n");
@@ -89,7 +80,9 @@ static void	parse_element_type(t_parse *lst, char **str)
 		lst->height = str[i++];
 	if (valid_type(lst->type, FOV))
 		lst->fov = str[i++];
-	parse_element_texture(lst, str, i);
+	lst->text_type = get_texture_type(lst, str, i);
+	if (lst->text_type == -1)
+		error_message("Invalid color type.");
 }
 
 static void	*parse_elements(char **line)
@@ -151,13 +144,13 @@ void	*parse_input_file(t_objlst **objects, int fd)
 	return (*objects);
 }
 
-t_scene	*parse_input_set_scene(t_scene *scene, int fd)
+t_scene	*parse_input_set_scene(t_scene *scene, int fd, void	*mlx)
 {
 	t_objlst	*object_list;
 
 	object_list = NULL;
 	parse_input_file(&object_list, fd);
-	parse_to_scene(&scene, object_list);
+	parse_to_scene(&scene, object_list, mlx);
 	free_parse_list(&object_list);
 	return (scene);
 }

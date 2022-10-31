@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   getter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:10:52 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:01:18 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/10/31 14:11:13 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,6 @@ struct s_vec3	get_double_vector(char *str, double min, double max)
 			error_message("Wrong input range: normalized vector is zero\n");
 		unit_vector(&new_vector, &new_vector);
 	}
-	else if (min == 0 && max == 255)
-		divide_scalar(&new_vector, &new_vector, 255);
 	free(ptr);
 	return (new_vector);
 }

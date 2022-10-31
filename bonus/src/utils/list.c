@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:50:06 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:18:55 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/10/31 14:53:36 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_objlst	*create_list(void *object, int type, t_color color)
 		return (NULL);
 	new->type = type;
 	new->object = object;
-	new->color = color;
+	new->color.color_texture = color;
 	new->next = NULL;
 	return (new);
 }
@@ -70,6 +70,9 @@ void	free_parse_list(t_objlst **lst)
 	{
 		temp = head;
 		head = head->next;
+		//free color
+		//free object
+		//free texture
 		free(temp->object);
 		free(temp);
 	}
