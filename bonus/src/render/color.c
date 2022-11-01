@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:45:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/01 02:04:41 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/01 15:21:59 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,57 @@ void	put_color(t_image *image, int h, int w, unsigned int color)
 	*(unsigned int *)dst = color;
 }
 
-void	map_checkerboard(t_record *record, t_objlst *objects)
+void	*map_checkerboard(t_record *record, t_objlst *objects)
 {
-	
+	int	v;
+	int	u;
+
+	v = floor(record->v * objects->texture.checkboard->height);
+	u = floor(record->u * objects->texture.checkboard->width);
+	if ((v + u) % 2)
+		&record->color = objects->texture.color;
+	else
+		&record->color = objects->texture.checkboard->xcolor;
+	return (record->color);
+}
+
+t_color	pxl_to_color(int pxl)
+{
+	double	r;
+	double	g;
+	double	b;
+
+	r = (double)((pxl >> 16) & 255) / 256;
+	g = (double)((pxl >> 8) & 255) / 256;
+	b = (double)(pxl & 255) / 256;
+	return ((t_color){r, g, b});
+}
+
+void	*map_image(t_record *record, t_objlst *objects)
+{
+	int		v;
+	int		u;
+	int		pxl;
+
+	v = (int)(record->v * objects->texture.map->surface.height);
+	u = (int)(record->u * objects->texture.map->surface.width);
+	pxl = xpm_pixel_get(objects->texture.map->surface, u, v);
+	&record->color = pxl_to_color(pxl);
+	return (record->color);
+}
+
+void	*map_bump(t_record *record, t_objlst *objects)
+{
+	int		v;
+	int		u;
+	int		pxl;
+
+	v = (int)((1 - record->v) * objects->texture.map->map.height);
+	u = (int)(record->u * objects->texture.map->map.width);
+	pxl = xpm_pixel_get(objects->texture.map->map, u, v);
+	&record->color = pxl_to_color(pxl);
+	//what is next?
+	return (record->color);
 }
 
 void	set_hit_texture(t_record *record, t_objlst *objects)
@@ -65,7 +113,7 @@ void	set_hit_texture(t_record *record, t_objlst *objects)
 	{
 		map_image(record, objects);
 		if (objects->texture.map->map)
-			map_normal(record, objects);
+			map_bump(record, objects);
 	}
 	else
 		record->color = objects->texture.color;

@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/01 01:28:05 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/01 14:11:48 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,23 +188,6 @@ typedef	struct s_object
 	t_hyper		*boloid;
 }				t_object;
 
-// Record info
-typedef struct s_record
-{
-	t_point		point;
-	t_vector	normal;
-	t_vector	u_dir;
-	t_vector	v_dir;
-	t_color		color;
-	t_object	*objects;
-	bool		front_face;
-	double		tmin;
-	double		tmax;
-	double		t;
-	double		u;
-	double		v;
-}	t_record;
-
 // MLX
 typedef struct s_image
 {
@@ -248,6 +231,23 @@ typedef struct s_texture
 	t_checkboard	*checkboard;
 	t_bumpmap		*map;
 }	t_texture;
+
+// Record info
+typedef struct s_record
+{
+	t_point		point;
+	t_vector	normal;
+	t_vector	u_dir;
+	t_vector	v_dir;
+	t_color		color;
+	t_object	*objects;
+	bool		front_face;
+	double		tmin;
+	double		tmax;
+	double		t;
+	double		u;
+	double		v;
+}	t_record;
 
 typedef struct s_objlist
 {
