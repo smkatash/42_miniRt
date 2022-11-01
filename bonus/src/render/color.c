@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:45:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/31 16:57:08 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/01 02:04:41 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,23 @@ void	put_color(t_image *image, int h, int w, unsigned int color)
 
 	dst = image->addr + (w * image->line + h * (image->bpp / 8));
 	*(unsigned int *)dst = color;
+}
+
+void	map_checkerboard(t_record *record, t_objlst *objects)
+{
+	
+}
+
+void	set_hit_texture(t_record *record, t_objlst *objects)
+{
+	if (objects->texture.checkboard)
+		map_checkerboard(record, objects);
+	else if (objects->texture.map)
+	{
+		map_image(record, objects);
+		if (objects->texture.map->map)
+			map_normal(record, objects);
+	}
+	else
+		record->color = objects->texture.color;
 }

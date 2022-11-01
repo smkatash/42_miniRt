@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:06:55 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/31 17:05:39 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/01 01:43:22 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,26 +85,26 @@ t_xpm_image	*load_image(char *file, void *mlx)
 void	set_texture(t_objlst *objects, t_parse *parsed_object, void *mlx)
 {
 	if (parsed_object->text_type == COLOR)
-		objects->color.color = get_int_vector(parsed_object->rgb, 0, 255);
+		objects->texture.color = get_int_vector(parsed_object->rgb, 0, 255);
 	else if (parsed_object->text_type == CHECKBOARD)
 	{
-		objects->color.color = get_int_vector(parsed_object->rgb, 0, 255);
-		objects->color.checkboard = malloc(sizeof(t_checkboard));
-		if (!objects->color.checkboard)
+		objects->texture.color = get_int_vector(parsed_object->rgb, 0, 255);
+		objects->texture.checkboard = malloc(sizeof(t_checkboard));
+		if (!objects->texture.checkboard)
 			return ;
-		objects->color.checkboard->xcolor = get_int_vector(parsed_object->xcolor, 0, 255);
-		objects->color.checkboard->xheight = get_double(parsed_object->xheight, 0, INFINITY);
-		objects->color.checkboard->xwidth = get_double(parsed_object->xwidth, 0, INFINITY);
+		objects->texture.checkboard->xcolor = get_int_vector(parsed_object->xcolor, 0, 255);
+		objects->texture.checkboard->xheight = get_double(parsed_object->xheight, 0, INFINITY);
+		objects->texture.checkboard->xwidth = get_double(parsed_object->xwidth, 0, INFINITY);
 	}
 	else if (parsed_object->text_type == BUMPMAP)
 	{
-		objects->color.bumpmap = malloc(sizeof(t_bumpmap));
-		if (!objects->color.bumpmap)
+		objects->texture.map = malloc(sizeof(t_bumpmap));
+		if (!objects->texture.map)
 			return ;
 		if (parsed_object->texture)
-			objects->color.bumpmap->surface = load_image(parsed_object->texture_img, mlx);
+			objects->texture.map->surface = load_image(parsed_object->texture_img, mlx);
 		if (parsed_object->texture)
-			objects->color.bumpmap->map = load_image(parsed_object->bump_img, mlx);
+			objects->texture.map->map = load_image(parsed_object->bump_img, mlx);
 	}
 }
 

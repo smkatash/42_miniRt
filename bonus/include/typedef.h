@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/31 14:56:46 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/01 01:28:05 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,6 @@ typedef struct s_parse
 	char		*xwidth;
 	char		*xheight;
 }	t_parse;
-
-typedef struct s_objlist
-{
-	t_form		type;
-	t_color		color;
-	void		*object;
-	void		*next;
-}	t_objlst;
 
 // Camera
 typedef struct s_screen
@@ -213,18 +205,6 @@ typedef struct s_record
 	double		v;
 }	t_record;
 
-// Scene
-typedef struct s_scene
-{
-	t_screen	screen;
-	t_camera	camera;
-	t_objlst	*objects;
-	t_objlst	*lights;
-	t_ambient	ambient;
-	t_ray		ray;
-	t_record	record;
-}				t_scene;
-
 // MLX
 typedef struct s_image
 {
@@ -268,6 +248,26 @@ typedef struct s_texture
 	t_checkboard	*checkboard;
 	t_bumpmap		*map;
 }	t_texture;
+
+typedef struct s_objlist
+{
+	t_form		type;
+	t_texture	texture;
+	void		*object;
+	void		*next;
+}	t_objlst;
+
+// Scene
+typedef struct s_scene
+{
+	t_screen	screen;
+	t_camera	camera;
+	t_objlst	*objects;
+	t_objlst	*lights;
+	t_ambient	ambient;
+	t_ray		ray;
+	t_record	record;
+}				t_scene;
 
 typedef bool			(*t_hittable) \
 	(t_objlst *objects, t_ray *ray, t_record *record);

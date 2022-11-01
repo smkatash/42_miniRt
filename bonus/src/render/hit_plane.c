@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:25:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/31 18:19:37 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/31 20:52:16 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ double	fmod_dot(t_vector *v, t_vector *u)
 	return (t);
 }
 
+// function planar_map(p)
+//   u ← p.x mod 1
+//  v ← p.z mod 1
 void	set_plane_uv(t_record *p)
 {
 	double	theta;
@@ -29,7 +32,7 @@ void	set_plane_uv(t_record *p)
 
 	coordinates_set(&p->u_dir, &p->v_dir, p->normal);
 	record->v = fmod_dot(&p->point, &p->v_dir);
-	record->v = fmod_dot(&p->point, &p->u_dir);
+	record->u = fmod_dot(&p->point, &p->u_dir);
 }
 
 bool	hit_plane(t_objlst *objects, t_ray *ray, t_record *record)
