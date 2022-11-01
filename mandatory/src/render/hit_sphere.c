@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 15:26:23 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:37:19 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/11/01 20:52:24 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 	return (true);
 }
 
+// 𝑡2𝐛⋅𝐛+2𝑡𝐛⋅(𝐀−𝐂)+(𝐀−𝐂)⋅(𝐀−𝐂)−𝑟2=0
 static void	*intersection(t_equation *eq, t_objlst *objects, t_ray *ray)
 {
 	t_sphere	*sphere;
@@ -43,7 +44,6 @@ static void	*intersection(t_equation *eq, t_objlst *objects, t_ray *ray)
 }
 
 // 𝐏(𝑡)=𝐀+𝑡𝐛
-// 𝑡2𝐛⋅𝐛+2𝑡𝐛⋅(𝐀−𝐂)+(𝐀−𝐂)⋅(𝐀−𝐂)−𝑟2=0
 bool	hit_sphere(t_objlst *objects, t_ray *ray, t_record *record)
 {
 	t_equation	eq;
