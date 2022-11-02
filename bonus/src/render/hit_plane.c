@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:25:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/31 20:52:16 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/02 12:53:09 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ double	fmod_dot(t_vector *v, t_vector *u)
 //  v ← p.z mod 1
 void	set_plane_uv(t_record *p)
 {
-	double	theta;
-	double	phi;
-
 	coordinates_set(&p->u_dir, &p->v_dir, p->normal);
 	record->v = fmod_dot(&p->point, &p->v_dir);
 	record->u = fmod_dot(&p->point, &p->u_dir);
 }
 
+// t = -(p-a).N / v.N
+// (ray origin  - point on the plane).Nplane divided by
+// ray direction . Nplane
 bool	hit_plane(t_objlst *objects, t_ray *ray, t_record *record)
 {
 	t_plane		*plane;

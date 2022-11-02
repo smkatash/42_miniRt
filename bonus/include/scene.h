@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:01:11 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 01:34:51 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/02 22:22:03 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ t_scene		*set_scene(int width, int height);
 t_ambient	set_ambient(t_objlst *objects);
 t_camera	set_camera(t_scene *scene, t_objlst *objects);
 void		*set_light(t_scene *scene, t_objlst *objects);
-void		*set_sphere(t_scene *scene, t_objlst *objects);
-void		*set_plane(t_scene *scene, t_objlst *objects);
-void		*set_cylinder(t_scene *scene, t_objlst *objects);
-
+t_sphere	*set_sphere(t_objlst *parsed_objects);
+t_plane 	*set_plane(t_objlst *parsed_objects);
+t_cylinder	*set_cylinder(t_objlst *parsed_objects);
+void	    *set_objects(t_scene *scene, t_objlst *object_list, void *mlx);
 #endif
