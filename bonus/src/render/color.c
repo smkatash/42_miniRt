@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:45:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/03 08:17:21 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/03 12:44:40 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	put_color(t_image *image, int h, int w, unsigned int color)
 	*(unsigned int *)dst = color;
 }
 
-t_color	pxl_to_color(int pxl)
+t_color	pxl_to_color(unsigned int pxl)
 {
 	double	r;
 	double	g;

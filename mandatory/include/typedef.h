@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   typedef.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/29 04:12:18 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/03 17:28:00 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 # define WIN_HEIGHT	800
 # define ESC		53
 
-typedef struct s_vec	t_vector;
-typedef struct s_vec	t_point;
-typedef struct s_vec	t_color;
+typedef struct s_vec3	t_vector;
+typedef struct s_vec3	t_point;
+typedef struct s_vec3	t_color;
 
 typedef enum e_form
 {
@@ -47,7 +47,7 @@ typedef enum e_type_data
 	RGB,
 }			t_type_data;
 
-struct s_vec
+struct s_vec3
 {
 	double		x;
 	double		y;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/31 15:40:43 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/03 16:06:42 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ t_etexture	object_texture(char **str, int len, int i)
 {
 	if (ft_strcmp(str[i], "-rgb") == 0)
 	{
-		if (len == i + 5)
+		printf("%s\n", str[i]);
+		printf("len: %d\n", len);
+		printf("i: %d\n", i);
+		if (len == i + 2)
 			return (COLOR);
 	}
 	else if (ft_strcmp(str[i], "-ck") == 0)
@@ -43,6 +46,7 @@ t_etexture	color_texture(int len, int i)
 t_etexture	get_texture_type(t_parse *lst, char **str, int i)
 {
 	int		line_len;
+	int		test;
 
 	line_len = 0;
 	(void)lst;
@@ -51,7 +55,11 @@ t_etexture	get_texture_type(t_parse *lst, char **str, int i)
 	if (line_len <= i)
 		return (UNDEF);
 	if (lst->type == SPHERE || lst->type == PLANE || lst->type == CYLINDER)
-		return (object_texture(str, line_len, i));
+	{
+		test = object_texture(str, line_len, i);
+		printf("text type: %d\n", test);
+		return (test);
+	}
 	else if (lst->type == AMBIENT || lst->type == LIGHT)
 		return (color_texture(line_len, i));
 	return (UNDEF);
@@ -80,7 +88,10 @@ static void	parse_element_type(t_parse *lst, char **str)
 		lst->height = str[i++];
 	if (valid_type(lst->type, FOV))
 		lst->fov = str[i++];
-	lst->text_type = get_texture_type(lst, str, i);
+	printf("Type: %d\n", lst->type);
+	if (lst->type != 1)
+		lst->text_type = get_texture_type(lst, str, i);
+	printf("Texture: %d\n", lst->text_type);
 	if (lst->text_type == -1)
 		error_message("Invalid color type.");
 }
@@ -101,6 +112,7 @@ static void	*parse_elements(char **line)
 		free(lst);
 		return (free_split(split_array));
 	}
+	
 	parse_element_type(lst, split_array);
 	free(split_array);
 	return (lst);
