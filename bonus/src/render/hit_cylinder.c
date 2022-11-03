@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:48:40 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/31 18:50:59 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/03 09:01:43 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	set_cylinder_uv(t_record *p, t_cylinder* cylinder)
 	double		theta;
 	t_vector	temp;
 
-	coordinates_set(&p->u_dir, &p->v_dir, cylinder->normal);
-	subtraction(&temp, &record->point, &cylinder->center);
-	theta = atan2(&record->normal.z, record->normal.x)
-	record->u = 1 - (theta / (2 * M_PI) + 0.5);
-	record->v = fmod_min(&p->point.y, 1);
+	coordinates_set(&p->u_dir, &p->v_dir, &cylinder->normal);
+	subtraction(&temp, &p->point, &cylinder->center);
+	theta = atan2(p->normal.z, p->normal.x);
+	p->u = 1 - (theta / (2 * M_PI) + 0.5);
+	p->v = fmod_min(p->point.y);
 }
 
 static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
@@ -61,7 +61,6 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 	addition(&record->normal, &record->normal, &cylinder->center);
 	subtraction(&record->normal, &record->point, &record->normal);
 	unit_vector(&record->normal, &record->normal);
-	set_face_normal(ray, record);
 	set_face_normal(ray, record);
 	set_cylinder_uv(record, cylinder);
 	set_hit_texture(record, objects);

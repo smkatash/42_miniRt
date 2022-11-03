@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phong_illumination_model.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 17:11:33 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:32:47 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/11/03 09:04:50 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	*lambertian_diffuse(t_scene *scene, t_objlst *lights,
 	double	kd;
 
 	kd = fmax(0, dot_product(light_dir, &scene->record.normal));
-	multiply_scalar(diff_comp, &lights->color, kd);
+	multiply_scalar(diff_comp, &lights->texture.color, kd);
 	return (diff_comp);
 }
 
@@ -64,7 +64,7 @@ void	*phong_specular(t_scene *scene, t_objlst *lights, t_vector *light_dir,
 	unit_vector(&v, &v);
 	reflect(&r, light_dir, &scene->record.normal);
 	specular = pow(fmax(0, dot_product(&r, &v)), n);
-	multiply_scalar(spec_com, &lights->color, ks);
+	multiply_scalar(spec_com, &lights->texture.color, ks);
 	multiply_scalar(spec_com, spec_com, specular);
 	return (spec_com);
 }

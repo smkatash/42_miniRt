@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/02 21:56:18 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/03 09:06:49 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 typedef struct s_vec3	t_vector;
 typedef struct s_vec3	t_point;
 typedef struct s_vec3	t_color;
-typedef double t_matrix[3][3];
+typedef double t_matrix[3];
 
 typedef enum e_form
 {
@@ -240,7 +240,7 @@ typedef struct s_record
 	t_vector	u_dir;
 	t_vector	v_dir;
 	t_color		color;
-	t_object	*objects;
+	void		*objects;
 	bool		front_face;
 	double		tmin;
 	double		tmax;

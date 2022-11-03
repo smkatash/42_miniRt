@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 15:26:23 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/31 18:45:27 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/03 09:03:33 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	set_sphere_uv(t_record *p)
 	double	theta;
 	double	phi;
 
-	coordinates_set(&p->u_dir, &p->v_dir, p->normal);
-	theta = acos(-1 * &p->normal.y);
-	record->v = theta / M_PI;
-	phi = atan2(-1 * &record->normal.z, &record->normal.x) + M_PI;
-	record->u = phi / (2 * M_PI);
+	coordinates_set(&p->u_dir, &p->v_dir, &p->normal);
+	theta = acos(-1 * p->normal.y);
+	p->v = theta / M_PI;
+	phi = atan2(-1 * p->normal.z, p->normal.x) + M_PI;
+	p->u = phi / (2 * M_PI);
 }
 
 static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,

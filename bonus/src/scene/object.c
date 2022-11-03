@@ -6,13 +6,13 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:06:55 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/02 22:21:54 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/03 08:14:41 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/scene.h"
 
-t_sphere	*set_sphere(t_objlst *parsed_objects)
+t_sphere	*set_sphere(t_parse *parsed_objects)
 {
 	t_sphere	*sphere;
 
@@ -22,14 +22,13 @@ t_sphere	*set_sphere(t_objlst *parsed_objects)
 	sphere->center = get_double_vector(parsed_objects->point, 0, 0);
 	sphere->radius = get_double(parsed_objects->diameter, 0, INFINITY) / 2;
 	sphere->radius2 = sphere->radius * sphere->radius;
-	new_objects->type = SPHERE;
-	sphere->kd = double_get(parsed_objects->KD, 0, 1);
-	sphere->ks = double_get(parsed_objects->KS, 0, 1);
-	sphere->ksn = double_get(parsed_objects->KSN, 0, INFINITY);
+	sphere->kd = get_double(parsed_objects->KD, 0, 1);
+	sphere->ks = get_double(parsed_objects->KS, 0, 1);
+	sphere->ksn = get_double(parsed_objects->KSN, 0, INFINITY);
 	return (sphere);
 }
 
-t_plane	*set_plane(t_objlst *parsed_objects)
+t_plane	*set_plane(t_parse *parsed_objects)
 {
 	t_plane		*plane;
 
@@ -38,14 +37,13 @@ t_plane	*set_plane(t_objlst *parsed_objects)
 		return (NULL);
 	plane->point = get_double_vector(parsed_objects->point, 0, 0);
 	plane->normal = get_double_vector(parsed_objects->nor_vec, -1, 1);
-	new_objects->type = PLANE;
-	plane->kd = double_get(parsed_objects->KD, 0, 1);
-	plane->ks = double_get(parsed_objects->KS, 0, 1);
-	plane->ksn = double_get(parsed_objects->KSN, 0, INFINITY);
+	plane->kd = get_double(parsed_objects->KD, 0, 1);
+	plane->ks = get_double(parsed_objects->KS, 0, 1);
+	plane->ksn = get_double(parsed_objects->KSN, 0, INFINITY);
 	return (plane);
 }
 
-t_cylinder	*set_cylinder(t_objlst *parsed_objects)
+t_cylinder	*set_cylinder(t_parse *parsed_objects)
 {
 	t_cylinder	*cylinder;
 
@@ -57,11 +55,10 @@ t_cylinder	*set_cylinder(t_objlst *parsed_objects)
 	cylinder->radius = get_double(parsed_objects->diameter, 0, INFINITY) / 2;
 	cylinder->radius2 = cylinder->radius * cylinder->radius;
 	cylinder->height = get_double(parsed_objects->height, 0, INFINITY);
-	new_objects->type = CYLINDER;
-	cylinder->kd = double_get(parsed_objects->KD, 0, 1);
-	cylinder->ks = double_get(parsed_objects->KS, 0, 1);
-	cylinder->ksn = double_get(parsed_objects->KSN, 0, INFINITY);
-	return (scene);
+	cylinder->kd = get_double(parsed_objects->KD, 0, 1);
+	cylinder->ks = get_double(parsed_objects->KS, 0, 1);
+	cylinder->ksn = get_double(parsed_objects->KSN, 0, INFINITY);
+	return (cylinder);
 }
 
 t_xpm_image	*load_image(char *file, void *mlx)
@@ -99,11 +96,8 @@ void	set_texture(t_objlst *objects, t_parse *parsed_object, void *mlx)
 	else if (parsed_object->text_type == BUMPMAP)
 	{
 		objects->texture.map = malloc(sizeof(t_bumpmap));
-		if (!objects->texture.map)
-			return ;
-		if (parsed_object->texture)
-			objects->texture.map->surface = load_image(parsed_object->texture_img, mlx);
-		if (parsed_object->texture)
+		objects->texture.map->surface = load_image(parsed_object->texture_img, mlx);
+		if (parsed_object->bump_img)
 			objects->texture.map->map = load_image(parsed_object->bump_img, mlx);
 	}
 }

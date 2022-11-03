@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:32:44 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/26 12:29:28 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/03 09:07:47 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,8 @@ double	length(t_vector *vec);
 void	*unit_vector(t_vector *new, t_vector *vec);
 void	*minimum(t_vector *new, t_vector *u, t_vector *v);
 void	coordinates_set(t_vector *u, t_vector *v, t_vector *w);
+
+void	*matrix_tbn(t_matrix *m, t_vector *v1, t_vector *v2, t_vector *v3);
+void	*transpose(t_vector *new, t_matrix *m, t_vector *v);
 
 #endif

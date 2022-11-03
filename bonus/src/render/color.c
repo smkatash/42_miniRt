@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:45:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/01 20:23:49 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/03 08:17:21 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/render.h"
 
-static unsigned int	clamp(double c, int min, int max)
+static unsigned int	clamp(double c, unsigned int min, unsigned int max)
 {
 	unsigned int	pxl_clr;
 

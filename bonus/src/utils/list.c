@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:50:06 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/31 14:53:36 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/03 08:15:59 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_objlst	*create_list(void *object, int type, t_color color)
 		return (NULL);
 	new->type = type;
 	new->object = object;
-	new->color.color_texture = color;
+	new->texture.color = color;
 	new->next = NULL;
 	return (new);
 }
