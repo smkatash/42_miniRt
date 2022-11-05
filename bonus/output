@@ -1,0 +1,16 @@
+PARSE DONE
+Plane
+RGB: 0.117647 0.498039 0.117647
+X RGB: 1.000000 1.000000 1.000000
+X-h: 4
+X-w: 4
+Plane
+Image Texture
+Bump map: Image Texture
+Sphere
+RGB: 1.000000 1.000000 1.000000
+Cylinder
+Image Texture
+Bump map: Image Texture
+Plane
+RGB: 0.498039 0.117647 0.117647

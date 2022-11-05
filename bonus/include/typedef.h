@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/03 09:06:49 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/05 13:15:55 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef enum e_etexture
 	COLOR,
 	CHECKBOARD,
 	BUMPMAP,
+	CAM,
 }	t_etexture;
 
 struct s_vec3
@@ -84,11 +85,11 @@ typedef struct s_parse
 	char		*diameter;
 	char		*height;
 	char		*fov;
-	char		*rgb;
 	char		*KD;
 	char		*KS;
 	char		*KSN;
 	t_etexture	text_type;
+	char		*rgb;
 	char		*texture_ident;
 	char		*texture_img;
 	char		*bump_img;

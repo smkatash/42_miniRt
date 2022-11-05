@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/03 16:06:42 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/05 13:31:10 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ t_etexture	object_texture(char **str, int len, int i)
 {
 	if (ft_strcmp(str[i], "-rgb") == 0)
 	{
-		printf("%s\n", str[i]);
-		printf("len: %d\n", len);
-		printf("i: %d\n", i);
-		if (len == i + 2)
+		if (len == i + 5)
 			return (COLOR);
 	}
 	else if (ft_strcmp(str[i], "-ck") == 0)
@@ -46,23 +43,41 @@ t_etexture	color_texture(int len, int i)
 t_etexture	get_texture_type(t_parse *lst, char **str, int i)
 {
 	int		line_len;
-	int		test;
 
 	line_len = 0;
-	(void)lst;
 	while (str[line_len] != NULL)
 		++line_len;
 	if (line_len <= i)
 		return (UNDEF);
 	if (lst->type == SPHERE || lst->type == PLANE || lst->type == CYLINDER)
 	{
-		test = object_texture(str, line_len, i);
-		printf("text type: %d\n", test);
-		return (test);
+		return (object_texture(str, line_len, i));
 	}
 	else if (lst->type == AMBIENT || lst->type == LIGHT)
 		return (color_texture(line_len, i));
 	return (UNDEF);
+}
+
+
+void	set_texture_type(t_parse *lst, char **str, int i)
+{
+	lst->texture_ident = str[i++];
+	if (lst->text_type == COLOR)
+		lst->rgb = str[i++];
+	else if (lst->text_type == CHECKBOARD)
+	{
+		lst->rgb = str[i++];
+		lst->xcolor = str[i++];
+		lst->xwidth = str[i++];
+		lst->xheight = str[i++];
+	}
+	if (lst->text_type == BUMPMAP)
+		lst->texture_img = str[i++];
+	if (lst->text_type == BUMPMAP && str[i + 3] != NULL)
+		lst->bump_img = str[i++];
+	lst->KD = str[i++];
+	lst->KS = str[i++];
+	lst->KSN = str[i++];
 }
 
 static void	parse_element_type(t_parse *lst, char **str)
@@ -88,12 +103,17 @@ static void	parse_element_type(t_parse *lst, char **str)
 		lst->height = str[i++];
 	if (valid_type(lst->type, FOV))
 		lst->fov = str[i++];
-	printf("Type: %d\n", lst->type);
-	if (lst->type != 1)
+	if (lst->type == 1)
+		lst->text_type = CAM;
+	else
 		lst->text_type = get_texture_type(lst, str, i);
-	printf("Texture: %d\n", lst->text_type);
 	if (lst->text_type == -1)
 		error_message("Invalid color type.");
+	if (lst->type == AMBIENT || lst->type == LIGHT)
+		lst->rgb = str[i++];
+	else if (lst->type == SPHERE || lst->type == CYLINDER \
+		|| lst->type == PLANE)
+		set_texture_type(lst, str, i);
 }
 
 static void	*parse_elements(char **line)
@@ -112,7 +132,6 @@ static void	*parse_elements(char **line)
 		free(lst);
 		return (free_split(split_array));
 	}
-	
 	parse_element_type(lst, split_array);
 	free(split_array);
 	return (lst);
@@ -162,6 +181,7 @@ t_scene	*parse_input_set_scene(t_scene *scene, int fd, void	*mlx)
 
 	object_list = NULL;
 	parse_input_file(&object_list, fd);
+	printf("PARSE DONE\n");
 	parse_to_scene(&scene, object_list, mlx);
 	free_parse_list(&object_list);
 	return (scene);

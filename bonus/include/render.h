@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 07:05:15 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/03 12:45:14 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/05 16:57:41 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ bool			hit_cylinder(t_objlst *objects, t_ray *ray, t_record *record);
 void			 set_hit_texture(t_record *record, t_objlst *objects);
 t_color			pxl_to_color(unsigned int pxl);
 unsigned int	xpm_color(t_xpm_image *img, int x, int y);
-void			*map_bump(t_record *record, t_objlst *objects);
-void			*map_image(t_record *record, t_objlst *objects);
+t_vector		map_bump(t_record *record, t_objlst *objects);
+t_color			map_image(t_record *record, t_objlst *objects);
 
 #endif
