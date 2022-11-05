@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 15:26:23 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/03 09:03:33 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/05 18:53:32 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 			&sphere->center));
 	set_face_normal(ray, record);
 	set_sphere_uv(record);
-	set_hit_texture(record, objects);
+	set_hit_texture(record, &objects->texture);
 	return (true);
 }
 

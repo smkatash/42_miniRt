@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_to_scene.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:54:42 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/02 22:18:00 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/05 19:45:17 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*parse_to_scene(t_scene **scene, t_objlst *object_list, void *mlx)
 		else if (object->type == LIGHT)
 			set_light(*scene, object_list);
 		else if (object->type == SPHERE || object->type == PLANE || object->type == CYLINDER)
-			set_objects(*scene, object_list, mlx);
+			set_objects(scene, object_list, mlx);
 		object_list = object_list->next;
 	}
 	return (scene);

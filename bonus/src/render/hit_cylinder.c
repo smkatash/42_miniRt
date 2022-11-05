@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cylinder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:48:40 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/03 09:01:43 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/05 18:53:19 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 	unit_vector(&record->normal, &record->normal);
 	set_face_normal(ray, record);
 	set_cylinder_uv(record, cylinder);
-	set_hit_texture(record, objects);
+	set_hit_texture(record, &objects->texture);
 	return (true);
 }
 

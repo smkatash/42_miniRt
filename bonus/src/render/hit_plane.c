@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_plane.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:25:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/05 16:11:13 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/05 18:53:25 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ bool	hit_plane(t_objlst *objects, t_ray *ray, t_record *record)
 	record->normal = plane->normal;
 	set_face_normal(ray, record);
 	set_plane_uv(record);
-	set_hit_texture(record, objects);
+	set_hit_texture(record, &objects->texture);
 	return (true);
 }

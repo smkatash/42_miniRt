@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/05 13:31:10 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/05 20:19:30 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,8 @@ t_etexture	get_texture_type(t_parse *lst, char **str, int i)
 	}
 	else if (lst->type == AMBIENT || lst->type == LIGHT)
 		return (color_texture(line_len, i));
-	return (UNDEF);
+	return (COLOR);
 }
-
 
 void	set_texture_type(t_parse *lst, char **str, int i)
 {
@@ -103,12 +102,12 @@ static void	parse_element_type(t_parse *lst, char **str)
 		lst->height = str[i++];
 	if (valid_type(lst->type, FOV))
 		lst->fov = str[i++];
-	if (lst->type == 1)
+	if (lst->type == CAMERA)
 		lst->text_type = CAM;
 	else
 		lst->text_type = get_texture_type(lst, str, i);
 	if (lst->text_type == -1)
-		error_message("Invalid color type.");
+		error_message("Invalid texture.\n");
 	if (lst->type == AMBIENT || lst->type == LIGHT)
 		lst->rgb = str[i++];
 	else if (lst->type == SPHERE || lst->type == CYLINDER \
@@ -167,10 +166,12 @@ void	*parse_input_file(t_objlst **objects, int fd)
 			parse_line(line, parsed_lst, objects);
 		}
 		else
+		{
+			free(line);
 			bytes_read = 0;
+		}
 	}
-	free(line);
-	if (elements_valid_count(*objects) == false)
+	if (!elements_valid_count(*objects))
 		error_message("Wrong input data: ambient, light and camera.\n");
 	return (*objects);
 }
@@ -181,7 +182,6 @@ t_scene	*parse_input_set_scene(t_scene *scene, int fd, void	*mlx)
 
 	object_list = NULL;
 	parse_input_file(&object_list, fd);
-	printf("PARSE DONE\n");
 	parse_to_scene(&scene, object_list, mlx);
 	free_parse_list(&object_list);
 	return (scene);

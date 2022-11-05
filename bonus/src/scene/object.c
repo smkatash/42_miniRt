@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:06:55 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/05 17:45:59 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/05 20:14:56 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ t_sphere	*set_sphere(t_parse *parsed_objects)
 {
 	t_sphere	*sphere;
 
-	printf("Sphere\n");
 	sphere = malloc(sizeof(t_sphere));
 	if (!sphere)
 		return (NULL);
@@ -33,7 +32,6 @@ t_plane	*set_plane(t_parse *parsed_objects)
 {
 	t_plane		*plane;
 
-	printf("Plane\n");
 	plane = malloc(sizeof(t_plane));
 	if (!plane)
 		return (NULL);
@@ -49,7 +47,6 @@ t_cylinder	*set_cylinder(t_parse *parsed_objects)
 {
 	t_cylinder	*cylinder;
 
-	printf("Cylinder\n");
 	cylinder = malloc(sizeof(t_cylinder));
 	if (!cylinder)
 		return (NULL);
@@ -87,21 +84,19 @@ void	set_texture(t_objlst *objects, t_parse *parsed_object, void *mlx)
 	if (parsed_object->text_type == COLOR)
 	{
 		objects->texture.color = get_int_vector(parsed_object->rgb, 0, 255);
-		printf("RGB: %f %f %f\n", objects->texture.color.x, objects->texture.color.y,objects->texture.color.z);
+		objects->texture.checkboard = NULL;
+		objects->texture.map = NULL;
 	}
 	else if (parsed_object->text_type == CHECKBOARD)
 	{
 		objects->texture.color = get_int_vector(parsed_object->rgb, 0, 255);
-		printf("RGB: %f %f %f\n", objects->texture.color.x, objects->texture.color.y,objects->texture.color.z);
 		objects->texture.checkboard = malloc(sizeof(t_checkboard));
 		if (!objects->texture.checkboard)
 			return ;
 		objects->texture.checkboard->xcolor = get_int_vector(parsed_object->xcolor, 0, 255);
 		objects->texture.checkboard->xheight = get_double(parsed_object->xheight, 0, INFINITY);
 		objects->texture.checkboard->xwidth = get_double(parsed_object->xwidth, 0, INFINITY);
-		printf("X RGB: %f %f %f\n", objects->texture.checkboard->xcolor.x, objects->texture.checkboard->xcolor.y, objects->texture.checkboard->xcolor.z);
-		printf("X-h: %d\n", objects->texture.checkboard->xheight);
-		printf("X-w: %d\n", objects->texture.checkboard->xwidth);
+		objects->texture.map = NULL;
 	}
 	else if (parsed_object->text_type == BUMPMAP)
 	{
@@ -109,11 +104,13 @@ void	set_texture(t_objlst *objects, t_parse *parsed_object, void *mlx)
 		objects->texture.map->surface = load_image(parsed_object->texture_img, mlx);
 		if (parsed_object->bump_img)
 			objects->texture.map->map = load_image(parsed_object->bump_img, mlx);
-		printf("BUMPMAP loaded\n");
+		else
+			objects->texture.map->map = NULL;
+		objects->texture.checkboard = NULL;
 	}
 }
 
-void	*set_objects(t_scene *scene, t_objlst *object_list, void *mlx)
+void	*set_objects(t_scene **scene, t_objlst *object_list, void *mlx)
 {
 	t_parse		*parsed_object;
 	t_objlst	*new_objects;
@@ -122,7 +119,6 @@ void	*set_objects(t_scene *scene, t_objlst *object_list, void *mlx)
 	new_objects = malloc(sizeof(t_objlst));
 	if (!new_objects)
 		return (NULL);
-	push_back(&scene->objects, new_objects);
 	new_objects->type = parsed_object->type;
 	if (new_objects->type == SPHERE)
 		new_objects->object = set_sphere(parsed_object);
@@ -131,5 +127,6 @@ void	*set_objects(t_scene *scene, t_objlst *object_list, void *mlx)
 	else if (new_objects->type == CYLINDER)
 		new_objects->object = set_cylinder(parsed_object);
 	set_texture(new_objects, parsed_object, mlx);
+	push_back(&(*scene)->objects, new_objects);
 	return (scene);
 }
