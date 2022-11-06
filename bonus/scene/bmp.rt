@@ -1,0 +1,12 @@
+A	0.2			            255,255,255
+
+C	0,0.5,0		0,0,-1		80
+
+L	0,1,0		0.5			255,255,255
+
+sp	-1.6,0.5,-3.5	1		-bmp ./images/fabric1.xpm ./images/normal_test.xpm 1 0.5 64
+sp	-0.8,0.5,-3	1			-bmp ./images/fabric2.xpm  1 0.5 64
+sp	0,0.5,-2.5	1			-bmp ./images/fabric3.xpm  1 0.5 64
+sp	0.8,0.5,-3	1			-bmp ./images/fabric4.xpm 1 0.5 64
+sp	1.6,0.5,-3.5	1		-bmp ./images/fabric5.xpm  1 0.5 64
+pl  0,-1,0     0,1,0        -bmp ./images/fabric5.xpm ./images/normal_test.xpm 1 0.5 64

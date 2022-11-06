@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:45:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/03 12:44:40 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/06 16:55:49 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ static unsigned int	clamp(double c, unsigned int min, unsigned int max)
 	return (pxl_clr);
 }
 
+static unsigned int	clamp_xpm(unsigned int pxl, unsigned int min, unsigned int max)
+{
+	if (pxl > max)
+		pxl = max;
+	else if (pxl < min)
+		pxl = min;
+	return (pxl);
+}
+
 unsigned int	color(t_color *pixel_color)
 {
 	unsigned int	color;
@@ -38,8 +47,8 @@ unsigned int	xpm_color(t_xpm_image *img, int x, int y)
 {
 	char	*dst;
 
-	x = clamp(x, 0, img->width - 1);
-	y = clamp(y, 0, img->height - 1);
+	x = clamp_xpm(x, 0, img->width - 1);
+	y = clamp_xpm(y, 0, img->height - 1);
 	dst = img->data.addr + (y * img->data.line + x * (img->data.bpp / 8));
 	return (*(unsigned int *)dst);
 }
@@ -54,12 +63,10 @@ void	put_color(t_image *image, int h, int w, unsigned int color)
 
 t_color	pxl_to_color(unsigned int pxl)
 {
-	double	r;
-	double	g;
-	double	b;
+	t_color	rgb;
 
-	r = (double)((pxl >> 16) & 255) / 256;
-	g = (double)((pxl >> 8) & 255) / 256;
-	b = (double)(pxl & 255) / 256;
-	return ((t_color){r, g, b});
+	rgb.x = (double)((int)(pxl >> 16) & 255) / 256;
+	rgb.y = (double)((int)(pxl >> 8) & 255) / 256;
+	rgb.z = (double)((int)pxl & 255) / 256;
+	return (rgb);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/05 20:19:30 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/06 14:31:42 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,12 @@ void	set_texture_type(t_parse *lst, char **str, int i)
 	}
 	if (lst->text_type == BUMPMAP)
 		lst->texture_img = str[i++];
+	else
+		lst->texture_img = NULL;
 	if (lst->text_type == BUMPMAP && str[i + 3] != NULL)
 		lst->bump_img = str[i++];
+	else
+		lst->bump_img = NULL;
 	lst->KD = str[i++];
 	lst->KS = str[i++];
 	lst->KSN = str[i++];

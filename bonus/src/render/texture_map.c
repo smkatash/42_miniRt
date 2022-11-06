@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:18:32 by ktashbae          #+#    #+#             */
-/*   Updated: 2022/11/05 20:14:08 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/06 16:56:12 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_vector	map_bump(t_record *record, t_texture *texture)
 	pxl = xpm_color(texture->map->map, u, v);
 	norm_color = pxl_to_color(pxl);
 	multiply_scalar(&norm_color, &norm_color, 2);
-	subtraction(&norm_color, &norm_color, &(t_color){1, 1, 1});
+	subtraction(&norm_color, &norm_color, &(t_vector){1, 1, 1});
 	matrix_tbn(TBN, &record->u_dir, &record->v_dir, &record->normal);
 	transpose(&norm_color, TBN, &norm_color);
 	return (norm_color);
