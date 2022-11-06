@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:01:11 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/05 19:45:51 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/06 21:11:11 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ t_sphere	*set_sphere(t_parse *parsed_objects);
 t_plane 	*set_plane(t_parse *parsed_objects);
 t_cylinder	*set_cylinder(t_parse *parsed_objects);
 void		*set_objects(t_scene **scene, t_objlst *object_list, void *mlx);
+void	    set_texture(t_objlst *objects, t_parse *parsed_object, void *mlx);
 #endif

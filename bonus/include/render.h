@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 07:05:15 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/05 18:54:38 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/06 21:15:32 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,9 @@ t_color			pxl_to_color(unsigned int pxl);
 unsigned int	xpm_color(t_xpm_image *img, int x, int y);
 t_vector		map_bump(t_record *record, t_texture *texture);
 t_color			map_image(t_record *record, t_texture *texture);
+
+// Color
+unsigned int	clamp(double c, unsigned int min, unsigned int max);
+unsigned int	clamp_xpm(unsigned int pxl, unsigned int min, unsigned int max);
 
 #endif

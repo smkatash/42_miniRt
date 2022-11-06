@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 11:29:40 by aiarinov          #+#    #+#              #
-#    Updated: 2022/11/03 14:23:06 by ktashbae         ###   ########.fr        #
+#    Updated: 2022/11/06 21:15:41 by kanykei          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ ambient.c camera.c light.c object.c scene.c utils.c list.c getter.c \
 vector_math.c vector_scalar.c vector_setter.c vector_utils.c \
 color.c hittable.c ray.c render.c hit_cylinder.c hit_plane.c hit_sphere.c \
 illumination.c phong_illumination_model.c vector_matrix_tbn.c \
-texture_checkerboard.c texture_map.c 
+texture_checkerboard.c texture_map.c parse_texture.c texture.c clamp.c
 
 OBJ 	:= $(addprefix obj/,$(notdir $(SRC:.c=.o)))
 CC 		:= cc
