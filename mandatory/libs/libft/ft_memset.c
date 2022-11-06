@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 15:49:54 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/03/28 14:23:23 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/11/04 21:37:28 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	*ft_memset(void *str, int value, size_t size)
 {
-	size_t	i;
 	char	*line;
 
-	i = 0;
 	line = (char *)str;
 	while (size > 0)
 	{

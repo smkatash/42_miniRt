@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:45:35 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/12 14:46:19 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/04 21:37:05 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,10 @@ static void	ft_strlcpy_d(char *str, char *s1, char *s2, size_t pref)
 
 char	*ft_strjoin_gnL(char *s1, char *s2)
 {
-	size_t	i;
 	size_t	pref;
 	size_t	suff;
 	char	*str;
 
-	i = 0;
 	if (!s1)
 		s1 = ft_strdup_gnL("");
 	if (!s1 || !s2)

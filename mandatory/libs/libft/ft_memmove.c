@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 16:56:54 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/03/29 13:01:59 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/11/04 21:36:46 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ void	*ft_memmove(void *str1, const void *str2, size_t n)
 {
 	char	*dest;
 	char	*source;
-	size_t	i;
 
-	i = 0;
 	dest = (char *)str1;
 	source = (char *)str2;
 	if (dest == NULL && source == NULL)
