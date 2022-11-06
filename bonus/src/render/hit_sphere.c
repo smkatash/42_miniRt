@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 15:26:23 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/05 18:53:32 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/06 13:15:59 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 	sphere = objects->object;
 	record->objects = sphere;
 	record->t = root;
+	record->ks = sphere->ks;
+	record->kd = sphere->kd;
+	record->ksn = sphere->ksn;
 	ray_at(&record->point, ray, root);
 	unit_vector(&record->normal, subtraction(&record->normal, &record->point,
 			&sphere->center));

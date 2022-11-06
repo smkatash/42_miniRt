@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cylinder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:48:40 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/05 18:53:19 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/06 13:19:46 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 		return (false);
 	cylinder = (t_cylinder *)objects->object;
 	record->t = root;
+	record->ks = cylinder->ks;
+	record->kd = cylinder->kd;
+	record->ksn = cylinder->ksn;
 	record->objects = cylinder;
 	ray_at(&record->point, ray, root);
 	subtraction(&temp, &record->point, &cylinder->center);

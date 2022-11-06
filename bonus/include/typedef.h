@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/05 13:15:55 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/06 13:14:53 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,6 +248,9 @@ typedef struct s_record
 	double		t;
 	double		u;
 	double		v;
+	double		kd;
+	double		ks;
+	double		ksn;
 }	t_record;
 
 typedef struct s_objlist

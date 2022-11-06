@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_plane.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:25:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/05 18:53:25 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/06 13:22:24 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ bool	hit_plane(t_objlst *objects, t_ray *ray, t_record *record)
 	if (root > record->tmax || root < record->tmin)
 		return (false);
 	record->t = root;
+	record->ks = plane->ks;
+	record->kd = plane->kd;
+	record->ksn = plane->ksn;
 	record->objects = plane;
 	ray_at(&record->point, ray, root);
 	record->normal = plane->normal;

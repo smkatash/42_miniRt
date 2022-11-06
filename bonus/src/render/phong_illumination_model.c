@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 17:11:33 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/03 09:04:50 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/06 14:02:17 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,14 @@ bool	overcast_shadow(t_scene *scene, t_vector *light_dir, double t)
 void	*lambertian_diffuse(t_scene *scene, t_objlst *lights,
 						t_vector *light_dir, t_color *diff_comp)
 {
-	double	kd;
+	double	component;
 
-	kd = fmax(0, dot_product(light_dir, &scene->record.normal));
-	multiply_scalar(diff_comp, &lights->texture.color, kd);
+	component = fmax(0, dot_product(light_dir, &scene->record.normal)) * scene->record.kd;
+	multiply_scalar(diff_comp, &lights->texture.color, component);
 	return (diff_comp);
 }
 
+// R = 2(N⋅L)N−L.
 static void	*reflect(t_vector *R, t_vector *L, t_vector *N)
 {
 	multiply_scalar(R, N, 2 * dot_product(N, L));
@@ -56,10 +57,12 @@ void	*phong_specular(t_scene *scene, t_objlst *lights, t_vector *light_dir,
 {
 	t_vector		v;
 	t_vector		r;
-	const double	ks = 0.15;
-	const double	n = 250;
+	double			ks;
+	double			n;
 	double			specular;
 
+	ks = scene->record.ks;
+	n = scene->record.ksn;
 	multiply_scalar(&v, &scene->ray.direction, -1);
 	unit_vector(&v, &v);
 	reflect(&r, light_dir, &scene->record.normal);
