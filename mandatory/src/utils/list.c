@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:50:06 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:18:55 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:23:24 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/list.h"
+#include "minirt.h"
 
 t_objlst	*create_list(void *object, int type, t_color color)
 {

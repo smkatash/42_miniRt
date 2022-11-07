@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector_math.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:16:33 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:20:41 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:23:31 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/vector.h"
+#include "minirt.h"
 
 void	*addition(t_vector *new, const t_vector *u, const t_vector *v)
 {

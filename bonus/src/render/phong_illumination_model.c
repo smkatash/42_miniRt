@@ -6,11 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 17:11:33 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 14:02:17 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 00:49:56 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/render.h"
+#include "minirt.h"
 
 bool	overcast_shadow(t_scene *scene, t_vector *light_dir, double t)
 {
@@ -28,7 +28,6 @@ bool	overcast_shadow(t_scene *scene, t_vector *light_dir, double t)
 }
 
 // diffuse = kd * (N dot L)
-// kd is the diffuse reflection constant
 void	*lambertian_diffuse(t_scene *scene, t_objlst *lights,
 						t_vector *light_dir, t_color *diff_comp)
 {
@@ -49,7 +48,6 @@ static void	*reflect(t_vector *R, t_vector *L, t_vector *N)
 
 // specular = Ks * (R dot V)^n
 // R = 2(N⋅L)N−L.
-// Ks is the specular component
 // The larger the exponential power (n) the smaller and more
 // intense the specular intensity bump. Hence specular highlights.
 void	*phong_specular(t_scene *scene, t_objlst *lights, t_vector *light_dir,

@@ -6,11 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:18:32 by ktashbae          #+#    #+#             */
-/*   Updated: 2022/11/06 16:56:12 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 00:07:51 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/render.h"
+#include "minirt.h"
 
 t_color	map_image(t_record *record, t_texture *texture)
 {
@@ -34,7 +34,7 @@ t_vector	map_bump(t_record *record, t_texture *texture)
 	int				v;
 	int				u;
 	unsigned int	pxl;
-	t_matrix		TBN[3];
+	t_matrix		tbn[3];
 	t_vector		norm_color;
 
 	v = (int)((1 - record->v) * texture->map->map->height);
@@ -43,7 +43,7 @@ t_vector	map_bump(t_record *record, t_texture *texture)
 	norm_color = pxl_to_color(pxl);
 	multiply_scalar(&norm_color, &norm_color, 2);
 	subtraction(&norm_color, &norm_color, &(t_vector){1, 1, 1});
-	matrix_tbn(TBN, &record->u_dir, &record->v_dir, &record->normal);
-	transpose(&norm_color, TBN, &norm_color);
+	matrix_tbn(tbn, &record->u_dir, &record->v_dir, &record->normal);
+	transpose(&norm_color, tbn, &norm_color);
 	return (norm_color);
 }

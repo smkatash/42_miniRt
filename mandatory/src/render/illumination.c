@@ -3,32 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   illumination.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 16:26:28 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:37:40 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:21:24 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/render.h"
+#include "minirt.h"
 
 //   N	= surface normal
 //   L     = unit vector between point and light
 //   V	= unit vector between point and view
 //   R     = light reflection unit vector (mirror of L about N)
-//   First, the diffuse relfection is given by the Lamertian Relfection
-//   equation:
-//     diffuse = Kd * (N dot L)
-//   Where Kd is the diffuse relfection constant. (N dot L) is the same as
-//   the cosine of the angle between N and L, so as the angle decrease, the
-//   resulting diffuse value is higher.
-//   Phong gave spectral reflectivity as:
-//     diffuse + Ks * (R dot V)^n
-//   Which is:
+//   Labertian diffuse = Kd * (N dot L)
+//   Phong spectral reflectivity: diffuse + Ks * (R dot V)^n
+//   Phong lighting equation:
 //     Kd * (N dot L) + Ks * (R dot V)^n
-//   Where Kd is the diffuse component and Ks is the specular compoenet. This
-//   is the generally accepted phong lighting equation.
-
 static void	*point_and_light(t_scene *scene, t_objlst *lights, t_color *illum)
 {
 	t_light		*lightning;

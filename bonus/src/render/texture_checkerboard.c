@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   texture_checkerboard.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:21:38 by ktashbae          #+#    #+#             */
-/*   Updated: 2022/11/05 20:13:54 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/06 23:01:22 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/render.h"
+#include "minirt.h"
 
 static t_color	map_checkerboard(t_record *record, t_texture *texture)
 {

@@ -6,26 +6,21 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 13:14:53 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 00:55:42 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPEDEF_H
 # define TYPEDEF_H
 
-# include <stdbool.h>
-# include "../libs/minilibx/mlx.h"
-
-# define EPSILON 	1e-6
-# define WIN_WIDTH	800
-# define WIN_HEIGHT	800
-# define ESC		53
+# include "minirt.h"
 
 typedef struct s_vec3	t_vector;
 typedef struct s_vec3	t_point;
 typedef struct s_vec3	t_color;
 typedef double t_matrix[3];
 
+// enum definitions
 typedef enum e_form
 {
 	NA = -1,
@@ -61,6 +56,7 @@ typedef enum e_etexture
 	CAM,
 }	t_etexture;
 
+// Universal param
 struct s_vec3
 {
 	double		x;
@@ -68,6 +64,7 @@ struct s_vec3
 	double		z;
 };
 
+// Quadratic eq
 typedef struct s_equation
 {
 	double		a;
@@ -75,6 +72,7 @@ typedef struct s_equation
 	double		c;
 }				t_equation;
 
+// Parser
 typedef struct s_parse
 {
 	t_form		type;
@@ -96,7 +94,7 @@ typedef struct s_parse
 	char		*xcolor;
 	char		*xwidth;
 	char		*xheight;
-}	t_parse;
+}				t_parse;
 
 // Camera
 typedef struct s_screen
@@ -117,27 +115,27 @@ typedef struct s_camera
 	t_point		left_bottom;
 	double		viewport_height;
 	double		viewport_width;
-}	t_camera;
+}				t_camera;
 
 // Ray
 typedef struct s_ray
 {
 	t_point		origin;
 	t_vector	direction;
-}	t_ray;
+}				t_ray;
 
 // Lights
 typedef struct s_ambient
 {
 	t_color		light_color;
 	double		light_ratio;
-}	t_ambient;
+}				t_ambient;
 
 typedef struct s_light
 {
 	t_point		origin;
 	double		bright_ratio;
-}	t_light;
+}				t_light;
 
 // Objects
 typedef struct s_hyper
@@ -181,14 +179,6 @@ typedef struct s_cylinder
 	double		ksn;
 }				t_cylinder;
 
-typedef	struct s_object
-{
-	t_plane		*plane;
-	t_sphere	*sphere;
-	t_cylinder	*cylinder;
-	t_hyper		*boloid;
-}				t_object;
-
 // MLX
 typedef struct s_image
 {
@@ -213,6 +203,7 @@ typedef struct s_mlx
 	t_image		img;
 }				t_mlx;
 
+// Textures
 typedef struct s_checkboard
 {
 	t_color		xcolor;
@@ -253,6 +244,7 @@ typedef struct s_record
 	double		ksn;
 }	t_record;
 
+// Objects list
 typedef struct s_objlist
 {
 	t_form		type;

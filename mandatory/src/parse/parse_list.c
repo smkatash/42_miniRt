@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:02:36 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:02:56 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:12:30 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parse.h"
+#include "minirt.h"
 
 t_parse	*new_parse_list(void)
 {

@@ -6,12 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 20:49:58 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 21:01:20 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/06 23:00:49 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parse.h"
-#include "../gnL/get_next_line.h"
+#include "minirt.h"
 
 static t_etexture	object_texture(char **str, int len, int i)
 {

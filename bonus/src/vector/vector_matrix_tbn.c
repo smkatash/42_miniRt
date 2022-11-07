@@ -6,11 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:16:33 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/02 22:05:56 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/06 23:02:27 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/vector.h"
+#include "minirt.h"
 
 void	*matrix_tbn(t_matrix *m, t_vector *v1, t_vector *v2, t_vector *v3)
 {

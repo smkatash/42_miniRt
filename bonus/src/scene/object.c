@@ -6,13 +6,13 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:06:55 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 20:53:22 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 00:41:54 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/scene.h"
+#include "minirt.h"
 
-t_sphere	*set_sphere(t_parse *parsed_objects)
+static t_sphere	*set_sphere(t_parse *parsed_objects)
 {
 	t_sphere	*sphere;
 
@@ -28,7 +28,7 @@ t_sphere	*set_sphere(t_parse *parsed_objects)
 	return (sphere);
 }
 
-t_plane	*set_plane(t_parse *parsed_objects)
+static t_plane	*set_plane(t_parse *parsed_objects)
 {
 	t_plane		*plane;
 
@@ -43,7 +43,7 @@ t_plane	*set_plane(t_parse *parsed_objects)
 	return (plane);
 }
 
-t_cylinder	*set_cylinder(t_parse *parsed_objects)
+static t_cylinder	*set_cylinder(t_parse *parsed_objects)
 {
 	t_cylinder	*cylinder;
 

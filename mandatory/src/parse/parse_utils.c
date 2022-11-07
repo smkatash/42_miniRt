@@ -6,11 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:36:01 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/26 12:21:23 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 01:12:37 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parse.h"
+#include "minirt.h"
 
 bool	valid_type(t_form type, t_type_data type_data)
 {

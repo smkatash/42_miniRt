@@ -6,13 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:31:25 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/05 15:56:55 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/06 23:02:38 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/vector.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "minirt.h"
 
 void	vector_setter(t_vector *vec, double x, double y, double z)
 {

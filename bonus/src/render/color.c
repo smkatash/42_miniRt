@@ -6,11 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:45:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 21:15:00 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/06 23:01:47 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/render.h"
+#include "minirt.h"
 
 unsigned int	color(t_color *pixel_color)
 {

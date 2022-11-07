@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   hit_plane.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:25:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/01 22:18:41 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:26:33 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/render.h"
+#include "minirt.h"
 
 //     float denom = dotProduct(n, l); 
 //     if (denom > 1e-6) { 

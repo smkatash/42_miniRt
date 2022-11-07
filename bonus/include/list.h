@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   list.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:51:25 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 09:53:46 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/11/07 00:56:38 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIST_H
 # define LIST_H
 
-# include "parse.h"
+# include "minirt.h"
 
+// Objects list
 t_objlst	*create_list(void *object, int type, t_color color);
 void		push_back(t_objlst **lst, t_objlst *new);
 void		free_list(t_objlst **lst);

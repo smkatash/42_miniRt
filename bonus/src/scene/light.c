@@ -6,11 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:09:42 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/02 22:19:57 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/06 23:02:00 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/scene.h"
+#include "minirt.h"
 
 void	*set_light(t_scene *scene, t_objlst *objects)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 14:16:08 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:16:45 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/11/07 00:46:46 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/render.h"
+#include "minirt.h"
 
 static void	init_record(t_record *record)
 {
@@ -38,7 +38,7 @@ void	*color_ray(t_color *pxl, t_scene *scene)
 	return (pxl);
 }
 
-// orig + t*dir
+// Formula: orig + t*dir
 void	*ray_at(t_vector *point, t_ray *ray, double t)
 {
 	multiply_scalar(point, &ray->direction, t);
@@ -46,7 +46,7 @@ void	*ray_at(t_vector *point, t_ray *ray, double t)
 	return (point);
 }
 
-// ray(origin, lower_left_corner + s*horizontal + t*vertical - origin);
+// Formula: ray(origin, lower_left_corner + s*horizontal + t*vertical - origin)
 void	*put_ray(t_ray *ray, t_camera *camera, double u, double v)
 {
 	t_vector	temp;

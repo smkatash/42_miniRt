@@ -6,15 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:28:22 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/10/31 15:40:11 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 00:05:29 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/minirt.h"
-#include "include/parse.h"
-#include "include/scene.h"
-#include "include/render.h"
-#include "libs/minilibx/mlx.h"
+#include "minirt.h"
 
 int	main(int argv, char **argc)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cylinder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:48:40 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:37:04 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:22:58 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/render.h"
+#include "minirt.h"
 
 static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 					double root)

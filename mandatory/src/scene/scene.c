@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:59:46 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:18:36 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:23:19 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/scene.h"
+#include "minirt.h"
 
 static t_screen	set_screen(int width, int height)
 {

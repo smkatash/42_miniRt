@@ -6,11 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:11:40 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/26 12:22:57 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 01:23:11 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/scene.h"
+#include "minirt.h"
 
 static double	degree_to_radian(double degree)
 {

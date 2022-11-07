@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_to_scene.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:54:42 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/05 19:45:17 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/06 23:00:52 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parse.h"
+#include "minirt.h"
 
 void	*parse_to_scene(t_scene **scene, t_objlst *object_list, void *mlx)
 {

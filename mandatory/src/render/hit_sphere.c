@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 15:26:23 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/01 20:52:24 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:22:49 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/render.h"
+#include "minirt.h"
 
 static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 					double root)

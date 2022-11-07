@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 06:59:57 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:17:53 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:13:13 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/render.h"
+#include "minirt.h"
 
 static void	ray_trace(t_mlx *mlx, t_scene *scene, int h, int w)
 {

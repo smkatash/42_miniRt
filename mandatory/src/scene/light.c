@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:09:42 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:23:44 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:23:14 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/scene.h"
+#include "minirt.h"
 
 void	*set_light(t_scene *scene, t_objlst *objects)
 {

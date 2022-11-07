@@ -6,11 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:36:01 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/31 12:59:33 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 00:59:10 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parse.h"
+#include "minirt.h"
 
 bool	valid_type(t_form type, t_type_data type_data)
 {
@@ -29,7 +29,7 @@ bool	valid_type(t_form type, t_type_data type_data)
 		return (true);
 	else if (type_data == FOV && (type == CAMERA))
 		return (true);
-	else if (type_data == RGB && (type == AMBIENT || type == LIGHT ))
+	else if (type_data == RGB && (type == AMBIENT || type == LIGHT))
 		return (true);
 	else if ((type_data == KD || type_data == KS || type_data == KSN) && \
 	(type == SPHERE || type == PLANE || type == CYLINDER))

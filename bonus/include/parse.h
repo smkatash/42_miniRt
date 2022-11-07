@@ -6,18 +6,14 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:03:59 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 21:02:53 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/06 23:03:48 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
 
-# include "typedef.h"
-# include "scene.h"
 # include "minirt.h"
-# include "list.h"
-# include "../libs/libft/libft.h"
 
 // Objects
 t_scene	        *parse_input_set_scene(t_scene *scene, int fd, void	*mlx);

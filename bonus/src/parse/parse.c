@@ -6,12 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 21:00:26 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/06 23:00:59 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/parse.h"
-#include "../gnL/get_next_line.h"
+#include "minirt.h"
 
 static void	parse_element_type(t_parse *lst, char **str)
 {

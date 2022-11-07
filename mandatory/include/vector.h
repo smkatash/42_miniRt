@@ -6,16 +6,14 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:32:44 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/26 12:29:28 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 01:11:35 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_H
 # define VECTOR_H
 
-# include "typedef.h"
-# include "../libs/libft/libft.h"
-# include <math.h>
+# include "minirt.h"
 
 void	*addition(t_vector *new, const t_vector *u, const t_vector *v);
 void	*subtraction(t_vector *new, const t_vector *u, const t_vector *v);

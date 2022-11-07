@@ -3,23 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   typedef.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/03 17:28:00 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:11:12 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPEDEF_H
 # define TYPEDEF_H
 
-# include <stdbool.h>
-# include "../libs/minilibx/mlx.h"
-
-# define EPSILON 	1e-6
-# define WIN_WIDTH	800
-# define WIN_HEIGHT	800
-# define ESC		53
+# include "minirt.h"
 
 typedef struct s_vec3	t_vector;
 typedef struct s_vec3	t_point;

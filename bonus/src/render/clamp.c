@@ -6,11 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 21:14:37 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 21:14:58 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 00:51:50 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/render.h"
+#include "minirt.h"
 
 unsigned int	clamp(double c, unsigned int min, unsigned int max)
 {

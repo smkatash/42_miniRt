@@ -6,28 +6,29 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:32:44 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/03 09:07:47 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 00:52:52 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_H
 # define VECTOR_H
 
-# include "typedef.h"
-# include "../libs/libft/libft.h"
-# include <math.h>
+# include "minirt.h"
 
+// Vectors
 void	*addition(t_vector *new, const t_vector *u, const t_vector *v);
 void	*subtraction(t_vector *new, const t_vector *u, const t_vector *v);
 void	*multiply(t_vector *new, const t_vector *u, const t_vector *v);
 double	dot_product(const t_vector *u, const t_vector *v);
 void	*cross_product(t_vector *new, const t_vector *u, const t_vector *v);
 
+// Scalar
 void	*add_scalar(t_vector *new, const t_vector *vec, double t);
 void	*minus_scalar(t_vector *new, const t_vector *vec, double t);
 void	*multiply_scalar(t_vector *new, const t_vector *vec, double t);
 void	*divide_scalar(t_vector *new, const t_vector *vec, double t);
 
+// Vector utils
 void	vector_setter(t_vector *vec, double x, double y, double z);
 bool	equal(t_vector *u, t_vector *v);
 double	length_sqrd(t_vector *vec);
@@ -36,6 +37,7 @@ void	*unit_vector(t_vector *new, t_vector *vec);
 void	*minimum(t_vector *new, t_vector *u, t_vector *v);
 void	coordinates_set(t_vector *u, t_vector *v, t_vector *w);
 
+// TBN matrix
 void	*matrix_tbn(t_matrix *m, t_vector *v1, t_vector *v2, t_vector *v3);
 void	*transpose(t_vector *new, t_matrix *m, t_vector *v);
 

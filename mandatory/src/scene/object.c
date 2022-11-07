@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   object.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:06:55 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:23:48 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:23:17 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/scene.h"
+#include "minirt.h"
 
 void	*set_sphere(t_scene *scene, t_objlst *objects)
 {

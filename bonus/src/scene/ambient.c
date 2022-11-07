@@ -6,11 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:15:38 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/18 02:09:19 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/06 23:01:55 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/scene.h"
+#include "minirt.h"
 
 t_ambient	set_ambient(t_objlst *objects)
 {

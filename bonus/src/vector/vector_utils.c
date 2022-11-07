@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:25:11 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:21:58 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/11/06 23:02:43 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/vector.h"
+#include "minirt.h"
 
 bool	equal(t_vector *u, t_vector *v)
 {

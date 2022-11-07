@@ -11,6 +11,8 @@ CFLAGS+=-O2
 # add to match string put with X11 in size and position
 CFLAGS+= -DSTRINGPUTX11
 
+.SILENT:
+
 all: $(NOM)
 
 $(NOM):	$(OBJ)
@@ -18,7 +20,10 @@ $(NOM):	$(OBJ)
 	ranlib $(NOM)
 
 clean:
-	rm -f $(NOM) $(OBJ) *~
+	rm -f $(OBJ) *~
 	rm -f mlx_app
+
+fclean: clean
+	rm -f $(NOM) *~
 
 re: clean all

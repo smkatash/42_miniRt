@@ -6,20 +6,14 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 07:05:15 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/26 12:29:04 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 01:10:34 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDER_H
 # define RENDER_H
 
-# include <math.h>
-# include <stdbool.h>
-# include "typedef.h"
-# include "parse.h"
-# include "scene.h"
-# include "vector.h"
-# include "../libs/minilibx/mlx.h"
+# include "minirt.h"
 
 void			render_image(t_mlx *mlx, t_scene *scene);
 

@@ -6,26 +6,26 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 06:59:57 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 16:06:08 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 00:43:45 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/render.h"
+#include "minirt.h"
 
 static void	ray_trace(t_mlx *mlx, t_scene *scene, int h, int w)
 {
 	double			u;
 	double			v;
 	t_color			pixel_color;
-	unsigned int	col;
+	unsigned int	pxl;
 
 	u = (double)w / (WIN_WIDTH - 1);
 	v = (double)h / (WIN_HEIGHT - 1);
 	pixel_color = (t_color){0, 0, 0};
 	put_ray(&scene->ray, &scene->camera, u, v);
 	color_ray(&pixel_color, scene);
-	col = color(&pixel_color);
-	put_color(&mlx->img, w, WIN_HEIGHT - 1 - h, col);
+	pxl = color(&pixel_color);
+	put_color(&mlx->img, w, WIN_HEIGHT - 1 - h, pxl);
 }
 
 static void	free_scene(t_scene *scene)

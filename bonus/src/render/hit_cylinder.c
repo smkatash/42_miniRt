@@ -6,19 +6,12 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:48:40 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 13:19:46 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 00:58:44 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/render.h"
+#include "minirt.h"
 
-double	fmod_min(double t)
-{
-	t = fmod(t, 1);
-	if (t < 0)
-		return (t + 1);
-	return (t);
-}
 // compute the azimuthal angle, same as with spherical_map()
 // theta ← arctan2(p.x, p.z)
 // raw_u ← theta / (2 * π)
@@ -26,7 +19,7 @@ double	fmod_min(double t)
 
 //  v go from 0 to 1 between whole units of y
 // v ← p.y mod 1
-void	set_cylinder_uv(t_record *p, t_cylinder* cylinder)
+static void	set_cylinder_uv(t_record *p, t_cylinder *cylinder)
 {
 	double		theta;
 	t_vector	temp;
@@ -36,6 +29,14 @@ void	set_cylinder_uv(t_record *p, t_cylinder* cylinder)
 	theta = atan2(p->normal.z, p->normal.x);
 	p->u = 1 - (theta / (2 * M_PI) + 0.5);
 	p->v = fmod_min(p->point.y);
+}
+
+static void	set_hit_record(t_record *record, t_cylinder *cylinder)
+{
+	record->ks = cylinder->ks;
+	record->kd = cylinder->kd;
+	record->ksn = cylinder->ksn;
+	record->objects = cylinder;
 }
 
 static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
@@ -49,10 +50,7 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 		return (false);
 	cylinder = (t_cylinder *)objects->object;
 	record->t = root;
-	record->ks = cylinder->ks;
-	record->kd = cylinder->kd;
-	record->ksn = cylinder->ksn;
-	record->objects = cylinder;
+	set_hit_record(record, cylinder);
 	ray_at(&record->point, ray, root);
 	subtraction(&temp, &record->point, &cylinder->center);
 	point = dot_product(&temp, &cylinder->normal);

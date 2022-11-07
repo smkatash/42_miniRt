@@ -6,11 +6,11 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 12:22:20 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/26 12:02:19 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 01:22:46 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/render.h"
+#include "minirt.h"
 
 double	nearest_root(t_equation *eq, int range)
 {

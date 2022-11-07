@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector_scalar.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:01:33 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/25 10:22:34 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/11/06 23:02:30 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/vector.h"
+#include "minirt.h"
 
 void	*add_scalar(t_vector *new, const t_vector *vec, double t)
 {
