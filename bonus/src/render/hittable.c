@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 12:22:20 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 23:01:35 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 14:45:55 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static void	*hit_object_type(t_objlst object)
 		return (hit_plane);
 	if (object.type == CYLINDER)
 		return (hit_cylinder);
+	if (object.type == HYPER)
+		return (hit_hyperboloid);
 	return (false);
 }
 

@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:06:55 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 00:41:54 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 14:49:04 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,24 @@ static t_cylinder	*set_cylinder(t_parse *parsed_objects)
 	return (cylinder);
 }
 
+static t_hyper	*set_hyperboloid(t_parse *parsed_objects)
+{
+	t_hyper	*hp;
+
+	hp = malloc(sizeof(t_hyper));
+	if (!hp)
+		return (NULL);
+	hp->center = get_double_vector(parsed_objects->point, 0, 0);
+	hp->normal = get_double_vector(parsed_objects->nor_vec, -1, 1);
+	hp->radius = get_double(parsed_objects->diameter, 0, INFINITY) / 2;
+	hp->radius2 = hp->radius * hp->radius;
+	hp->height = get_double(parsed_objects->height, 0, INFINITY);
+	hp->kd = get_double(parsed_objects->KD, 0, 1);
+	hp->ks = get_double(parsed_objects->KS, 0, 1);
+	hp->ksn = get_double(parsed_objects->KSN, 0, INFINITY);
+	return (hp);
+}
+
 void	*set_objects(t_scene **scene, t_objlst *object_list, void *mlx)
 {
 	t_parse		*parsed_object;
@@ -77,6 +95,8 @@ void	*set_objects(t_scene **scene, t_objlst *object_list, void *mlx)
 		new_objects->object = set_plane(parsed_object);
 	else if (new_objects->type == CYLINDER)
 		new_objects->object = set_cylinder(parsed_object);
+	else if (new_objects->type == HYPER)
+		new_objects->object = set_hyperboloid(parsed_object);
 	set_texture(new_objects, parsed_object, mlx);
 	push_back(&(*scene)->objects, new_objects);
 	return (scene);

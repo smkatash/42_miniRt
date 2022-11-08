@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 07:05:15 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 00:46:08 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 14:46:16 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ bool			hit(t_objlst *objects, t_ray *ray, t_record *record);
 bool			hit_sphere(t_objlst *objects, t_ray *ray, t_record *record);
 bool			hit_plane(t_objlst *objects, t_ray *ray, t_record *record);
 bool			hit_cylinder(t_objlst *objects, t_ray *ray, t_record *record);
+bool			hit_hyperboloid(t_objlst *objects, t_ray *ray, t_record *record);
 void			set_face_normal(t_ray *ray, t_record *record);
 double			nearest_root(t_equation *eq, int range);
 double			fmod_min(double t);

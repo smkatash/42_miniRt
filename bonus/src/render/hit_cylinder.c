@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:48:40 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 00:58:44 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 16:13:09 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 	point = dot_product(&temp, &cylinder->normal);
 	if (point > cylinder->height || point < 0)
 		return (false);
-	subtraction(&record->normal, &record->point, &cylinder->center);
-	multiply_scalar(&record->normal, &record->normal,
+	multiply_scalar(&record->normal, &temp,
 		dot_product(&record->normal, &cylinder->normal));
 	addition(&record->normal, &record->normal, &cylinder->center);
 	subtraction(&record->normal, &record->point, &record->normal);

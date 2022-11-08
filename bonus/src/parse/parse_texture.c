@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 20:49:58 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 23:00:49 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 14:45:00 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static t_etexture	get_texture_type(t_parse *lst, char **str, int i)
 		++line_len;
 	if (line_len <= i)
 		return (UNDEF);
-	if (lst->type == SPHERE || lst->type == PLANE || lst->type == CYLINDER)
+	if (lst->type == SPHERE || lst->type == PLANE || lst->type == CYLINDER || lst->type == HYPER)
 	{
 		return (object_texture(str, line_len, i));
 	}
@@ -93,6 +93,6 @@ void	parse_texture(t_parse *lst, char **str, int i)
 	if (lst->type == AMBIENT || lst->type == LIGHT)
 		lst->rgb = str[i++];
 	else if (lst->type == SPHERE || lst->type == CYLINDER \
-		|| lst->type == PLANE)
+		|| lst->type == PLANE || lst->type == HYPER)
 		set_texture_type(lst, str, i);
 }

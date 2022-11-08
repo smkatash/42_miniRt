@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 00:55:42 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/07 13:10:22 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,8 @@ typedef struct s_hyper
 	t_point		center;
 	double		radius;
 	double		radius2;
+	t_vector	normal;
+	double		height;
 	double		kd;
 	double		ks;
 	double		ksn;
