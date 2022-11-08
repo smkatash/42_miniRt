@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   typedef.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 13:10:22 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/08 15:52:59 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef enum e_form
 	SPHERE,
 	PLANE,
 	CYLINDER,
-	HYPER,
+	CONE,
 }			t_form;
 
 typedef enum e_type_data
@@ -138,7 +138,7 @@ typedef struct s_light
 }				t_light;
 
 // Objects
-typedef struct s_hyper
+typedef struct s_cone
 {
 	t_point		center;
 	double		radius;
@@ -148,7 +148,7 @@ typedef struct s_hyper
 	double		kd;
 	double		ks;
 	double		ksn;
-}				t_hyper;
+}				t_cone;
 
 typedef struct s_sphere
 {

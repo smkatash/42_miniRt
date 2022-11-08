@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:36:01 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 14:43:56 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/08 15:52:18 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,23 @@ bool	valid_type(t_form type, t_type_data type_data)
 {
 	if (type_data == POINT && \
 	(type == CAMERA || type == LIGHT || type == SPHERE || type == PLANE || \
-	type == CYLINDER || type == HYPER))
+	type == CYLINDER || type == CONE))
 		return (true);
 	else if (type_data == BRI_RATIO && (type == AMBIENT || type == LIGHT))
 		return (true);
 	else if (type_data == NORM_VEC && (type == CAMERA || type == PLANE
-			|| type == CYLINDER || type == HYPER))
+			|| type == CYLINDER || type == CONE))
 		return (true);
-	else if (type_data == DIAMETER && (type == SPHERE || type == CYLINDER || type == HYPER))
+	else if (type_data == DIAMETER && (type == SPHERE || type == CYLINDER || type == CONE))
 		return (true);
-	else if (type_data == HEIGHT && (type == CYLINDER || type == HYPER))
+	else if (type_data == HEIGHT && (type == CYLINDER || type == CONE))
 		return (true);
 	else if (type_data == FOV && (type == CAMERA))
 		return (true);
 	else if (type_data == RGB && (type == AMBIENT || type == LIGHT))
 		return (true);
 	else if ((type_data == KD || type_data == KS || type_data == KSN) && \
-	(type == SPHERE || type == PLANE || type == CYLINDER || type == HYPER))
+	(type == SPHERE || type == PLANE || type == CYLINDER || type == CONE))
 		return (true);
 	return (false);
 }
@@ -103,7 +103,7 @@ t_form	element_type_set(char *s)
 		return (PLANE);
 	else if (!ft_strcmp(s, "cy"))
 		return (CYLINDER);
-	else if (!ft_strcmp(s, "hp"))
-		return (HYPER);
+	else if (!ft_strcmp(s, "co"))
+		return (CONE);
 	return (NA);
 }

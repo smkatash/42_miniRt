@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:06:55 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 14:49:04 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/08 15:53:50 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,22 @@ static t_cylinder	*set_cylinder(t_parse *parsed_objects)
 	return (cylinder);
 }
 
-static t_hyper	*set_hyperboloid(t_parse *parsed_objects)
+static t_cone	*set_cone(t_parse *parsed_objects)
 {
-	t_hyper	*hp;
+	t_cone	*cone;
 
-	hp = malloc(sizeof(t_hyper));
-	if (!hp)
+	cone = malloc(sizeof(t_cone));
+	if (!cone)
 		return (NULL);
-	hp->center = get_double_vector(parsed_objects->point, 0, 0);
-	hp->normal = get_double_vector(parsed_objects->nor_vec, -1, 1);
-	hp->radius = get_double(parsed_objects->diameter, 0, INFINITY) / 2;
-	hp->radius2 = hp->radius * hp->radius;
-	hp->height = get_double(parsed_objects->height, 0, INFINITY);
-	hp->kd = get_double(parsed_objects->KD, 0, 1);
-	hp->ks = get_double(parsed_objects->KS, 0, 1);
-	hp->ksn = get_double(parsed_objects->KSN, 0, INFINITY);
-	return (hp);
+	cone->center = get_double_vector(parsed_objects->point, 0, 0);
+	cone->normal = get_double_vector(parsed_objects->nor_vec, -1, 1);
+	cone->radius = get_double(parsed_objects->diameter, 0, INFINITY) / 2;
+	cone->radius2 = cone->radius * cone->radius;
+	cone->height = get_double(parsed_objects->height, 0, INFINITY);
+	cone->kd = get_double(parsed_objects->KD, 0, 1);
+	cone->ks = get_double(parsed_objects->KS, 0, 1);
+	cone->ksn = get_double(parsed_objects->KSN, 0, INFINITY);
+	return (cone);
 }
 
 void	*set_objects(t_scene **scene, t_objlst *object_list, void *mlx)
@@ -95,8 +95,8 @@ void	*set_objects(t_scene **scene, t_objlst *object_list, void *mlx)
 		new_objects->object = set_plane(parsed_object);
 	else if (new_objects->type == CYLINDER)
 		new_objects->object = set_cylinder(parsed_object);
-	else if (new_objects->type == HYPER)
-		new_objects->object = set_hyperboloid(parsed_object);
+	else if (new_objects->type == CONE)
+		new_objects->object = set_cone(parsed_object);
 	set_texture(new_objects, parsed_object, mlx);
 	push_back(&(*scene)->objects, new_objects);
 	return (scene);

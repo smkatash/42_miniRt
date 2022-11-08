@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 15:26:23 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 23:01:37 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/08 15:53:21 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 
 	if (isnan(root) || root > record->tmax || root < record->tmin)
 		return (false);
-	sphere = objects->object;
+	sphere = (t_sphere *)objects->object;
 	record->objects = sphere;
 	record->t = root;
 	record->ks = sphere->ks;

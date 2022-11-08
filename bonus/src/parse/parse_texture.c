@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 20:49:58 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 14:45:00 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/08 15:49:28 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static t_etexture	get_texture_type(t_parse *lst, char **str, int i)
 		++line_len;
 	if (line_len <= i)
 		return (UNDEF);
-	if (lst->type == SPHERE || lst->type == PLANE || lst->type == CYLINDER || lst->type == HYPER)
+	if (lst->type == SPHERE || lst->type == PLANE || lst->type == CYLINDER || lst->type == CONE)
 	{
 		return (object_texture(str, line_len, i));
 	}
@@ -93,6 +93,6 @@ void	parse_texture(t_parse *lst, char **str, int i)
 	if (lst->type == AMBIENT || lst->type == LIGHT)
 		lst->rgb = str[i++];
 	else if (lst->type == SPHERE || lst->type == CYLINDER \
-		|| lst->type == PLANE || lst->type == HYPER)
+		|| lst->type == PLANE || lst->type == CONE)
 		set_texture_type(lst, str, i);
 }
