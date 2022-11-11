@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:25:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 01:26:33 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/10 16:41:13 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ bool	hit_plane(t_objlst *objects, t_ray *ray, t_record *record)
 {
 	t_plane		*plane;
 	double		denominator;
-	double		num;
 	t_vector	temp;
 	double		root;
 
@@ -29,12 +28,17 @@ bool	hit_plane(t_objlst *objects, t_ray *ray, t_record *record)
 	if (denominator == 0)
 		return (false);
 	subtraction(&temp, &plane->point, &ray->origin);
-	num = dot_product(&temp, &plane->normal);
-	root = num / denominator;
+	root = dot_product(&temp, &plane->normal) / denominator;
 	if (root > record->tmax || root < record->tmin)
 		return (false);
 	record->t = root;
 	ray_at(&record->point, ray, root);
+	if (plane->radius != INFINITY)
+	{
+		subtraction(&temp, &plane->point, &record->point);
+		if (length(&temp) > plane->radius)
+			return (false);
+	}
 	record->normal = plane->normal;
 	set_face_normal(ray, record);
 	record->color = objects->color;

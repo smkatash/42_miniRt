@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 20:52:41 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 00:57:40 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/11 02:15:29 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static t_xpm_image	*load_image(char *file, void *mlx)
 	img->data.img = mlx_xpm_file_to_image(mlx, file, &img->width, &img->height);
 	if (!img->data.img)
 		error_message("Failed to load [.xpm] image file\n");
-	img->data.addr = mlx_get_data_addr(img->data.img, &img->data.bpp, &img->data.line, &img->data.endian);
+	img->data.addr = mlx_get_data_addr(img->data.img, \
+		&img->data.bpp, &img->data.line, &img->data.endian);
 	return (img);
 }
 
@@ -43,13 +44,17 @@ static void	set_texture_checkboard(t_objlst *objects, t_parse *parsed_object)
 	objects->texture.checkboard = malloc(sizeof(t_checkboard));
 	if (!objects->texture.checkboard)
 		return ;
-	objects->texture.checkboard->xcolor = get_int_vector(parsed_object->xcolor, 0, 255);
-	objects->texture.checkboard->xheight = get_double(parsed_object->xheight, 0, INFINITY);
-	objects->texture.checkboard->xwidth = get_double(parsed_object->xwidth, 0, INFINITY);
+	objects->texture.checkboard->xcolor = \
+		get_int_vector(parsed_object->xcolor, 0, 255);
+	objects->texture.checkboard->xheight = \
+		get_double(parsed_object->xheight, 0, INFINITY);
+	objects->texture.checkboard->xwidth = \
+		get_double(parsed_object->xwidth, 0, INFINITY);
 	objects->texture.map = NULL;
 }
 
-static void	set_texture_bummap(t_objlst *objects, t_parse *parsed_object, void *mlx)
+static void	set_texture_bummap(t_objlst *objects, t_parse *parsed_object, \
+	void *mlx)
 {
 	objects->texture.map = malloc(sizeof(t_bumpmap));
 	objects->texture.map->surface = load_image(parsed_object->texture_img, mlx);

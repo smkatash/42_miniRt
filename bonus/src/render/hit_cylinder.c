@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:48:40 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 16:13:09 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/10 23:16:45 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,18 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 		return (false);
 	cylinder = (t_cylinder *)objects->object;
 	record->t = root;
-	set_hit_record(record, cylinder);
 	ray_at(&record->point, ray, root);
 	subtraction(&temp, &record->point, &cylinder->center);
 	point = dot_product(&temp, &cylinder->normal);
 	if (point > cylinder->height || point < 0)
 		return (false);
-	multiply_scalar(&record->normal, &temp,
+	subtraction(&record->normal, &record->point, &cylinder->center);
+	multiply_scalar(&record->normal, &record->normal,
 		dot_product(&record->normal, &cylinder->normal));
 	addition(&record->normal, &record->normal, &cylinder->center);
 	subtraction(&record->normal, &record->point, &record->normal);
 	unit_vector(&record->normal, &record->normal);
+	set_hit_record(record, cylinder);
 	set_face_normal(ray, record);
 	set_cylinder_uv(record, cylinder);
 	set_hit_texture(record, &objects->texture);

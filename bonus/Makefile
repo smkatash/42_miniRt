@@ -6,19 +6,19 @@
 #    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 11:29:40 by aiarinov          #+#    #+#              #
-#    Updated: 2022/11/07 17:43:36 by kanykei          ###   ########.fr        #
+#    Updated: 2022/11/11 01:21:32 by kanykei          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ================================= Target =================================== #
-NAME 		:= minirt_bonus
+NAME 		:= miniRT_bonus
 
 # ================================ Sources =================================== #
 VPATH 		:= src src/parse src/scene src/utils src/vector src/render
 
 SRC 		:= main.c \
 parse_list.c parse_to_scene.c parse_utils.c parse.c parse_texture.c getter.c \
-ambient.c camera.c light.c object.c scene.c texture.c \
+ambient.c camera.c light.c objects.c objects_utils.c scene.c texture.c \
 vector_math.c vector_scalar.c vector_setter.c vector_utils.c vector_matrix_tbn.c \
 color.c hittable.c ray.c render.c hit_cylinder.c hit_plane.c hit_sphere.c hit_cone.c \
 illumination.c phong_illumination_model.c  \
@@ -27,7 +27,7 @@ texture_checkerboard.c texture_map.c utils.c list.c clamp.c
 # ================================ Flags ===================================== #
 OBJ 		:= $(addprefix obj/,$(notdir $(SRC:.c=.o)))
 CC 			:= cc
-CFLAGS 		:= -Wall -Wextra -Werror -fsanitize=address
+CFLAGS 		:= -Wall -Wextra -Werror -g -fsanitize=address
 MLXFLAGS	:=	-framework OpenGL -framework AppKit
 RM 			:= rm -r
 RMF 		:= rm -rf
@@ -46,7 +46,7 @@ all			: $(NAME)
 
 $(NAME)		: $(OBJ) $(LIBSMLX) $(LIBSLIBFT) $(LIBSGNL)
 			$(CC) $(OBJ) $(LIBS) $(MLXFLAGS) -o $(NAME) -fsanitize=address
-			@echo "\033[1;32m minirt is compiled \033[0m"
+			@echo "\033[1;32m miniRT_bonus is compiled \033[0m"
 
 obj/%.o		: %.c | obj
 			$(CC) $(CFLAGS) $(INCFL) -c $< -o $@

@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 01:11:12 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/10 15:46:37 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ typedef struct s_plane
 {
 	t_point		point;
 	t_vector	normal;
+	double		radius;
 }				t_plane;
 
 typedef struct s_cylinder

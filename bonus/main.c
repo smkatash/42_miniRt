@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:28:22 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/11/07 00:05:29 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/08 18:44:17 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	main(int argv, char **argc)
 
 	fd = get_input_file(argv, argc);
 	scene = NULL;
-	scene = parse_input_set_scene(scene, fd, mlx.mlx);
 	init_window(&mlx);
+	scene = parse_input_set_scene(scene, fd, mlx.mlx);
 	render_image(&mlx, scene);
 	mlx_key_hook(mlx.win, exit_window, &mlx);
 	mlx_hook(mlx.win, 17, (1L << 17), close_window, "Exiting...");

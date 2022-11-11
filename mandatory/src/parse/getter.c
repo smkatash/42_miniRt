@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:10:52 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 01:12:15 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/11 01:18:50 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ double	get_double(const char *str, double min, double max)
 static int	strtoi(char *str, int min, int max)
 {
 	int		num;
+
 
 	num = ft_atoi(str);
 	if (num > INT_MAX || INT_MIN > num)

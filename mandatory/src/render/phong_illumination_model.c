@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 17:11:33 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 01:22:25 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/10 16:37:48 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	*phong_specular(t_scene *scene, t_objlst *lights, t_vector *light_dir,
 {
 	t_vector		v;
 	t_vector		r;
-	const double	ks = 0.15;
-	const double	n = 250;
+	const double	ks = 0.1;
+	const double	n = 50;
 	double			specular;
 
 	multiply_scalar(&v, &scene->ray.direction, -1);

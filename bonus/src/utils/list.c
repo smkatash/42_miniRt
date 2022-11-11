@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:50:06 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 23:02:16 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/10 19:10:32 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ void	push_back(t_objlst **lst, t_objlst *new)
 	return ;
 }
 
+// void	free_textures(t_texture	*texture)
+// {
+// 	if (texture->checkboard)
+// 		free(texture->checkboard);
+// 	if (texture->map)
+// 		free(texture->map);
+// }
+
 void	free_list(t_objlst **lst)
 {
 	t_objlst	*temp;
@@ -69,9 +77,6 @@ void	free_parse_list(t_objlst **lst)
 	{
 		temp = head;
 		head = head->next;
-		//free color
-		//free object
-		//free texture
 		free(temp->object);
 		free(temp);
 	}
