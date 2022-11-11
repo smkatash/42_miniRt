@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:52:21 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/11 01:20:54 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/11 12:53:54 by aiarinov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ int	exit_window(int keycode, t_mlx *mlx)
 	{
 		if (mlx->mlx != NULL)
 			mlx_destroy_window(mlx->mlx, mlx->win);
+		ft_putstr_fd("Exiting...\n", 1);
+		exit(EXIT_SUCCESS);
 	}
-	ft_putstr_fd("Exiting...\n", 1);
-	exit(EXIT_SUCCESS);
+	return (1);
 }
