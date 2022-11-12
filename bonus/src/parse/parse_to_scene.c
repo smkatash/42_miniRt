@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parse_to_scene.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:54:42 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/10 23:17:07 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/11 20:14:47 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
+/**
+ * @brief set elements/objects into the scene
+ * @return scene
+ */
 void	*parse_to_scene(t_scene **scene, t_objlst *object_list, void *mlx)
 {
 	t_parse		*object;

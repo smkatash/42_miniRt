@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   vector_scalar.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:01:33 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 01:23:34 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 00:56:32 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/**
+ * @brief adding scalar to a vector
+ */
 void	*add_scalar(t_vector *new, const t_vector *vec, double t)
 {
 	new->x = vec->x + t;
@@ -20,6 +23,9 @@ void	*add_scalar(t_vector *new, const t_vector *vec, double t)
 	return (new);
 }
 
+/**
+ * @brief subtracting scalar from a vector
+ */
 void	*minus_scalar(t_vector *new, const t_vector *vec, double t)
 {
 	new->x = vec->x - t;
@@ -28,6 +34,9 @@ void	*minus_scalar(t_vector *new, const t_vector *vec, double t)
 	return (new);
 }
 
+/**
+ * @brief multiplying a vector by scalar
+ */
 void	*multiply_scalar(t_vector *new, const t_vector *vec, double t)
 {
 	new->x = vec->x * t;
@@ -36,6 +45,9 @@ void	*multiply_scalar(t_vector *new, const t_vector *vec, double t)
 	return (new);
 }
 
+/**
+ * @brief dividing a vector by scalar
+ */
 void	*divide_scalar(t_vector *new, const t_vector *vec, double t)
 {
 	if (t == 0)

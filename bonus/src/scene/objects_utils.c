@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   objects_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 16:43:52 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/11 02:14:32 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 00:25:57 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/**
+ * @brief sets plane parameters for cylinder
+ * @return plane
+ */
 static t_plane	*cylinder_plane(t_cylinder *cy, t_point	center)
 {
 	t_plane	*plane;
@@ -28,6 +32,9 @@ static t_plane	*cylinder_plane(t_cylinder *cy, t_point	center)
 	return (plane);
 }
 
+/**
+ * @brief sets top plane parameters for cylinder
+ */
 static void	set_cylinder_top(t_scene **scene, t_cylinder *cy, \
 	t_parse *parsed_object, void *mlx)
 {
@@ -44,6 +51,9 @@ static void	set_cylinder_top(t_scene **scene, t_cylinder *cy, \
 	set_texture(new_object, parsed_object, mlx);
 }
 
+/**
+ * @brief sets bottom plane parameters for cylinder
+ */
 static void	set_cylinder_btm(t_scene **scene, t_cylinder *cy, \
 	t_parse *parsed_object, void *mlx)
 {
@@ -63,6 +73,9 @@ static void	set_cylinder_btm(t_scene **scene, t_cylinder *cy, \
 	set_texture(new_object, parsed_object, mlx);
 }
 
+/**
+ * @brief calls top and bottom cap setters for cylinder
+ */
 void	set_cylinder_caps(t_scene **scene, t_cylinder *cy, \
 	t_parse *parsed_object, void *mlx)
 {

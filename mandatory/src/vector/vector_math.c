@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   vector_math.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:16:33 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 01:23:31 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 00:46:00 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/**
+ * @brief adding vectors
+ */
 void	*addition(t_vector *new, const t_vector *u, const t_vector *v)
 {
 	new->x = u->x + v->x;
@@ -20,6 +23,9 @@ void	*addition(t_vector *new, const t_vector *u, const t_vector *v)
 	return (new);
 }
 
+/**
+ * @brief substracting vectors
+ */
 void	*subtraction(t_vector *new, const t_vector *u, const t_vector *v)
 {
 	new->x = u->x - v->x;
@@ -28,6 +34,9 @@ void	*subtraction(t_vector *new, const t_vector *u, const t_vector *v)
 	return (new);
 }
 
+/**
+ * @brief multiplying two vectors
+ */
 void	*multiply(t_vector *new, const t_vector *u, const t_vector *v)
 {
 	new->x = u->x * v->x;
@@ -36,11 +45,19 @@ void	*multiply(t_vector *new, const t_vector *u, const t_vector *v)
 	return (new);
 }
 
+/**
+ * @brief multiplying vectors using Dot Product
+ * @cite a · b = |a| × |b| × cos(θ)
+ */
 double	dot_product(const t_vector *u, const t_vector *v)
 {
 	return ((u->x * v->x) + (u->y * v->y) + (u->z * v->z));
 }
 
+/**
+ * @brief multiplying vectors using Cross Product
+ * @cite a × b = |a| |b| sin(θ) n
+ */
 void	*cross_product(t_vector *new, const t_vector *u, const t_vector *v)
 {
 	new->x = (u->y * v->z) - (u->z * v->y);

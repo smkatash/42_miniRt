@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ambient.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:15:38 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 01:23:08 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/11 21:17:27 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/**
+ * @brief set ambient parameters
+ * @return ambient struct
+ */
 t_ambient	set_ambient(t_objlst *objects)
 {
 	t_parse		*parsed_list;

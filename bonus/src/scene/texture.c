@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 20:52:41 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/11 02:15:29 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 00:28:49 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
+/**
+ * @brief loads xpm image into image struct with mlx
+ */
 static t_xpm_image	*load_image(char *file, void *mlx)
 {
 	t_xpm_image	*img;
@@ -31,6 +34,9 @@ static t_xpm_image	*load_image(char *file, void *mlx)
 	return (img);
 }
 
+/**
+ * @brief sets RGB color texture
+ */
 static void	set_texture_color(t_objlst *objects, t_parse *parsed_object)
 {
 	objects->texture.color = get_int_vector(parsed_object->rgb, 0, 255);
@@ -38,6 +44,9 @@ static void	set_texture_color(t_objlst *objects, t_parse *parsed_object)
 	objects->texture.map = NULL;
 }
 
+/**
+ * @brief sets checkboard parameters
+ */
 static void	set_texture_checkboard(t_objlst *objects, t_parse *parsed_object)
 {
 	objects->texture.color = get_int_vector(parsed_object->rgb, 0, 255);
@@ -53,6 +62,9 @@ static void	set_texture_checkboard(t_objlst *objects, t_parse *parsed_object)
 	objects->texture.map = NULL;
 }
 
+/**
+ * @brief sets bump textures by image loading with mlx ptr
+ */
 static void	set_texture_bummap(t_objlst *objects, t_parse *parsed_object, \
 	void *mlx)
 {
@@ -65,6 +77,9 @@ static void	set_texture_bummap(t_objlst *objects, t_parse *parsed_object, \
 	objects->texture.checkboard = NULL;
 }
 
+/**
+ * @brief sets textures according to texture type
+ */
 void	set_texture(t_objlst *objects, t_parse *parsed_object, void *mlx)
 {
 	if (parsed_object->text_type == COLOR)

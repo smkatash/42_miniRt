@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:52:21 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/11 12:55:11 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/11/12 01:25:08 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
+/**
+ * @brief print into fd error message, exit
+ */
 void	error_message(char *str)
 {
 	ft_putstr_fd("Error\n", 2);
@@ -19,12 +22,18 @@ void	error_message(char *str)
 	exit(EXIT_FAILURE);
 }
 
+/**
+ * @brief set perror, exit
+ */
 void	error(void)
 {
 	perror("Error\n");
 	exit(EXIT_FAILURE);
 }
 
+/**
+ * @brief initialize mlx window and image
+ */
 void	init_window(t_mlx *mlx)
 {
 	mlx->mlx = mlx_init();
@@ -34,12 +43,18 @@ void	init_window(t_mlx *mlx)
 	mlx->win = mlx_new_window(mlx->mlx, WIN_WIDTH, WIN_HEIGHT, "miniRT_bonus");
 }
 
+/**
+ * @brief close mlx window
+ */
 int	close_window(char *message)
 {
 	ft_putstr_fd(message, 1);
 	exit(EXIT_SUCCESS);
 }
 
+/**
+ * @brief exit mlx window on ESC key code
+ */
 int	exit_window(int keycode, t_mlx *mlx)
 {
 	(void)mlx;

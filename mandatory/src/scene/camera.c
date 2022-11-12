@@ -3,20 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:11:40 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 01:23:11 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 00:17:06 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/**
+ * @brief converts fov to radians
+ * @cite Radians = Degrees × π/180°.
+ * @return double 
+ */
 static double	degree_to_radian(double degree)
 {
 	return (degree * M_PI / 180);
 }
 
+/**
+ * @brief sets camera parameters
+ * @cite Virtual viewport through which to pass scene rays, 
+ * it's aspect ratio should be the same as our rendered image,
+ * lower_left_corner = origin - horizontal/2 - vertical/2 - vec3(0, 0, focal_length)
+ * @return camera struct
+ */
 static t_camera
 	init_camera(t_screen *screen, t_point origin, t_vector direction,
 			double h_fov)
@@ -41,6 +53,10 @@ static t_camera
 	return (camera);
 }
 
+/**
+ * @brief gest camera parameters
+ * @return camera struct
+ */
 t_camera	set_camera(t_scene *scene, t_objlst *objects)
 {
 	t_parse		*parsed_list;

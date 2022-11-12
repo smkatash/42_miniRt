@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   objects.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:06:55 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/10 23:19:19 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 00:24:03 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
+/**
+ * @brief sets sphere parameters
+ * @return sphere
+ */
 static t_sphere	*set_sphere(t_parse *parsed_objects)
 {
 	t_sphere	*sphere;
@@ -28,6 +32,10 @@ static t_sphere	*set_sphere(t_parse *parsed_objects)
 	return (sphere);
 }
 
+/**
+ * @brief sets plane parameters
+ * @return plane
+ */
 static t_plane	*set_plane(t_parse *parsed_objects)
 {
 	t_plane		*plane;
@@ -44,6 +52,10 @@ static t_plane	*set_plane(t_parse *parsed_objects)
 	return (plane);
 }
 
+/**
+ * @brief sets cone parameters
+ * @return cone
+ */
 static t_cone	*set_cone(t_parse *parsed_objects)
 {
 	t_cone	*cone;
@@ -62,6 +74,10 @@ static t_cone	*set_cone(t_parse *parsed_objects)
 	return (cone);
 }
 
+/**
+ * @brief sets cylinder parameters
+ * @return cylinder
+ */
 static t_cylinder	*set_cylinder(t_parse *parsed_objects)
 {
 	t_cylinder	*cylinder;
@@ -80,6 +96,10 @@ static t_cylinder	*set_cylinder(t_parse *parsed_objects)
 	return (cylinder);
 }
 
+/**
+ * @brief sets object parameters according to object types
+ * @return scene with objects
+ */
 void	*set_objects(t_scene **scene, t_objlst *object_list, void *mlx)
 {
 	t_parse		*parsed_object;

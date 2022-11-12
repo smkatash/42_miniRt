@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:02:36 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 23:00:46 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/11 20:13:09 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
+/**
+ * @brief allocates memory for parse list
+ * @return parse list
+ */
 t_parse	*new_parse_list(void)
 {
 	t_parse		*lst;
@@ -22,6 +26,10 @@ t_parse	*new_parse_list(void)
 	return (lst);
 }
 
+/**
+ * @brief frees memory of parse list
+ * @return 
+ */
 void	free_parse_content(t_parse *parse)
 {
 	if (parse->ident != NULL)
@@ -48,6 +56,10 @@ void	free_parse_content(t_parse *parse)
 		free(parse->KSN);
 }
 
+/**
+ * @brief frees parse list of textures
+ * @return 
+ */
 void	free_parse_texture(t_parse *parse)
 {
 	if (parse->ident != NULL)
@@ -64,6 +76,10 @@ void	free_parse_texture(t_parse *parse)
 		free(parse->xheight);
 }
 
+/**
+ * @brief frees array of strings
+ * @return 
+ */
 t_parse	*free_split(char **str)
 {
 	int		idx;

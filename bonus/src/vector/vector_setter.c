@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   vector_setter.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:31:25 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 23:02:38 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 01:01:08 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
+/**
+ * @brief sets coordinates of a vector
+ */
 void	vector_setter(t_vector *vec, double x, double y, double z)
 {
 	vec->x = x;
@@ -19,6 +22,9 @@ void	vector_setter(t_vector *vec, double x, double y, double z)
 	vec->z = z;
 }
 
+/**
+ * @brief sets coordinates of a vector to upper direction
+ */
 static t_vector	*vector_up(t_vector *vec)
 {
 	if (equal(vec, &(t_vector){0, 1, 0}))
@@ -28,12 +34,13 @@ static t_vector	*vector_up(t_vector *vec)
 	return (&(t_vector){0, 1, 0});
 }
 
+/**
+ * @brief resets coordinates by unit vector from its cross product
+ */
 void	coordinates_set(t_vector *u, t_vector *v, t_vector *w)
 {
 	t_vector	temp;
 
-	cross_product(&temp, vector_up(w), w);
-	unit_vector(u, &temp);
-	cross_product(&temp, w, u);
-	unit_vector(v, &temp);
+	unit_vector(u, cross_product(&temp, vector_up(*w), w));
+	unit_vector(v, cross_product(&temp, w, u));
 }

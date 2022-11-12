@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   scene.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:59:46 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 01:23:19 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/11 21:13:48 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/**
+ * @brief defines parameters of screen
+ * @return screen struct
+ */
 static t_screen	set_screen(int width, int height)
 {
 	t_screen	screen;
@@ -22,6 +26,10 @@ static t_screen	set_screen(int width, int height)
 	return (screen);
 }
 
+/**
+ * @brief initializes scene
+ * @return scene struct
+ */
 t_scene	*set_scene(int width, int height)
 {
 	t_scene	*scene;

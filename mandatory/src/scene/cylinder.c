@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 16:43:52 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/10 17:44:14 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 00:30:20 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/**
+ * @brief sets plane parameters for cylinder
+ * @return plane
+ */
 static t_plane	*cylinder_plane(t_point center, t_vector dir, double radius)
 {
 	t_plane	*plane;
@@ -25,6 +29,9 @@ static t_plane	*cylinder_plane(t_point center, t_vector dir, double radius)
 	return (plane);
 }
 
+/**
+ * @brief sets top plane parameters for cylinder
+ */
 static void	set_cylinder_top(t_scene *scene, t_cylinder *cy, t_color color)
 {
 	t_objlst	*new_object;
@@ -40,6 +47,9 @@ static void	set_cylinder_top(t_scene *scene, t_cylinder *cy, t_color color)
 	new_object->color = color;
 }
 
+/**
+ * @brief sets bottom plane parameters for cylinder
+ */
 static void	set_cylinder_btm(t_scene *scene, t_cylinder *cy, t_color color)
 {
 	t_objlst	*new_object;
@@ -58,6 +68,10 @@ static void	set_cylinder_btm(t_scene *scene, t_cylinder *cy, t_color color)
 	new_object->color = color;
 }
 
+/**
+ * @brief sets cylinder parameters
+ * @return cylinder
+ */
 void	*set_cylinder(t_scene *scene, t_objlst *objects)
 {
 	t_objlst	*new_objects;

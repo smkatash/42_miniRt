@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 23:00:59 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/11 20:57:03 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
+/**
+ * @brief parses object types from file descriptor 
+ * @return parsed list
+ */
 static void	parse_element_type(t_parse *lst, char **str)
 {
 	int		i;
@@ -19,8 +23,6 @@ static void	parse_element_type(t_parse *lst, char **str)
 	lst->ident = str[0];
 	lst->type = element_type_set(str[0]);
 	i = 1;
-	if (lst->type == NA)
-		error_message("Invalid element type.\n");
 	if (scan_elements(lst->type, str) == false)
 		error_message("Invalid element type.\n");
 	if (valid_type(lst->type, POINT))
@@ -38,6 +40,10 @@ static void	parse_element_type(t_parse *lst, char **str)
 	parse_texture(lst, str, i);
 }
 
+/**
+ * @brief parses line from file descriptor
+ * @return parsed list
+ */
 static void	*parse_elements(char **line)
 {
 	t_parse		*lst;
@@ -59,6 +65,10 @@ static void	*parse_elements(char **line)
 	return (lst);
 }
 
+/**
+ * @brief parses line from file descriptor
+ * @return object list
+ */
 static void	parse_line(char *line, t_parse *plist, t_objlst **objects)
 {
 	if (line[0] != '\n')
@@ -70,6 +80,10 @@ static void	parse_line(char *line, t_parse *plist, t_objlst **objects)
 	}
 }
 
+/**
+ * @brief parses line from file descriptor
+ * @return object list
+ */
 void	*parse_input_file(t_objlst **objects, int fd)
 {
 	t_parse	*parsed_lst;
@@ -89,22 +103,24 @@ void	*parse_input_file(t_objlst **objects, int fd)
 			parse_line(line, parsed_lst, objects);
 		}
 		else
-		{
-			free(line);
 			bytes_read = 0;
-		}
 	}
-	if (!elements_valid_count(*objects))
-		error_message("Wrong input data: ambient, light and camera.\n");
+	free(line);
 	return (*objects);
 }
 
+/**
+ * @brief parses, sets object list to scene
+ * @return object list
+ */
 t_scene	*parse_input_set_scene(t_scene *scene, int fd, void	*mlx)
 {
 	t_objlst	*object_list;
 
 	object_list = NULL;
 	parse_input_file(&object_list, fd);
+	if (elements_valid_count(object_list) == false)
+		error_message("Wrong input data: ambient, light and camera.\n");
 	parse_to_scene(&scene, object_list, mlx);
 	free_parse_list(&object_list);
 	return (scene);

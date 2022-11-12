@@ -1,17 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   object.c                                           :+:      :+:    :+:   */
+/*   plane_sphere.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:06:55 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/10 16:44:12 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 00:22:20 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/**
+ * @brief sets sphere parameters
+ * @return scene with objects list
+ */
 void	*set_sphere(t_scene *scene, t_objlst *objects)
 {
 	t_objlst	*new_objects;
@@ -35,6 +39,10 @@ void	*set_sphere(t_scene *scene, t_objlst *objects)
 	return (scene);
 }
 
+/**
+ * @brief sets plane parameters
+ * @return scene with objects list
+ */
 void	*set_plane(t_scene *scene, t_objlst *objects)
 {
 	t_objlst	*new_objects;

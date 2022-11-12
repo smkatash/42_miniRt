@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   getter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:10:52 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 23:00:38 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/11 20:12:07 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
+/**
+ * @brief checks .rt format, opens a filepath
+ * @return a file descriptor
+ */
 int	get_input_file(int argv, char **argc)
 {
 	char	*format;
@@ -34,6 +38,10 @@ int	get_input_file(int argv, char **argc)
 	return (fd);
 }
 
+/**
+ * @brief converts a string to float, verifies limit range min/max
+ * @return float
+ */
 double	get_double(const char *str, double min, double max)
 {
 	double	num;
@@ -54,6 +62,10 @@ double	get_double(const char *str, double min, double max)
 	return (num);
 }
 
+/**
+ * @brief converts a string to integer, verifies limit range min/max
+ * @return integer
+ */
 static int	strtoi(char *str, int min, int max)
 {
 	int		num;
@@ -66,6 +78,11 @@ static int	strtoi(char *str, int min, int max)
 	return (num);
 }
 
+/**
+ * @brief converts a string to integer with delimiter separation, 
+ * verifies limit range min/max, converts color to vector format
+ * @return color (vector format)
+ */
 struct s_vec3	get_int_vector(char *str, int min, int max)
 {
 	struct s_vec3	new_vector;
@@ -85,6 +102,11 @@ struct s_vec3	get_int_vector(char *str, int min, int max)
 	return (new_vector);
 }
 
+/**
+ * @brief converts a string to integer with delimiter separation, 
+ * verifies limit range min/max, converts color to vector format
+ * @return color (vector format)
+ */
 struct s_vec3	get_double_vector(char *str, double min, double max)
 {
 	struct s_vec3	new_vector;

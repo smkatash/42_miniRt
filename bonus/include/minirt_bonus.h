@@ -6,12 +6,12 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:33:12 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/11/08 16:46:40 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/11 21:10:16 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#ifndef MINIRT_BONUS_H
+# define MINIRT_BONUS_H
 
 # include <unistd.h>
 # include <stdlib.h>

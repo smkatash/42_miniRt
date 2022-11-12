@@ -6,12 +6,16 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 20:49:58 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/08 15:49:28 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/11 21:09:55 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
+/**
+ * @brief sets texture type based on key word
+ * @return texture type
+ */
 static t_etexture	object_texture(char **str, int len, int i)
 {
 	if (ft_strcmp(str[i], "-rgb") == 0)
@@ -32,6 +36,10 @@ static t_etexture	object_texture(char **str, int len, int i)
 	return (UNDEF);
 }
 
+/**
+ * @brief sets RGB if 1 parameter after index
+ * @return texture type
+ */
 static t_etexture	color_texture(int len, int i)
 {
 	if (len == i + 1)
@@ -39,6 +47,10 @@ static t_etexture	color_texture(int len, int i)
 	return (UNDEF);
 }
 
+/**
+ * @brief defines texture type based on object types
+ * @return texture type
+ */
 static t_etexture	get_texture_type(t_parse *lst, char **str, int i)
 {
 	int		line_len;
@@ -57,6 +69,9 @@ static t_etexture	get_texture_type(t_parse *lst, char **str, int i)
 	return (COLOR);
 }
 
+/**
+ * @brief sets texture into parse list according to type
+ */
 static void	set_texture_type(t_parse *lst, char **str, int i)
 {
 	lst->texture_ident = str[i++];
@@ -82,6 +97,10 @@ static void	set_texture_type(t_parse *lst, char **str, int i)
 	lst->KSN = str[i++];
 }
 
+/**
+ * @brief gets texture from parse list,
+ * sets textures according to object type
+ */
 void	parse_texture(t_parse *lst, char **str, int i)
 {
 	if (lst->type == CAMERA)

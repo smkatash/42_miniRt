@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parse_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:02:36 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 01:12:30 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/11 20:12:49 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/**
+ * @brief allocates memory for parse list
+ * @return parse list
+ */
 t_parse	*new_parse_list(void)
 {
 	t_parse		*lst;
@@ -22,6 +26,10 @@ t_parse	*new_parse_list(void)
 	return (lst);
 }
 
+/**
+ * @brief frees memory of parse list
+ * @return 
+ */
 void	free_parse_content(t_parse *parse)
 {
 	if (parse->ident != NULL)
@@ -42,6 +50,10 @@ void	free_parse_content(t_parse *parse)
 		free(parse->rgb);
 }
 
+/**
+ * @brief frees array of strings
+ * @return 
+ */
 t_parse	*free_split(char **str)
 {
 	int		idx;

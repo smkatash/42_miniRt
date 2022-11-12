@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   vector_matrix_tbn.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:16:33 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 23:02:27 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 01:18:44 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
+/**
+ * @brief transpose and T B N Matrix construction process
+ */
 void	*matrix_tbn(t_matrix *m, t_vector *v1, t_vector *v2, t_vector *v3)
 {
 	m[0][0] = v1->x;
@@ -25,6 +28,17 @@ void	*matrix_tbn(t_matrix *m, t_vector *v1, t_vector *v2, t_vector *v3)
 	m[2][2] = v3->z;
 	return (m);
 }
+
+/**
+ * @brief transpose and T B N Matrix construction process
+ * @cite map a point from uv space to three-dimensional space, 
+ * where TB is used as a base vector, and the growth of u and v in uv space 
+ * is used as control parameters, assuming that there is a point p in the triangle
+ * _________________________________________
+ * Normal: Up, perperndicular to surface
+ * Tangent: parallel to surface, perpendicular to Normal
+ * Bitangent: Perpendicular to Normal and Tangent
+ */
 
 void	*transpose(t_vector *new, t_matrix *m, t_vector *v)
 {

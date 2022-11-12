@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 01:12:50 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/11 20:56:54 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/**
+ * @brief parses object types from file descriptor 
+ * @return parsed list
+ */
 static void	parse_element_type(t_parse *lst, char **str)
 {
 	int		i;
@@ -19,8 +23,6 @@ static void	parse_element_type(t_parse *lst, char **str)
 	lst->ident = str[0];
 	lst->type = element_type_set(str[0]);
 	i = 1;
-	if (lst->type == NA)
-		error_message("Invalid element type.\n");
 	if (scan_elements(lst->type, str) == false)
 		error_message("Invalid element type.\n");
 	if (valid_type(lst->type, POINT))
@@ -39,45 +41,55 @@ static void	parse_element_type(t_parse *lst, char **str)
 		lst->rgb = str[i++];
 }
 
+/**
+ * @brief parses line from file descriptor
+ * @return parsed list
+ */
 static void	*parse_elements(char **line)
 {
-	t_parse		*lst;
-	char		*whitespace;
+	t_parse		*p_object;
 	char		**split_array;
 
-	lst = new_parse_list();
-	whitespace = " \t\v\f\r";
-	split_array = ft_split_set(*line, whitespace);
+	p_object = new_parse_list();
+	split_array = ft_split_set(*line, " \t\v\f\r");
 	if (!split_array)
 		error_message("Parse error...\n");
-	else if (!split_array[0])
+	else if (split_array[0] == NULL)
 	{
-		free(lst);
+		free(p_object);
 		return (free_split(split_array));
 	}
-	parse_element_type(lst, split_array);
+	parse_element_type(p_object, split_array);
 	free(split_array);
-	return (lst);
+	return (p_object);
 }
 
-static void	parse_line(char *line, t_parse *plist, t_objlst **objects)
+/**
+ * @brief parses line from file descriptor
+ * @return object list
+ */
+static void	parse_line(char *line, t_parse *data, t_objlst **objects)
 {
 	if (line[0] != '\n')
 	{
-		plist = parse_elements(&line);
-		if (plist)
-			push_back(objects, create_list(plist, plist->type,
+		data = parse_elements(&line);
+		if (data)
+			push_back(objects, create_list(data, data->type,
 					(t_color){0, 0, 0}));
 	}
 }
 
+/**
+ * @brief parses line from file descriptor
+ * @return object list
+ */
 void	*parse_input_file(t_objlst **objects, int fd)
 {
-	t_parse	*parsed_lst;
+	t_parse	*data;
 	char	*line;
 	int		bytes_read;
 
-	parsed_lst = NULL;
+	data = NULL;
 	bytes_read = 1;
 	while (bytes_read != 0)
 	{
@@ -87,23 +99,27 @@ void	*parse_input_file(t_objlst **objects, int fd)
 			bytes_read = ft_strlen(line);
 			if (bytes_read == 0)
 				error_message("Could not read the file\n");
-			parse_line(line, parsed_lst, objects);
+			parse_line(line, data, objects);
 		}
 		else
 			bytes_read = 0;
 	}
 	free(line);
-	if (elements_valid_count(*objects) == false)
-		error_message("Wrong input data: ambient, light and camera.\n");
 	return (*objects);
 }
 
+/**
+ * @brief parses, sets object list to scene
+ * @return object list
+ */
 t_scene	*parse_input_set_scene(t_scene *scene, int fd)
 {
 	t_objlst	*object_list;
 
 	object_list = NULL;
 	parse_input_file(&object_list, fd);
+	if (elements_valid_count(object_list) == false)
+		error_message("Wrong input data: ambient, light and camera.\n");
 	parse_to_scene(&scene, object_list);
 	free_parse_list(&object_list);
 	return (scene);

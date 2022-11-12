@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:09:42 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 01:23:14 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 00:20:25 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/**
+ * @brief sets light parameters
+ * @return scene with light list
+ */
 void	*set_light(t_scene *scene, t_objlst *objects)
 {
 	t_objlst	*new_objects;
