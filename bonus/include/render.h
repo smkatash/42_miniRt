@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 07:05:15 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 12:15:13 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 15:05:07 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ bool			hit_cone(t_objlst *objects, t_ray *ray, t_record *record);
 void			set_face_normal(t_ray *ray, t_record *record);
 double			nearest_root(t_equation *eq, int range);
 double			fmod_min(double t);
+double			fmod_dot(t_vector *v, t_vector *u);
+void			set_hit_record(t_record *record, t_cone *cone);
 
 // Texture
 void			set_hit_texture(t_record *record, t_texture *texture);

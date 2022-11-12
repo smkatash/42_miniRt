@@ -6,37 +6,11 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:25:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 14:47:17 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/12 14:56:34 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt_bonus.h"
-
-/**
- * @brief computes the floating-point remainder of the division operation
- * for scalar
- */
-double	fmod_min(double t)
-{
-	t = fmod(t, 1);
-	if (t < 0)
-		return (t + 1);
-	return (t);
-}
-
-/**
- * @brief computes the floating-point remainder of the division operation
- * for vectors
- */
-static double	fmod_dot(t_vector *v, t_vector *u)
-{
-	double	t;
-
-	t = fmod(dot_product(v, u), 1);
-	if (t < 0)
-		return (t + 1);
-	return (t);
-}
 
 /**
  * @brief planar UV mapping
@@ -63,7 +37,21 @@ static void	set_hit_record(t_record *record, t_plane *plane)
 	record->normal = plane->normal;
 }
 
+/**
+ * @brief checks plane to radius of a cylinder
+ */
+static bool	cylinder_plane(t_record *record, t_plane *plane)
+{
+	t_vector	temp;
 
+	if (plane->radius != INFINITY)
+	{
+		subtraction(&temp, &plane->point, &record->point);
+		if (length(&temp) > plane->radius)
+			return (false);
+	}
+	return (true);
+}
 
 /**
  * @brief plane-ray intersection
@@ -91,12 +79,8 @@ bool	hit_plane(t_objlst *objects, t_ray *ray, t_record *record)
 		return (false);
 	record->t = root;
 	ray_at(&record->point, ray, root);
-	if (plane->radius != INFINITY)
-	{
-		subtraction(&temp, &plane->point, &record->point);
-		if (length(&temp) > plane->radius)
-			return (false);
-	}
+	if (cylinder_plane(record, plane) == false)
+		return (false);
 	set_hit_record(record, plane);
 	set_face_normal(ray, record);
 	set_plane_uv(record);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
+#    By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 11:29:40 by aiarinov          #+#    #+#              #
-#    Updated: 2022/11/11 01:21:32 by kanykei          ###   ########.fr        #
+#    Updated: 2022/11/12 14:55:47 by ktashbae         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ parse_list.c parse_to_scene.c parse_utils.c parse.c parse_texture.c getter.c \
 ambient.c camera.c light.c objects.c objects_utils.c scene.c texture.c \
 vector_math.c vector_scalar.c vector_setter.c vector_utils.c vector_matrix_tbn.c \
 color.c hittable.c ray.c render.c hit_cylinder.c hit_plane.c hit_sphere.c hit_cone.c \
-illumination.c phong_illumination_model.c  \
+hit_utils.c illumination.c phong_illumination_model.c  \
 texture_checkerboard.c texture_map.c utils.c list.c clamp.c
 
 # ================================ Flags ===================================== #

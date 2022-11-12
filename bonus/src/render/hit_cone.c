@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cone.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 17:24:31 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 12:29:02 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 15:04:38 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,21 @@ static void	set_cone_uv(t_record *p, t_cone *cone)
 	p->v = fmod_min(h);
 }
 
-/**
- * @brief gets plane parameters into record
- */
-static void	set_hit_record(t_record *record, t_cone *cone)
+static double	update_record(t_record *record, t_ray *ray, \
+	t_cone *cone, double root)
 {
-	record->ks = cone->ks;
-	record->kd = cone->kd;
-	record->ksn = cone->ksn;
-	record->objects = cone;
+	t_vector	temp;
+	double		point;
+
+	record->t = root;
+	set_hit_record(record, cone);
+	ray_at(&record->point, ray, root);
+	subtraction(&temp, &record->point, &cone->center);
+	point = dot_product(&temp, &cone->normal);
+	if (point > cone->height || point < 0)
+		return (NAN);
+	point = cone->height - point;
+	return (point);
 }
 
 /**
@@ -54,14 +60,9 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 	if (isnan(root) || root > record->tmax || root < record->tmin)
 		return (false);
 	cone = (t_cone *)objects->object;
-	record->t = root;
-	set_hit_record(record, cone);
-	ray_at(&record->point, ray, root);
-	subtraction(&temp, &record->point, &cone->center);
-	point = dot_product(&temp, &cone->normal);
-	if (point > cone->height || point < 0)
+	point = update_record(record, ray, cone, root);
+	if (isnan(point))
 		return (false);
-	point = cone->height - point;
 	subtraction(&temp, &record->point, &cone->center);
 	multiply_scalar(&record->normal, &cone->normal, \
 		dot_product(&temp, &cone->normal));
