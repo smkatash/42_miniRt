@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   typedef.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 12:33:47 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 14:44:13 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ typedef struct s_parse
 	char		*diameter;
 	char		*height;
 	char		*fov;
-	char		*KD;
-	char		*KS;
-	char		*KSN;
+	char		*kd;
+	char		*ks;
+	char		*ksn;
 	t_etexture	text_type;
 	char		*rgb;
 	char		*texture_ident;

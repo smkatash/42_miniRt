@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:06:55 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 00:24:03 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/12 14:45:15 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static t_sphere	*set_sphere(t_parse *parsed_objects)
 	sphere->center = get_double_vector(parsed_objects->point, 0, 0);
 	sphere->radius = get_double(parsed_objects->diameter, 0, INFINITY) / 2;
 	sphere->radius2 = sphere->radius * sphere->radius;
-	sphere->kd = get_double(parsed_objects->KD, 0, 1);
-	sphere->ks = get_double(parsed_objects->KS, 0, 1);
-	sphere->ksn = get_double(parsed_objects->KSN, 0, INFINITY);
+	sphere->kd = get_double(parsed_objects->kd, 0, 1);
+	sphere->ks = get_double(parsed_objects->ks, 0, 1);
+	sphere->ksn = get_double(parsed_objects->ksn, 0, INFINITY);
 	return (sphere);
 }
 
@@ -46,9 +46,9 @@ static t_plane	*set_plane(t_parse *parsed_objects)
 	plane->point = get_double_vector(parsed_objects->point, 0, 0);
 	plane->normal = get_double_vector(parsed_objects->nor_vec, -1, 1);
 	plane->radius = INFINITY;
-	plane->kd = get_double(parsed_objects->KD, 0, 1);
-	plane->ks = get_double(parsed_objects->KS, 0, 1);
-	plane->ksn = get_double(parsed_objects->KSN, 0, INFINITY);
+	plane->kd = get_double(parsed_objects->kd, 0, 1);
+	plane->ks = get_double(parsed_objects->ks, 0, 1);
+	plane->ksn = get_double(parsed_objects->ksn, 0, INFINITY);
 	return (plane);
 }
 
@@ -68,9 +68,9 @@ static t_cone	*set_cone(t_parse *parsed_objects)
 	cone->radius = get_double(parsed_objects->diameter, 0, INFINITY) / 2;
 	cone->radius2 = cone->radius * cone->radius;
 	cone->height = get_double(parsed_objects->height, 0, INFINITY);
-	cone->kd = get_double(parsed_objects->KD, 0, 1);
-	cone->ks = get_double(parsed_objects->KS, 0, 1);
-	cone->ksn = get_double(parsed_objects->KSN, 0, INFINITY);
+	cone->kd = get_double(parsed_objects->kd, 0, 1);
+	cone->ks = get_double(parsed_objects->ks, 0, 1);
+	cone->ksn = get_double(parsed_objects->ksn, 0, INFINITY);
 	return (cone);
 }
 
@@ -90,9 +90,9 @@ static t_cylinder	*set_cylinder(t_parse *parsed_objects)
 	cylinder->radius = get_double(parsed_objects->diameter, 0, INFINITY) / 2;
 	cylinder->radius2 = cylinder->radius * cylinder->radius;
 	cylinder->height = get_double(parsed_objects->height, 0, INFINITY);
-	cylinder->kd = get_double(parsed_objects->KD, 0, 1);
-	cylinder->ks = get_double(parsed_objects->KS, 0, 1);
-	cylinder->ksn = get_double(parsed_objects->KSN, 0, INFINITY);
+	cylinder->kd = get_double(parsed_objects->kd, 0, 1);
+	cylinder->ks = get_double(parsed_objects->ks, 0, 1);
+	cylinder->ksn = get_double(parsed_objects->ksn, 0, INFINITY);
 	return (cylinder);
 }
 
