@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 11:33:12 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/11/12 12:35:34 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 19:41:00 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # include "scene.h"
 
 # define EPSILON 	1e-6
-# define WIN_WIDTH	800
-# define WIN_HEIGHT	800
+# define WIN_WIDTH	1000
+# define WIN_HEIGHT	1000
 # define ESC		53
 
 void	error_message(char *str);
