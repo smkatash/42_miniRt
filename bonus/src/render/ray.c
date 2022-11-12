@@ -6,18 +6,25 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 14:16:08 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 00:46:46 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 03:40:55 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
+/**
+ * @brief initializes record info
+ */
 static void	init_record(t_record *record)
 {
 	record->tmin = EPSILON;
 	record->tmax = INFINITY;
 }
 
+/**
+ * @brief colors hit point
+ * @cite  blendedValue=(1−𝑡)⋅startValue+𝑡⋅endValue
+ */
 void	*color_ray(t_color *pxl, t_scene *scene)
 {
 	double	t;
@@ -38,7 +45,10 @@ void	*color_ray(t_color *pxl, t_scene *scene)
 	return (pxl);
 }
 
-// Formula: orig + t*dir
+/**
+ * @brief gets point of a hit
+ * @cite  𝐏(𝑡)=𝐀+𝑡𝐛
+ */
 void	*ray_at(t_vector *point, t_ray *ray, double t)
 {
 	multiply_scalar(point, &ray->direction, t);
@@ -46,7 +56,11 @@ void	*ray_at(t_vector *point, t_ray *ray, double t)
 	return (point);
 }
 
-// Formula: ray(origin, lower_left_corner + s*horizontal + t*vertical - origin)
+/**
+ * @brief send ray to a scene
+ * @cite  ray(origin, lower_left_corner + 
+ * s*horizontal + t*vertical - origin)
+ */
 void	*put_ray(t_ray *ray, t_camera *camera, double u, double v)
 {
 	t_vector	temp;

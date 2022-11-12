@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 06:59:57 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/08 16:36:56 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/12 03:09:31 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
+/**
+ * @brief colors pxl of a ray hit
+ * @cite two offsets along the screen sides,
+ * to move the ray endpoint across the screen
+ */
 static void	ray_trace(t_mlx *mlx, t_scene *scene, int h, int w)
 {
 	double			u;
@@ -28,6 +33,9 @@ static void	ray_trace(t_mlx *mlx, t_scene *scene, int h, int w)
 	put_color(&mlx->img, w, WIN_HEIGHT - 1 - h, pxl);
 }
 
+/**
+ * @brief frees scene
+ */
 static void	free_scene(t_scene *scene)
 {
 	free_list(&scene->lights);
@@ -35,6 +43,9 @@ static void	free_scene(t_scene *scene)
 	free(scene);
 }
 
+/**
+ * @brief sends the ray through the scene
+ */
 void	render_image(t_mlx *mlx, t_scene *scene)
 {
 	int	h;

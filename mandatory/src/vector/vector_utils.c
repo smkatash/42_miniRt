@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   vector_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:25:11 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 01:07:12 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/12 03:09:58 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt_bonus.h"
+#include "minirt.h"
 
 /**
  * @brief checks of vectors are equal

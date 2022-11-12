@@ -6,12 +6,15 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 08:45:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 01:23:01 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 03:29:09 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/**
+ * @brief clamps the value x to the range [min,max]
+ */
 static unsigned int	clamp(double c)
 {
 	unsigned int	pxl_clr;
@@ -22,6 +25,13 @@ static unsigned int	clamp(double c)
 	return (pxl_clr);
 }
 
+/**
+ * @brief encode RGB colors
+ * @cite int RGB = (alpha << 24);
+ * RGB = RGB | (red << 16);
+ * RGB = RGB | (green << 8);
+ * RGB = RGB | (blue);
+ */
 unsigned int	color(t_color *pixel_color)
 {
 	unsigned int	color;
@@ -32,6 +42,9 @@ unsigned int	color(t_color *pixel_color)
 	return (color);
 }
 
+/**
+ * @brief sets color by modifying image data
+ */
 void	put_color(t_image *image, int h, int w, unsigned int color)
 {
 	char	*dst;

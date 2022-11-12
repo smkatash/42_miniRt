@@ -6,12 +6,16 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 17:11:33 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/10 16:37:48 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 03:55:13 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/**
+ * @brief checks if shadow hits object
+ * @return true/false
+ */
 bool	overcast_shadow(t_scene *scene, t_vector *light_dir, double t)
 {
 	t_ray		shadow;
@@ -27,7 +31,10 @@ bool	overcast_shadow(t_scene *scene, t_vector *light_dir, double t)
 	return (false);
 }
 
-// diffuse = kd * (N dot L)
+/**
+ * @brief calculates diffuse component
+ * @cite diffuse = kd * (N dot L)
+ */
 void	*lambertian_diffuse(t_scene *scene, t_objlst *lights,
 						t_vector *light_dir, t_color *diff_comp)
 {
@@ -38,6 +45,10 @@ void	*lambertian_diffuse(t_scene *scene, t_objlst *lights,
 	return (diff_comp);
 }
 
+/**
+ * @brief calculates reflectance component
+ * @cite R = 2(N⋅L)N−L.
+ */
 static void	*reflect(t_vector *R, t_vector *L, t_vector *N)
 {
 	multiply_scalar(R, N, 2 * dot_product(N, L));
@@ -45,8 +56,10 @@ static void	*reflect(t_vector *R, t_vector *L, t_vector *N)
 	return (R);
 }
 
-// specular = Ks * (R dot V)^n
-// R = 2(N⋅L)N−L.
+/**
+ * @brief calculates specular component
+ * @cite specular = Ks * (R dot V)^n
+ */
 void	*phong_specular(t_scene *scene, t_objlst *lights, t_vector *light_dir,
 						t_color *spec_com)
 {

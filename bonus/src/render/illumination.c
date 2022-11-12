@@ -6,20 +6,28 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 16:26:28 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 00:48:44 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 03:55:05 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
-//   N	= surface normal
-//   L     = unit vector between point and light
-//   V	= unit vector between point and view
-//   R     = light reflection unit vector (mirror of L about N)
-//   Labertian diffuse = Kd * (N dot L)
-//   Phong spectral reflectivity: diffuse + Ks * (R dot V)^n
-//   Phong lighting equation:
-//     Kd * (N dot L) + Ks * (R dot V)^n
+/**
+ * @cite  
+ * N = surface normal
+ *  L = unit vector between point and light
+ * V = unit vector between point and view
+ * R = light reflection unit vector (mirror of L about N)
+ * Labertian diffuse = Kd * (N dot L)
+ * Phong spectral reflectivity: diffuse + Ks * (R dot V)^n
+ * Phong lighting equation:
+ * Kd * (N dot L) + Ks * (R dot V)^n
+ */ 
+
+/**
+ * @brief colors local illumination of points on a surface
+ * @cite SP=diffuse()∗ Kd + specular()∗Ks.
+ */
 static void	*point_and_light(t_scene *scene, t_objlst *lights, t_color *illum)
 {
 	t_light		*lightning;
@@ -41,6 +49,10 @@ static void	*point_and_light(t_scene *scene, t_objlst *lights, t_color *illum)
 	return (illum);
 }
 
+/**
+ * @brief sets local illumination of points on a surface
+ * @cite SP=diffuse()∗ Kd + specular()∗Ks.
+ */
 void	*phong_model(t_scene *scene, t_color *pxl)
 {
 	t_objlst	*lights;
