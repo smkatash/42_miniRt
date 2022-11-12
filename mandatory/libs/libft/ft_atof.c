@@ -6,52 +6,87 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 01:14:46 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 13:48:04 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/12 19:24:46 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*initial_part(char *ptr, int *sign)
+void	define_fpoint(double *fl, int fpoint)
 {
-	*sign = 1;
-	while (ft_isspace(*ptr))
-		ptr++;
-	if (*ptr == '+')
-		ptr++;
-	if (*ptr == '-')
+	while (fpoint > 0)
 	{
-		*sign = -1;
-		ptr++;
+		*fl *= 10.0;
+		fpoint--;
 	}
-	return (ptr);
+	while (fpoint < 0)
+	{
+		*fl *= 0.1;
+		fpoint++;
+	}
 }
 
-double	ft_atof(const char *s)
+void	define_sign(int ch, char *str, int *fpoint)
 {
-	char	*ptr;
-	int		sign;
-	double	nbr;
-	int		power;
+	int	sign;
+	int	i;
 
-	nbr = 0;
-	ptr = (char *) s;
-	if (!ft_strisfloat(ptr))
-		return (0);
-	ptr = initial_part(ptr, &sign);
-	while (ft_isdigit(*ptr))
+	sign = 1;
+	i = 0;
+	if (ch == 'e' || ch == 'E')
 	{
-		nbr = (nbr * 10) + *ptr - '0';
-		ptr++;
+		ch = *str++;
+		if (ch == '+')
+			ch = *str++;
+		else if (ch == '-')
+		{
+			ch = *str++;
+			sign = -1;
+		}
+		while (ft_isdigit(ch))
+		{
+			i = i * 10 + (ch - '0');
+			ch = *str++;
+		}
+		*fpoint = i * sign;
 	}
-	if (*ptr == '.')
-		ptr++;
-	power = 1;
-	while (*ptr && ft_isdigit(*ptr))
+}
+
+static double	convert(const char *str, double fl, int fpoint, int neg)
+{
+	if (str[0] == '-')
 	{
-		nbr = nbr + ((*ptr - '0') / ft_pow(10, power));
-		power++;
-		ptr++;
+		neg = -1;
+		str++;
 	}
-	return (sign * nbr);
+	while (*str != '\0' && ft_isdigit(*str))
+	{
+		fl = fl * 10.0 + (*str - '0');
+		str++;
+	}
+	if (*str == '.')
+	{
+		str++;
+		while (*str != '\0' && ft_isdigit(*str))
+		{
+			fl = fl * 10.0 + (*str - '0');
+			fpoint = fpoint - 1;
+			str++;
+		}
+	}
+	define_sign(*str, (char *)str, &fpoint);
+	define_fpoint(&fl, fpoint);
+	return (fl * neg);
+}
+
+double	ft_atof(const char *str)
+{
+	double	fl;
+	int		fpoint;
+	int		neg;
+
+	fl = 0.0;
+	fpoint = 0;
+	neg = 1;
+	return (convert(str, fl, fpoint, neg));
 }

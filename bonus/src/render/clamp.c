@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 21:14:37 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 15:26:48 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/12 19:32:12 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,15 @@ double	fmod_min(double t)
 	if (t < 0)
 		return (t + 1);
 	return (t);
+}
+
+/**
+ * @brief gets cone parameters into record
+ */
+void	set_hit_record(t_record *record, t_cone *cone)
+{
+	record->ks = cone->ks;
+	record->kd = cone->kd;
+	record->ksn = cone->ksn;
+	record->objects = cone;
 }

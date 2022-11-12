@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atof.c                                          :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 01:14:46 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 19:24:46 by ktashbae         ###   ########.fr       */
+/*   Created: 2022/11/12 19:21:49 by ktashbae          #+#    #+#             */
+/*   Updated: 2022/11/12 19:24:16 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdio.h>
+
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+	{
+		return (1);
+	}
+	return (0);
+}
 
 void	define_fpoint(double *fl, int fpoint)
 {
@@ -89,4 +98,10 @@ double	ft_atof(const char *str)
 	fpoint = 0;
 	neg = 1;
 	return (convert(str, fl, fpoint, neg));
+}
+
+int main(void)
+{
+	double new = ft_atof("2.1");
+	printf("%f \n", new);
 }
