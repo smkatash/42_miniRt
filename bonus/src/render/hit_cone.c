@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   hit_cone.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 17:24:31 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/08 16:35:59 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/12 12:29:02 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
+/**
+ * @brief cone UV mapping
+ */
 static void	set_cone_uv(t_record *p, t_cone *cone)
 {
 	double		theta;
@@ -20,12 +23,16 @@ static void	set_cone_uv(t_record *p, t_cone *cone)
 
 	coordinates_set(&p->u_dir, &p->v_dir, &cone->normal);
 	subtraction(&temp, &p->point, &cone->center);
-	theta = atan2(-1 * dot_product(&temp, &p->v_dir), dot_product(&temp, &p->u_dir)) + M_PI;
+	theta = atan2(-1 * dot_product(&temp, &p->v_dir), \
+		dot_product(&temp, &p->u_dir)) + M_PI;
 	h = dot_product(&temp, &cone->normal);
 	p->u = theta * M_PI / 2 * 0.5;
 	p->v = fmod_min(h);
 }
 
+/**
+ * @brief gets plane parameters into record
+ */
 static void	set_hit_record(t_record *record, t_cone *cone)
 {
 	record->ks = cone->ks;
@@ -34,6 +41,9 @@ static void	set_hit_record(t_record *record, t_cone *cone)
 	record->objects = cone;
 }
 
+/**
+ * @brief registers hit point and updates record normal
+ */
 static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 					double root)
 {
@@ -53,12 +63,14 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 		return (false);
 	point = cone->height - point;
 	subtraction(&temp, &record->point, &cone->center);
-	multiply_scalar(&record->normal, &cone->normal, dot_product(&temp, &cone->normal));
+	multiply_scalar(&record->normal, &cone->normal, \
+		dot_product(&temp, &cone->normal));
 	addition(&record->normal, &record->normal, &cone->center);
 	subtraction(&record->normal, &record->point, &record->normal);
 	unit_vector(&record->normal, &record->normal);
 	multiply_scalar(&record->normal, &record->normal, point);
-	multiply_scalar(&temp, &cone->normal, (cone->radius * point / cone->height));
+	multiply_scalar(&temp, &cone->normal, \
+		(cone->radius * point / cone->height));
 	addition(&record->normal, &record->normal, &temp);
 	unit_vector(&record->normal, &record->normal);
 	set_face_normal(ray, record);
@@ -67,6 +79,13 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 	return (true);
 }
 
+/**
+ * @brief cone-ray hit equation
+ * @cite
+ * a=(v⋅v)−m(v⋅ĥ )2−(v⋅ĥ )2
+ * b=2[(v⋅w)−m(v⋅ĥ )(w⋅ĥ )−(v⋅ĥ )(w⋅ĥ )
+ * c=(w⋅w)−m(w⋅ĥ )2−(w⋅ĥ )2
+ */
 static void	*intersection(t_equation *eq, t_objlst *objects, t_ray *ray)
 {
 	t_cone		*cone;
@@ -80,13 +99,19 @@ static void	*intersection(t_equation *eq, t_objlst *objects, t_ray *ray)
 	subtraction(&oc, &ray->origin, &cone->center);
 	dir_norm = dot_product(&ray->direction, &cone->normal);
 	dir_oc = dot_product(&ray->direction, &oc);
-	eq->a = length_sqrd(&ray->direction) - (1 + k) * (dir_norm * dir_norm);
-	eq->half_b = dir_oc - (1 + k) * dot_product(&oc, &cone->normal) * dir_norm + k * cone->height * dir_norm;
-	eq->c = length_sqrd(&oc) - (1 + k) * dot_product(&oc, &cone->normal) * dot_product(&oc, &cone->normal) \
-		 - cone->radius2 + 2 * k * cone->height * dot_product(&oc, &cone->normal);
+	eq->a = length_sqrd(&ray->direction) - (1 + k) \
+		* (dir_norm * dir_norm);
+	eq->half_b = dir_oc - (1 + k) * dot_product(&oc, &cone->normal) \
+		* dir_norm + k * cone->height * dir_norm;
+	eq->c = length_sqrd(&oc) - (1 + k) * dot_product(&oc, &cone->normal) \
+		* dot_product(&oc, &cone->normal) - cone->radius2 + \
+			2 * k * cone->height * dot_product(&oc, &cone->normal);
 	return (eq);
 }
 
+/**
+ * @brief cone-ray intersection and hit vefification
+ */
 bool	hit_cone(t_objlst *objects, t_ray *ray, t_record *record)
 {
 	t_equation	eq;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_to_scene.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:54:42 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/11 20:14:47 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/12 12:31:28 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	*parse_to_scene(t_scene **scene, t_objlst *object_list, void *mlx)
 			(*scene)->camera = set_camera(*scene, object_list);
 		else if (object->type == LIGHT)
 			set_light(*scene, object_list);
-		else if (object->type == SPHERE || object->type == PLANE || object->type == CYLINDER || object->type == CONE)
+		else if (object->type == SPHERE || object->type == PLANE \
+			|| object->type == CYLINDER || object->type == CONE)
 			set_objects(scene, object_list, mlx);
 		object_list = object_list->next;
 	}

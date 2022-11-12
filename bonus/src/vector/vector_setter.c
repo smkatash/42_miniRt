@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_setter.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:31:25 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 01:01:08 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/12 12:16:46 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ void	coordinates_set(t_vector *u, t_vector *v, t_vector *w)
 {
 	t_vector	temp;
 
-	unit_vector(u, cross_product(&temp, vector_up(*w), w));
+	unit_vector(u, cross_product(&temp, vector_up(w), w));
 	unit_vector(v, cross_product(&temp, w, u));
 }

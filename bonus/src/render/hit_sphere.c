@@ -3,19 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   hit_sphere.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 15:26:23 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/08 15:53:21 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/12 11:44:23 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
-// 𝑣 = 𝜃 / 𝜋
-// 𝜃=acos(−𝑦)
-// 𝑢 = 𝜙 / 2𝜋
-// 𝜙= atan2(−𝑧,𝑥)+𝜋
+/**
+ * @brief UV texture mapping of a sphere
+ * @cite  
+ * 𝑣 = 𝜃 / 𝜋
+ * 𝜃=acos(−𝑦)
+ * 𝑢 = 𝜙 / 2𝜋
+ * 𝜙= atan2(−𝑧,𝑥)+𝜋
+ */
 void	set_sphere_uv(t_record *p)
 {
 	double	theta;
@@ -28,6 +32,9 @@ void	set_sphere_uv(t_record *p)
 	p->u = phi / (2 * M_PI);
 }
 
+/**
+ * @brief registers hit point and updates record normal
+ */
 static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 					double root)
 {
@@ -50,6 +57,10 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 	return (true);
 }
 
+/**
+ * @brief square-ray hit equation
+ * @cite 𝑡2𝐛⋅𝐛+2𝑡𝐛⋅(𝐀−𝐂)+(𝐀−𝐂)⋅(𝐀−𝐂)−𝑟2=0
+ */
 static void	*intersection(t_equation *eq, t_objlst *objects, t_ray *ray)
 {
 	t_sphere	*sphere;
@@ -63,8 +74,9 @@ static void	*intersection(t_equation *eq, t_objlst *objects, t_ray *ray)
 	return (eq);
 }
 
-// 𝐏(𝑡)=𝐀+𝑡𝐛
-// 𝑡2𝐛⋅𝐛+2𝑡𝐛⋅(𝐀−𝐂)+(𝐀−𝐂)⋅(𝐀−𝐂)−𝑟2=0
+/**
+ * @brief square-ray intersection and hit vefification
+ */
 bool	hit_sphere(t_objlst *objects, t_ray *ray, t_record *record)
 {
 	t_equation	eq;

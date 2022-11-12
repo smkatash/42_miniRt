@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   objects_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 16:43:52 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 00:25:57 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/12 12:26:39 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
 /**
  * @brief sets plane parameters for cylinder

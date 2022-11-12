@@ -6,12 +6,15 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 22:03:06 by ktashbae          #+#    #+#             */
-/*   Updated: 2022/11/10 16:39:15 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 11:56:39 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/**
+ * @brief registers hit point and updates record normal
+ */
 static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 					double root)
 {
@@ -39,6 +42,10 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 	return (true);
 }
 
+/**
+ * @brief cylinder-ray hit equation
+ * @cite |(𝐱(𝑡)−𝐱1)×(𝐱(𝑡)−𝐱2)|2 / |𝐱1−𝐱2|2 =𝑟2.
+ */
 static void	*intersection(t_equation *eq, t_objlst *objects, t_ray *ray)
 {
 	t_cylinder	*cylinder;
@@ -56,6 +63,9 @@ static void	*intersection(t_equation *eq, t_objlst *objects, t_ray *ray)
 	return (eq);
 }
 
+/**
+ * @brief cylinder-ray intersection and hit vefification
+ */
 bool	hit_cylinder(t_objlst *objects, t_ray *ray, t_record *record)
 {
 	t_equation	eq;

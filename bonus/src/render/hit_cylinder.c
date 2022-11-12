@@ -6,19 +6,22 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:48:40 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/10 23:16:45 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 12:06:20 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
-// compute the azimuthal angle, same as with spherical_map()
-// theta ← arctan2(p.x, p.z)
-// raw_u ← theta / (2 * π)
-// u ← 1 - (raw_u + 0.5)
-
-//  v go from 0 to 1 between whole units of y
-// v ← p.y mod 1
+/**
+ * @brief cylindrical UV mapping
+ * @cite 
+ * compute the azimuthal angle, same as with spherical_map()
+ * theta ← arctan2(p.x, p.z)
+ * raw_u ← theta / (2 * π)
+ * u ← 1 - (raw_u + 0.5)
+ * v go from 0 to 1 between whole units of y
+ * v ← p.y mod 1
+ */
 static void	set_cylinder_uv(t_record *p, t_cylinder *cylinder)
 {
 	double		theta;
@@ -31,6 +34,9 @@ static void	set_cylinder_uv(t_record *p, t_cylinder *cylinder)
 	p->v = fmod_min(p->point.y);
 }
 
+/**
+ * @brief gets plane parameters into record
+ */
 static void	set_hit_record(t_record *record, t_cylinder *cylinder)
 {
 	record->ks = cylinder->ks;
@@ -39,6 +45,9 @@ static void	set_hit_record(t_record *record, t_cylinder *cylinder)
 	record->objects = cylinder;
 }
 
+/**
+ * @brief registers hit point and updates record normal
+ */
 static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 					double root)
 {
@@ -68,6 +77,10 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 	return (true);
 }
 
+/**
+ * @brief cylinder-ray hit equation
+ * @cite |(𝐱(𝑡)−𝐱1)×(𝐱(𝑡)−𝐱2)|2 / |𝐱1−𝐱2|2 =𝑟2.
+ */
 static void	*intersection(t_equation *eq, t_objlst *objects, t_ray *ray)
 {
 	t_cylinder	*cylinder;
@@ -85,6 +98,9 @@ static void	*intersection(t_equation *eq, t_objlst *objects, t_ray *ray)
 	return (eq);
 }
 
+/**
+ * @brief cylinder-ray intersection and hit vefification
+ */
 bool	hit_cylinder(t_objlst *objects, t_ray *ray, t_record *record)
 {
 	t_equation	eq;

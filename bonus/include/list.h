@@ -6,14 +6,14 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:51:25 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 00:56:38 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 12:15:22 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIST_H
 # define LIST_H
 
-# include "minirt.h"
+# include "minirt_bonus.h"
 
 // Objects list
 t_objlst	*create_list(void *object, int type, t_color color);

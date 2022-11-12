@@ -6,12 +6,15 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 15:26:23 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 02:57:42 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 11:44:08 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+/**
+ * @brief registers hit point and updates record normal
+ */
 static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 					double root)
 {
@@ -29,7 +32,10 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 	return (true);
 }
 
-// 𝑡2𝐛⋅𝐛+2𝑡𝐛⋅(𝐀−𝐂)+(𝐀−𝐂)⋅(𝐀−𝐂)−𝑟2=0
+/**
+ * @brief sphere-ray hit equation
+ * @cite 𝑡2𝐛⋅𝐛+2𝑡𝐛⋅(𝐀−𝐂)+(𝐀−𝐂)⋅(𝐀−𝐂)−𝑟2=0
+ */
 static void	*intersection(t_equation *eq, t_objlst *objects, t_ray *ray)
 {
 	t_sphere	*sphere;
@@ -43,7 +49,9 @@ static void	*intersection(t_equation *eq, t_objlst *objects, t_ray *ray)
 	return (eq);
 }
 
-// 𝐏(𝑡)=𝐀+𝑡𝐛
+/**
+ * @brief sphere-ray intersection and hit vefification
+ */
 bool	hit_sphere(t_objlst *objects, t_ray *ray, t_record *record)
 {
 	t_equation	eq;

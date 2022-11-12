@@ -6,12 +6,16 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:25:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/10 23:16:41 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 12:29:27 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
+/**
+ * @brief computes the floating-point remainder of the division operation
+ * for scalar
+ */
 double	fmod_min(double t)
 {
 	t = fmod(t, 1);
@@ -20,6 +24,10 @@ double	fmod_min(double t)
 	return (t);
 }
 
+/**
+ * @brief computes the floating-point remainder of the division operation
+ * for vectors
+ */
 static double	fmod_dot(t_vector *v, t_vector *u)
 {
 	double	t;
@@ -30,9 +38,12 @@ static double	fmod_dot(t_vector *v, t_vector *u)
 	return (t);
 }
 
-// function planar_map(p)
-//   u ← p.x mod 1
-//  v ← p.z mod 1
+/**
+ * @brief planar UV mapping
+ * @cite 
+ * u ← p.x mod 1
+ * v ← p.z mod 1
+ */
 static void	set_plane_uv(t_record *p)
 {
 	coordinates_set(&p->u_dir, &p->v_dir, &p->normal);
@@ -40,6 +51,9 @@ static void	set_plane_uv(t_record *p)
 	p->u = fmod_dot(&p->point, &p->u_dir);
 }
 
+/**
+ * @brief gets plane parameters into record
+ */
 static void	set_hit_record(t_record *record, t_plane *plane)
 {
 	record->objects = plane;
@@ -49,9 +63,15 @@ static void	set_hit_record(t_record *record, t_plane *plane)
 	record->normal = plane->normal;
 }
 
-// t = -(p-a).N / v.N
-// (ray origin  - point on the plane).Nplane divided by
-// ray direction . Nplane
+/**
+ * @brief plane-ray intersection
+ * @cite l∗t⋅n+(l0−po)⋅n=0
+ * (p−p0)⋅n=0
+ * l0+l∗t=p
+ * t = -(p-a).N / v.N
+ * (ray origin  - point on the plane).Nplane divided by
+ * ray direction . Nplane
+ */
 bool	hit_plane(t_objlst *objects, t_ray *ray, t_record *record)
 {
 	t_plane		*plane;

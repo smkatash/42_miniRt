@@ -6,19 +6,20 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:03:59 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/06 23:03:48 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 12:32:49 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
 
-# include "minirt.h"
+# include "minirt_bonus.h"
 
 // Objects
-t_scene	        *parse_input_set_scene(t_scene *scene, int fd, void	*mlx);
+t_scene			*parse_input_set_scene(t_scene *scene, int fd, void	*mlx);
 int				get_input_file(int argv, char **argc);
-void	        *parse_to_scene(t_scene **scene, t_objlst *object_list, void *mlx);
+void			*parse_to_scene(t_scene **scene, \
+				t_objlst *object_list, void *mlx);
 t_parse			*new_parse_list(void);
 void			*parse_input_file(t_objlst **objects, int fd);
 bool			valid_type(t_form type, t_type_data type_data);

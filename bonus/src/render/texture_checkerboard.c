@@ -6,12 +6,20 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:21:38 by ktashbae          #+#    #+#             */
-/*   Updated: 2022/11/10 19:47:33 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 12:30:57 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "minirt_bonus.h"
 
+/**
+ * @brief gets color based on uv coordinates and checkerboard
+ * @cite That uv_pattern_at() function will multiply u 
+ * and v by (respectively) the width and height of the pattern, 
+ * round each down to the nearest whole number, and add them together. 
+ * If the result modulo 2 is zero, return color_a. 
+ * Otherwise, return color_b.
+ */
 static t_color	map_checkerboard(t_record *record, t_texture *texture)
 {
 	int	v;
@@ -25,6 +33,9 @@ static t_color	map_checkerboard(t_record *record, t_texture *texture)
 		return (texture->checkboard->xcolor);
 }
 
+/**
+ * @brief sets textures based on input type
+ */
 void	set_hit_texture(t_record *record, t_texture *texture)
 {
 	if (texture->checkboard)

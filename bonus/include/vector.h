@@ -6,14 +6,14 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:32:44 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 00:52:52 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 12:15:02 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_H
 # define VECTOR_H
 
-# include "minirt.h"
+# include "minirt_bonus.h"
 
 // Vectors
 void	*addition(t_vector *new, const t_vector *u, const t_vector *v);

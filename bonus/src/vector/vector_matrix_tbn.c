@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_matrix_tbn.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 10:16:33 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 01:18:44 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/12 12:26:08 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ void	*matrix_tbn(t_matrix *m, t_vector *v1, t_vector *v2, t_vector *v3)
 /**
  * @brief transpose and T B N Matrix construction process
  * @cite map a point from uv space to three-dimensional space, 
- * where TB is used as a base vector, and the growth of u and v in uv space 
- * is used as control parameters, assuming that there is a point p in the triangle
+ * where TB is used as a base vector, and the growth of u and v 
+ * in uv space is used as control parameters, assuming 
+ * that there is a point p in the triangle
  * _________________________________________
  * Normal: Up, perperndicular to surface
  * Tangent: parallel to surface, perpendicular to Normal

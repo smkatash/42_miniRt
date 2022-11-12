@@ -6,11 +6,16 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:28:22 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/11/12 03:41:58 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 12:23:54 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt_bonus.h"
+
+void	leaks_check(void)
+{
+	system("leaks miniRT");
+}
 
 int	main(int argv, char **argc)
 {
@@ -18,6 +23,7 @@ int	main(int argv, char **argc)
 	t_scene	*scene;
 	t_mlx	mlx;
 
+	atexit(leaks_check);
 	fd = get_input_file(argv, argc);
 	scene = NULL;
 	init_window(&mlx);

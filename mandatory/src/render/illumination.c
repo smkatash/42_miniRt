@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 16:26:28 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 03:51:04 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 12:34:42 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
  * Phong spectral reflectivity: diffuse + Ks * (R dot V)^n
  * Phong lighting equation:
  * Kd * (N dot L) + Ks * (R dot V)^n
- */ 
+ */
 
 /**
  * @brief colors local illumination of points on a surface

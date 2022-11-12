@@ -6,16 +6,18 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:25:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/10 16:41:13 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 11:47:08 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-//     float denom = dotProduct(n, l); 
-//     if (denom > 1e-6) { 
-//         Vec3f p0l0 = p0 - l0; 
-//         t = dotProduct(p0l0, n) / denom; 
+/**
+ * @brief plane-ray intersection
+ * @cite l∗t⋅n+(l0−po)⋅n=0
+ * (p−p0)⋅n=0
+ * l0+l∗t=p
+ */
 bool	hit_plane(t_objlst *objects, t_ray *ray, t_record *record)
 {
 	t_plane		*plane;

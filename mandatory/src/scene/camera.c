@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:11:40 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 00:17:06 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/12 12:35:01 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static double	degree_to_radian(double degree)
  * @brief sets camera parameters
  * @cite Virtual viewport through which to pass scene rays, 
  * it's aspect ratio should be the same as our rendered image,
- * lower_left_corner = origin - horizontal/2 - vertical/2 - vec3(0, 0, focal_length)
+ * lower_left_corner = origin - horizontal/2 - 
+ * vertical/2 - vec3(0, 0, focal_length)
  * @return camera struct
  */
 static t_camera

@@ -6,19 +6,19 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 13:01:29 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/10 17:27:57 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 12:33:47 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPEDEF_H
 # define TYPEDEF_H
 
-# include "minirt.h"
+# include "minirt_bonus.h"
 
 typedef struct s_vec3	t_vector;
 typedef struct s_vec3	t_point;
 typedef struct s_vec3	t_color;
-typedef double t_matrix[3];
+typedef double			t_matrix[3];
 
 // enum definitions
 typedef enum e_form

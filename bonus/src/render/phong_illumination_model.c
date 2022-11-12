@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 17:11:33 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 03:55:53 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 12:29:18 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	*lambertian_diffuse(t_scene *scene, t_objlst *lights,
 {
 	double	component;
 
-	component = fmax(0, dot_product(light_dir, &scene->record.normal)) * scene->record.kd;
+	component = fmax(0, dot_product(light_dir, &scene->record.normal)) \
+		* scene->record.kd;
 	multiply_scalar(diff_comp, &lights->texture.color, component);
 	return (diff_comp);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:36:01 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/11 20:19:26 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/12 12:31:41 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ bool	valid_type(t_form type, t_type_data type_data)
 	else if (type_data == NORM_VEC && (type == CAMERA || type == PLANE
 			|| type == CYLINDER || type == CONE))
 		return (true);
-	else if (type_data == DIAMETER && (type == SPHERE || type == CYLINDER || type == CONE))
+	else if (type_data == DIAMETER && (type == SPHERE \
+		|| type == CYLINDER || type == CONE))
 		return (true);
 	else if (type_data == HEIGHT && (type == CYLINDER || type == CONE))
 		return (true);
