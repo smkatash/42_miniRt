@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiarinov <aiarinov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 14:33:33 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/04/06 17:31:48 by aiarinov         ###   ########.fr       */
+/*   Updated: 2022/11/12 13:55:57 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,22 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	size_t	j;
-	size_t	slen;
-	char	*str;
+	size_t	len_s;
+	char	*substr;
 
-	i = 0;
-	j = 0;
-	if (s == NULL)
+	if (!s)
 		return (NULL);
-	slen = ft_strlen(s);
-	if (len > slen - start)
-		len = slen - start;
-	if ((size_t)start > ft_strlen(s))
+	len_s = ft_strlen((char *)s);
+	if (start > len_s)
 		return (ft_strdup(""));
-	str = malloc(sizeof(*s) * len + 1);
-	if (str == NULL)
+	if (len_s - start >= len)
+		substr = malloc((len + 1) * sizeof(char));
+	else
+		substr = malloc((len_s - start + 1) * sizeof(char));
+	if (!substr)
 		return (NULL);
-	while (s[i])
-	{
-		if (i >= start && j < len)
-		{
-			str[j] = s[i];
-			j++;
-		}
-		i++;
-	}
-	str[j] = 0;
-	return (str);
+	ft_strlcpy(substr, (s + start), (len + 1));
+	return (substr);
 }
 
 //returns a substring from the str s. the substring begins at index

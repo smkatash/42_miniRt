@@ -16,8 +16,8 @@ void    *mlx_new_image(mlx_ptr_t *mlx_ptr, int width, int height)
 {
   mlx_img_list_t        *newimg;
 
-//    if (mlx_ptr->win_list == NULL)
-//      return (NULL);  // need at leat one window created to have openGL context and create texture
+  //  if (mlx_ptr->win_list == NULL)
+  //    return (NULL);  // need at leat one window created to have openGL context and create texture
   if ((newimg = malloc(sizeof(*newimg))) == NULL)
     return ((void *)0);
   newimg->next = mlx_ptr->img_list;

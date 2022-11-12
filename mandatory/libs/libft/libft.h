@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 13:30:19 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/10/25 01:09:56 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 13:50:12 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,7 @@ double	ft_atof(const char *str);
 char	*ft_strsep(char **stringp, const char delim);
 int		ft_strcmp(char *s1, char *s2);
 char	**ft_split_set(char const *s, char *charset);
+double	ft_pow(double base, int power);
+int		ft_strisfloat(char *s);
 
 #endif

@@ -8,10 +8,10 @@ OBJ1=$(SRC:.c=.o)
 OBJ=$(OBJ1:.m=.o)
 CFLAGS+=-O2
 
-.SILENT:
-
 # add to match string put with X11 in size and position
 CFLAGS+= -DSTRINGPUTX11
+
+.SILENT:
 
 all: $(NOM)
 
@@ -26,4 +26,4 @@ clean:
 fclean: clean
 	rm -f $(NOM) *~
 
-re: fclean all
+re: clean all

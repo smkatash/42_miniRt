@@ -3,70 +3,78 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: annaiarinovskaia <annaiarinovskaia@stud    +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 16:07:04 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/04/16 15:45:15 by annaiarinov      ###   ########.fr       */
+/*   Updated: 2022/11/12 13:53:15 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count(int n)
+long	ft_count_num(long n)
 {
-	int	num;
-	int	count;
+	long	count;
 
-	num = n;
 	count = 0;
-	while (num != '\0')
+	if (n < 0)
 	{
-		num = num / 10;
+		n *= -1;
 		count++;
 	}
-	count = count + (n <= 0);
+	else if (n == 0)
+		return (1);
+	while (n > 0)
+	{
+		n = n / 10;
+		count++;
+	}
 	return (count);
 }
 
-static char	*exist(int n)
+void	*ft_positive(long num, long count, char *dst)
 {
-	char	*str;
-	int		counter;
+	while (count > 0)
+	{
+		dst[count - 1] = num % 10 + '0';
+		num = num / 10;
+		count--;
+	}
+	return (0);
+}
 
-	counter = count(n);
-	str = (char *)malloc(sizeof(char) * (counter + 1));
-	if (str == NULL)
-		return (NULL);
-	return (str);
+void	*ft_negative(long num, long count, char *dst)
+{
+	dst[0] = '-';
+	num *= -1;
+	while (count - 1 > 0)
+	{
+		dst[count - 1] = num % 10 + '0';
+		num = num / 10;
+		count--;
+	}
+	return (0);
 }
 
 char	*ft_itoa(int n)
 {
-	int		sign;
-	int		counter;
-	char	*str;
+	long	count;
+	char	*dst;
+	long	num;
 
-	sign = 1;
-	counter = count(n);
-	if (n < 0)
-		sign = -1;
-	str = exist(n);
-	if (str == NULL)
+	num = n;
+	count = ft_count_num(num);
+	dst = malloc(sizeof(char) * (count + 1));
+	if (!dst)
 		return (NULL);
-	if (n == 0)
-	{
-		str[0] = '0';
-		str[1] = '\0';
-		return (str);
-	}
-	str[counter] = '\0';
-	while (n != '\0')
-	{
-		str[--counter] = (char)((n % 10) * sign + '0');
-		n = n / 10;
-	}
-	counter--;//counter-- equal str[counter - 1]
-	if (sign < 0)
-		str[counter] = '-';
-	return (str);
+	dst[count] = '\0';
+	if (num == 0)
+		dst[0] = '0';
+	else if (num == 1)
+		dst[0] = '1';
+	else if (num > 0)
+		ft_positive (num, count, dst);
+	else if (num < 0)
+		ft_negative (num, count, dst);
+	return (dst);
 }
