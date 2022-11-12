@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 20:49:58 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 12:31:58 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/12 15:28:29 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,9 @@ static void	set_texture_type(t_parse *lst, char **str, int i)
 		lst->bump_img = str[i++];
 	else
 		lst->bump_img = NULL;
-	lst->KD = str[i++];
-	lst->KS = str[i++];
-	lst->KSN = str[i++];
+	lst->kd = str[i++];
+	lst->ks = str[i++];
+	lst->ksn = str[i++];
 }
 
 /**

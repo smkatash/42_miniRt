@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:02:36 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/11 20:13:09 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/12 15:27:38 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ void	free_parse_content(t_parse *parse)
 		free(parse->fov);
 	if (parse->rgb != NULL)
 		free(parse->rgb);
-	if (parse->KD != NULL)
-		free(parse->KD);
-	if (parse->KS != NULL)
-		free(parse->KS);
-	if (parse->KSN != NULL)
-		free(parse->KSN);
+	if (parse->kd != NULL)
+		free(parse->kd);
+	if (parse->ks != NULL)
+		free(parse->ks);
+	if (parse->ksn != NULL)
+		free(parse->ksn);
 }
 
 /**
