@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
+#    By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 11:29:40 by aiarinov          #+#    #+#              #
-#    Updated: 2022/11/11 01:21:32 by kanykei          ###   ########.fr        #
+#    Updated: 2022/11/13 22:46:15 by ktashbae         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ texture_checkerboard.c texture_map.c utils.c list.c clamp.c
 # ================================ Flags ===================================== #
 OBJ 		:= $(addprefix obj/,$(notdir $(SRC:.c=.o)))
 CC 			:= cc
-CFLAGS 		:= -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS 		:= -Wall -Wextra -Werror -g #-fsanitize=address
 MLXFLAGS	:=	-framework OpenGL -framework AppKit
 RM 			:= rm -r
 RMF 		:= rm -rf
@@ -45,7 +45,7 @@ LIBSMLX		:=	libs/minilibx/libmlx.a
 all			: $(NAME) 
 
 $(NAME)		: $(OBJ) $(LIBSMLX) $(LIBSLIBFT) $(LIBSGNL)
-			$(CC) $(OBJ) $(LIBS) $(MLXFLAGS) -o $(NAME) -fsanitize=address
+			$(CC) $(OBJ) $(LIBS) $(MLXFLAGS) -o $(NAME)
 			@echo "\033[1;32m miniRT_bonus is compiled \033[0m"
 
 obj/%.o		: %.c | obj

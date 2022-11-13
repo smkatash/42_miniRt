@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:28:22 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/11/12 03:35:52 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/13 19:28:00 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,22 @@ void	leaks_check(void)
 	system("leaks miniRT");
 }
 
+void	free_alloced_memory(t_garbage *ptr)
+{
+	free(ptr->ptr);
+	free(ptr->line);
+	free_parse_list((t_objlst **)ptr->parse_objects);
+}
+
 int	main(int argv, char **argc)
 {
-	int		fd;
-	t_scene	*scene;
-	t_mlx	mlx;
+	int			fd;
+	t_mlx		mlx;
+	t_scene		*scene;
 
 	atexit(leaks_check);
-	fd = get_input_file(argv, argc);
 	scene = NULL;
+	fd = get_input_file(argv, argc);
 	init_window(&mlx);
 	scene = parse_input_set_scene(scene, fd);
 	render_image(&mlx, scene);

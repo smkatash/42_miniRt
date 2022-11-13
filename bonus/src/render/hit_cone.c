@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 17:24:31 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 19:31:25 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/13 19:40:53 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 		return (false);
 	cone = (t_cone *)objects->object;
 	record->t = root;
-	set_hit_record(record, cone);
+	set_hit_record_cone(record, cone);
 	ray_at(&record->point, ray, root);
 	subtraction(&temp, &record->point, &cone->center);
 	point = dot_product(&temp, &cone->normal);

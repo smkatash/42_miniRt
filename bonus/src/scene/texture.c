@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 20:52:41 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 00:28:49 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/13 22:53:36 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	set_texture_color(t_objlst *objects, t_parse *parsed_object)
 static void	set_texture_checkboard(t_objlst *objects, t_parse *parsed_object)
 {
 	objects->texture.color = get_int_vector(parsed_object->rgb, 0, 255);
-	objects->texture.checkboard = malloc(sizeof(t_checkboard));
+	objects->texture.checkboard = ft_calloc(1, sizeof(t_checkboard));
 	if (!objects->texture.checkboard)
 		return ;
 	objects->texture.checkboard->xcolor = \
@@ -68,8 +68,9 @@ static void	set_texture_checkboard(t_objlst *objects, t_parse *parsed_object)
 static void	set_texture_bummap(t_objlst *objects, t_parse *parsed_object, \
 	void *mlx)
 {
-	objects->texture.map = malloc(sizeof(t_bumpmap));
-	objects->texture.map->surface = load_image(parsed_object->texture_img, mlx);
+	objects->texture.map = ft_calloc(1, sizeof(t_bumpmap));
+	if (parsed_object->texture_img)
+		objects->texture.map->surface = load_image(parsed_object->texture_img, mlx);
 	if (parsed_object->bump_img)
 		objects->texture.map->map = load_image(parsed_object->bump_img, mlx);
 	else

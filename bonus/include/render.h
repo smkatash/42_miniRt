@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 07:05:15 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 19:32:03 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/13 19:40:16 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ bool			hit_sphere(t_objlst *objects, t_ray *ray, t_record *record);
 bool			hit_plane(t_objlst *objects, t_ray *ray, t_record *record);
 bool			hit_cylinder(t_objlst *objects, t_ray *ray, t_record *record);
 bool			hit_cone(t_objlst *objects, t_ray *ray, t_record *record);
-void			set_hit_record(t_record *record, t_cone *cone);
+void			set_hit_record_cone(t_record *record, t_cone *cone);
 void			set_face_normal(t_ray *ray, t_record *record);
 double			nearest_root(t_equation *eq, int range);
 double			fmod_min(double t);

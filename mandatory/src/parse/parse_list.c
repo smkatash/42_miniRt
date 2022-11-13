@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:02:36 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/11 20:12:49 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:41:16 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_parse	*new_parse_list(void)
 {
 	t_parse		*lst;
 
-	lst = malloc(sizeof(t_parse));
+	lst = ft_calloc(1, sizeof(t_parse));
 	if (!lst)
 		return (NULL);
 	return (lst);

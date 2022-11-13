@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:03:59 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/07 01:09:39 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/13 19:25:20 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_scene			*parse_input_set_scene(t_scene *scene, int fd);
 int				get_input_file(int argv, char **argc);
 void			*parse_to_scene(t_scene **scene, t_objlst *object_list);
 t_parse			*new_parse_list(void);
-void			*parse_input_file(t_objlst **objects, int fd);
 void			free_parse_content(t_parse *parse);
 t_parse			*free_split(char **str);
 bool			valid_type(t_form type, t_type_data type_data);

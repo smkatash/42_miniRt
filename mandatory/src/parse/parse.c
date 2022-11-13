@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/11 20:56:54 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/13 23:01:08 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	parse_element_type(t_parse *lst, char **str)
  * @brief parses line from file descriptor
  * @return parsed list
  */
-static void	*parse_elements(char **line)
+static t_parse	*parse_elements(char **line)
 {
 	t_parse		*p_object;
 	char		**split_array;
@@ -73,9 +73,11 @@ static void	parse_line(char *line, t_parse *data, t_objlst **objects)
 	if (line[0] != '\n')
 	{
 		data = parse_elements(&line);
-		if (data)
+		if (data != NULL)
+		{
 			push_back(objects, create_list(data, data->type,
 					(t_color){0, 0, 0}));
+		}
 	}
 }
 
@@ -83,7 +85,7 @@ static void	parse_line(char *line, t_parse *data, t_objlst **objects)
  * @brief parses line from file descriptor
  * @return object list
  */
-void	*parse_input_file(t_objlst **objects, int fd)
+static void	*parse_input_file(t_objlst **objects, int fd)
 {
 	t_parse	*data;
 	char	*line;
@@ -100,11 +102,11 @@ void	*parse_input_file(t_objlst **objects, int fd)
 			if (bytes_read == 0)
 				error_message("Could not read the file\n");
 			parse_line(line, data, objects);
+			free(line);
 		}
 		else
 			bytes_read = 0;
 	}
-	free(line);
 	return (*objects);
 }
 
