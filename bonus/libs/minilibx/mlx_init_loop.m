@@ -38,7 +38,14 @@ void do_loop_flush(CFRunLoopObserverRef observer, CFRunLoopActivity activity, vo
 }
 
 
+void	mlx_destroy(void *mlx_ptr)
+{
+	mlx_ptr_t	*ptr;
 
+	ptr = mlx_ptr;
+	mlx_destroy_image(ptr,ptr->font);
+	free(ptr);
+}
 
 void *mlx_init()
 {

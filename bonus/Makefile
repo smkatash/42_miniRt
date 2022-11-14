@@ -6,7 +6,7 @@
 #    By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 11:29:40 by aiarinov          #+#    #+#              #
-#    Updated: 2022/11/12 14:55:47 by ktashbae         ###   ########.fr        #
+#    Updated: 2022/11/14 20:00:30 by ktashbae         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,13 @@ parse_list.c parse_to_scene.c parse_utils.c parse.c parse_texture.c getter.c \
 ambient.c camera.c light.c objects.c objects_utils.c scene.c texture.c \
 vector_math.c vector_scalar.c vector_setter.c vector_utils.c vector_matrix_tbn.c \
 color.c hittable.c ray.c render.c hit_cylinder.c hit_plane.c hit_sphere.c hit_cone.c \
-hit_utils.c illumination.c phong_illumination_model.c  \
+illumination.c phong_illumination_model.c  \
 texture_checkerboard.c texture_map.c utils.c list.c clamp.c
 
 # ================================ Flags ===================================== #
 OBJ 		:= $(addprefix obj/,$(notdir $(SRC:.c=.o)))
 CC 			:= cc
-CFLAGS 		:= -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS 		:= -Wall -Wextra -Werror -g  #-fsanitize=address
 MLXFLAGS	:=	-framework OpenGL -framework AppKit
 RM 			:= rm -r
 RMF 		:= rm -rf
@@ -45,7 +45,7 @@ LIBSMLX		:=	libs/minilibx/libmlx.a
 all			: $(NAME) 
 
 $(NAME)		: $(OBJ) $(LIBSMLX) $(LIBSLIBFT) $(LIBSGNL)
-			$(CC) $(OBJ) $(LIBS) $(MLXFLAGS) -o $(NAME) -fsanitize=address
+			$(CC) $(OBJ) $(LIBS) $(MLXFLAGS) -Wno-gnu-include-next -I/LeakSanitizer/include -L./LeakSanitizer/ -llsan -lc++ -o $(NAME)
 			@echo "\033[1;32m miniRT_bonus is compiled \033[0m"
 
 obj/%.o		: %.c | obj

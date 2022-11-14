@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:28:22 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/11/12 03:35:52 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/14 20:22:27 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	leaks_check(void)
-{
-	system("leaks miniRT");
-}
+// void	leaks_check(void)
+// {
+// 	system("leaks miniRT");
+// }
 
 int	main(int argv, char **argc)
 {
-	int		fd;
-	t_scene	*scene;
-	t_mlx	mlx;
+	int			fd;
+	t_mlx		mlx;
+	t_scene		*scene;
 
-	atexit(leaks_check);
-	fd = get_input_file(argv, argc);
+	//atexit(leaks_check);
 	scene = NULL;
+	fd = get_input_file(argv, argc);
 	init_window(&mlx);
 	scene = parse_input_set_scene(scene, fd);
 	render_image(&mlx, scene);

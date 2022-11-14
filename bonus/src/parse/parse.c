@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:44:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/11 20:57:03 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/13 22:25:01 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void	parse_line(char *line, t_parse *plist, t_objlst **objects)
 	if (line[0] != '\n')
 	{
 		plist = parse_elements(&line);
-		if (plist)
+		if (plist != NULL)
 			push_back(objects, create_list(plist, plist->type,
 					(t_color){0, 0, 0}));
 	}
@@ -101,11 +101,11 @@ void	*parse_input_file(t_objlst **objects, int fd)
 			if (bytes_read == 0)
 				error_message("Could not read the file\n");
 			parse_line(line, parsed_lst, objects);
+			free(line);
 		}
 		else
 			bytes_read = 0;
 	}
-	free(line);
 	return (*objects);
 }
 

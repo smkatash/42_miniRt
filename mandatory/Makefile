@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+         #
+#    By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 11:29:40 by aiarinov          #+#    #+#              #
-#    Updated: 2022/11/11 01:20:30 by kanykei          ###   ########.fr        #
+#    Updated: 2022/11/14 19:58:47 by ktashbae         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ illumination.c phong_illumination_model.c
 # ================================ Flags ===================================== #
 OBJ			:= $(addprefix obj/,$(notdir $(SRC:.c=.o)))
 CC			:= cc
-CFLAGS 		:= -Wall -Wextra -Werror -fsanitize=address
+CFLAGS 		:= -Wall -Wextra -Werror #-fsanitize=address
 MLXFLAGS	:=	-framework OpenGL -framework AppKit
 RM			:= rm -r
 RMF			:= rm -rf
@@ -44,7 +44,7 @@ LIBSMLX		:=	libs/minilibx/libmlx.a
 all: $(NAME) 
 
 $(NAME)		: $(OBJ) $(LIBSMLX) $(LIBSLIBFT) $(LIBSGNL)
-			$(CC) $(OBJ) $(LIBS) $(MLXFLAGS) -o $(NAME) -fsanitize=address
+			$(CC) $(OBJ) $(LIBS) $(MLXFLAGS) -o $(NAME)
 			@echo "\033[1;32m miniRT is compiled \033[0m"
 
 obj/%.o		: %.c | obj

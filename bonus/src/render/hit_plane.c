@@ -6,11 +6,25 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 17:25:13 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 14:56:34 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/12 15:26:50 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt_bonus.h"
+
+/**
+ * @brief computes the floating-point remainder of the division operation
+ * for vectors
+ */
+static double	fmod_dot(t_vector *v, t_vector *u)
+{
+	double	t;
+
+	t = fmod(dot_product(v, u), 1);
+	if (t < 0)
+		return (t + 1);
+	return (t);
+}
 
 /**
  * @brief planar UV mapping

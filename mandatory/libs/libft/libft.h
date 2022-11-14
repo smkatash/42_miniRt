@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 13:30:19 by aiarinov          #+#    #+#             */
-/*   Updated: 2022/11/12 13:50:12 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/12 19:07:03 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
+# include <stdbool.h>
 
 typedef struct s_list
 {
@@ -71,7 +72,5 @@ double	ft_atof(const char *str);
 char	*ft_strsep(char **stringp, const char delim);
 int		ft_strcmp(char *s1, char *s2);
 char	**ft_split_set(char const *s, char *charset);
-double	ft_pow(double base, int power);
-int		ft_strisfloat(char *s);
 
 #endif

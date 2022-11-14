@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   objects.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:06:55 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 14:45:15 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/14 11:42:02 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	*set_objects(t_scene **scene, t_objlst *object_list, void *mlx)
 	t_objlst	*new_objects;
 
 	parsed_object = object_list->object;
-	new_objects = malloc(sizeof(t_objlst));
+	new_objects = ft_calloc(1, sizeof(t_objlst));
 	if (!new_objects)
 		error_message("Malloc error\n");
 	new_objects->type = parsed_object->type;

@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 16:43:52 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 00:30:20 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/13 19:35:14 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	set_cylinder_top(t_scene *scene, t_cylinder *cy, t_color color)
 	t_objlst	*new_object;
 	t_plane		*top_cap;
 
-	new_object = malloc(sizeof(t_objlst));
+	new_object = ft_calloc(1, sizeof(t_objlst));
 	if (!new_object)
 		error_message("Malloc error\n");
 	push_back(&scene->objects, new_object);
@@ -56,7 +56,7 @@ static void	set_cylinder_btm(t_scene *scene, t_cylinder *cy, t_color color)
 	t_vector	temp;
 	t_plane		*btm_cap;
 
-	new_object = malloc(sizeof(t_objlst));
+	new_object = ft_calloc(1, sizeof(t_objlst));
 	if (!new_object)
 		error_message("Malloc error\n");
 	push_back(&scene->objects, new_object);
@@ -79,7 +79,7 @@ void	*set_cylinder(t_scene *scene, t_objlst *objects)
 	t_cylinder	*cylinder;
 
 	parsed_objects = objects->object;
-	new_objects = malloc(sizeof(t_objlst));
+	new_objects = ft_calloc(1, sizeof(t_objlst));
 	if (!new_objects)
 		error_message("Malloc error\n");
 	cylinder = malloc(sizeof(t_cylinder));

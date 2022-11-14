@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:59:46 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/11 21:14:23 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/13 22:21:14 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ t_scene	*set_scene(int width, int height)
 {
 	t_scene	*scene;
 
-	scene = malloc(sizeof(t_scene));
+	scene = ft_calloc(1, sizeof(t_scene));
 	if (!scene)
 		return (NULL);
 	scene->screen = set_screen(width, height);
-	scene->objects = NULL;
 	scene->lights = NULL;
+	scene->objects = NULL;
 	return (scene);
 }

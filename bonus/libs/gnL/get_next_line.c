@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:45:32 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 13:59:21 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/12 19:02:24 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	n = 1;
 	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	while (n != 0 && !(ft_strchr_gnL(text, '\n')))
+	while (n != 0 && !(ft_strchr_gnl(text, '\n')))
 	{
 		n = read(fd, buff, BUFFER_SIZE);
 		if (n == -1)
@@ -88,7 +88,7 @@ char	*get_next_line(int fd)
 			return (NULL);
 		}
 		buff[n] = '\0';
-		text = ft_strjoin_gnL(text, buff);
+		text = ft_strjoin_gnl(text, buff);
 	}
 	free(buff);
 	line = ft_get_line(text);

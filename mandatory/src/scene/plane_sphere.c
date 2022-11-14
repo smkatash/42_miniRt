@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:06:55 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 00:22:20 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/13 15:45:51 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*set_sphere(t_scene *scene, t_objlst *objects)
 	t_sphere	*sphere;
 
 	parsed_objects = objects->object;
-	new_objects = malloc(sizeof(t_objlst));
+	new_objects = ft_calloc(1, sizeof(t_objlst));
 	if (!new_objects)
 		error_message("Malloc error\n");
 	sphere = malloc(sizeof(t_sphere));
@@ -50,7 +50,7 @@ void	*set_plane(t_scene *scene, t_objlst *objects)
 	t_plane		*plane;
 
 	parsed_objects = objects->object;
-	new_objects = malloc(sizeof(t_objlst));
+	new_objects = ft_calloc(1, sizeof(t_objlst));
 	if (!new_objects)
 		error_message("Malloc error\n");
 	plane = malloc(sizeof(t_plane));

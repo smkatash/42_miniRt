@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:52:21 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 03:41:35 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/14 20:21:20 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	init_window(t_mlx *mlx)
  */
 int	close_window(t_mlx *mlx)
 {
+	mlx_destroy_image(mlx->mlx, mlx->img.img);
 	if (mlx->mlx != NULL)
 		mlx_destroy_window(mlx->mlx, mlx->win);
 	ft_putstr_fd("Exiting...\n", 1);
@@ -61,9 +62,9 @@ int	close_window(t_mlx *mlx)
  */
 int	exit_window(int keycode, t_mlx *mlx)
 {
-	(void)mlx;
 	if (keycode == ESC)
 	{
+		mlx_destroy_image(mlx->mlx, mlx->img.img);
 		if (mlx->mlx != NULL)
 			mlx_destroy_window(mlx->mlx, mlx->win);
 		ft_putstr_fd("Exiting...\n", 1);

@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 17:24:31 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 15:04:38 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/13 19:40:53 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,24 @@ static void	set_cone_uv(t_record *p, t_cone *cone)
 	p->v = fmod_min(h);
 }
 
-static double	update_record(t_record *record, t_ray *ray, \
-	t_cone *cone, double root)
+/**
+ * @brief sets new normal vector for record point
+ */
+static void	update_record_normal(t_record *record, t_cone *cone, double point)
 {
 	t_vector	temp;
-	double		point;
 
-	record->t = root;
-	set_hit_record(record, cone);
-	ray_at(&record->point, ray, root);
 	subtraction(&temp, &record->point, &cone->center);
-	point = dot_product(&temp, &cone->normal);
-	if (point > cone->height || point < 0)
-		return (NAN);
-	point = cone->height - point;
-	return (point);
+	multiply_scalar(&record->normal, &cone->normal, \
+		dot_product(&temp, &cone->normal));
+	addition(&record->normal, &record->normal, &cone->center);
+	subtraction(&record->normal, &record->point, &record->normal);
+	unit_vector(&record->normal, &record->normal);
+	multiply_scalar(&record->normal, &record->normal, point);
+	multiply_scalar(&temp, &cone->normal, \
+		(cone->radius * point / cone->height));
+	addition(&record->normal, &record->normal, &temp);
+	unit_vector(&record->normal, &record->normal);
 }
 
 /**
@@ -60,20 +63,15 @@ static bool	hit_point(t_objlst *objects, t_ray *ray, t_record *record,
 	if (isnan(root) || root > record->tmax || root < record->tmin)
 		return (false);
 	cone = (t_cone *)objects->object;
-	point = update_record(record, ray, cone, root);
-	if (isnan(point))
-		return (false);
+	record->t = root;
+	set_hit_record_cone(record, cone);
+	ray_at(&record->point, ray, root);
 	subtraction(&temp, &record->point, &cone->center);
-	multiply_scalar(&record->normal, &cone->normal, \
-		dot_product(&temp, &cone->normal));
-	addition(&record->normal, &record->normal, &cone->center);
-	subtraction(&record->normal, &record->point, &record->normal);
-	unit_vector(&record->normal, &record->normal);
-	multiply_scalar(&record->normal, &record->normal, point);
-	multiply_scalar(&temp, &cone->normal, \
-		(cone->radius * point / cone->height));
-	addition(&record->normal, &record->normal, &temp);
-	unit_vector(&record->normal, &record->normal);
+	point = dot_product(&temp, &cone->normal);
+	if (point > cone->height || point < 0)
+		return (false);
+	point = cone->height - point;
+	update_record_normal(record, cone, point);
 	set_face_normal(ray, record);
 	set_cone_uv(record, cone);
 	set_hit_texture(record, &objects->texture);

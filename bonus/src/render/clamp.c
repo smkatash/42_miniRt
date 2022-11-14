@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clamp.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 21:14:37 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 12:13:21 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/13 19:40:39 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,27 @@ unsigned int	clamp_xpm(unsigned int pxl, unsigned int min, unsigned int max)
 	else if (pxl < min)
 		pxl = min;
 	return (pxl);
+}
+
+/**
+ * @brief computes the floating-point remainder of the division operation
+ * for scalar
+ */
+double	fmod_min(double t)
+{
+	t = fmod(t, 1);
+	if (t < 0)
+		return (t + 1);
+	return (t);
+}
+
+/**
+ * @brief gets cone parameters into record
+ */
+void	set_hit_record_cone(t_record *record, t_cone *cone)
+{
+	record->ks = cone->ks;
+	record->kd = cone->kd;
+	record->ksn = cone->ksn;
+	record->objects = cone;
 }

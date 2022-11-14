@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 20:21:38 by ktashbae          #+#    #+#             */
-/*   Updated: 2022/11/12 12:30:57 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/14 11:44:34 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,12 @@ static t_color	map_checkerboard(t_record *record, t_texture *texture)
  */
 void	set_hit_texture(t_record *record, t_texture *texture)
 {
-	if (texture->checkboard)
-	{
+	if (texture->checkboard != NULL)
 		record->color = map_checkerboard(record, texture);
-	}
-	else if (texture->map)
+	else if (texture->map != NULL)
 	{
 		record->color = map_image(record, texture);
-		if (texture->map->map)
+		if (texture->map->map != NULL)
 			record->normal = map_bump(record, texture);
 	}
 	else

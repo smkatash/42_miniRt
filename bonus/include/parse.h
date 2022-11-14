@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 15:03:59 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 12:32:49 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/11/14 15:41:04 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ struct s_vec3	get_double_vector(char *str, double min, double max);
 
 // Free memory
 void			free_parse_content(t_parse *parse);
+void			free_parse_texture(t_parse *parse);
 t_parse			*free_split(char **str);
 
 #endif
