@@ -34,10 +34,6 @@ $ make [filename.rt]
     <p align="center">Changing views and colors.</p>
 </p>
 <p align="center">
-   <img width="800" alt="image" src="https://github.com/smkatash/42_miniRt/blob/main/rendered_img/checkerboard.png" />   
-    <p align="center">Changing views and colors.</p>
-</p>
-<p align="center">
    <img width="800" alt="image" src="https://github.com/smkatash/42_miniRt/blob/main/rendered_img/random_textures.png" />   
     <p align="center">Random textures.</p>
 </p>
