@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 12:52:21 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/14 20:21:20 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/14 20:32:56 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,11 @@ void	init_window(t_mlx *mlx)
  */
 int	close_window(t_mlx *mlx)
 {
-	mlx_destroy_image(mlx->mlx, mlx->img.img);
 	if (mlx->mlx != NULL)
+	{
+		mlx_destroy_image(mlx->mlx, mlx->img.img);
 		mlx_destroy_window(mlx->mlx, mlx->win);
+	}
 	ft_putstr_fd("Exiting...\n", 1);
 	exit(EXIT_SUCCESS);
 }
@@ -64,9 +66,11 @@ int	exit_window(int keycode, t_mlx *mlx)
 {
 	if (keycode == ESC)
 	{
-		mlx_destroy_image(mlx->mlx, mlx->img.img);
 		if (mlx->mlx != NULL)
+		{
+			mlx_destroy_image(mlx->mlx, mlx->img.img);
 			mlx_destroy_window(mlx->mlx, mlx->win);
+		}
 		ft_putstr_fd("Exiting...\n", 1);
 		exit(EXIT_SUCCESS);
 	}

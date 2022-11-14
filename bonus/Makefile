@@ -6,7 +6,7 @@
 #    By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/04 11:29:40 by aiarinov          #+#    #+#              #
-#    Updated: 2022/11/14 20:00:30 by ktashbae         ###   ########.fr        #
+#    Updated: 2022/11/14 20:26:12 by ktashbae         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ LIBSMLX		:=	libs/minilibx/libmlx.a
 all			: $(NAME) 
 
 $(NAME)		: $(OBJ) $(LIBSMLX) $(LIBSLIBFT) $(LIBSGNL)
-			$(CC) $(OBJ) $(LIBS) $(MLXFLAGS) -Wno-gnu-include-next -I/LeakSanitizer/include -L./LeakSanitizer/ -llsan -lc++ -o $(NAME)
+			$(CC) $(OBJ) $(LIBS) $(MLXFLAGS) -o $(NAME)
 			@echo "\033[1;32m miniRT_bonus is compiled \033[0m"
 
 obj/%.o		: %.c | obj
