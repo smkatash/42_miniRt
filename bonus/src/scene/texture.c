@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 20:52:41 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/13 22:53:36 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/14 11:46:53 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_xpm_image	*load_image(char *file, void *mlx)
 {
 	t_xpm_image	*img;
 
-	img = malloc(sizeof(t_xpm_image));
+	img = ft_calloc(1, sizeof(t_xpm_image));
 	if (!img)
 		return (NULL);
 	if (ft_strlen(file) < 4)
@@ -69,12 +69,14 @@ static void	set_texture_bummap(t_objlst *objects, t_parse *parsed_object, \
 	void *mlx)
 {
 	objects->texture.map = ft_calloc(1, sizeof(t_bumpmap));
-	if (parsed_object->texture_img)
+	if (parsed_object->texture_img != NULL)
+	{
 		objects->texture.map->surface = load_image(parsed_object->texture_img, mlx);
-	if (parsed_object->bump_img)
-		objects->texture.map->map = load_image(parsed_object->bump_img, mlx);
-	else
-		objects->texture.map->map = NULL;
+		if (parsed_object->bump_img != NULL)
+			objects->texture.map->map = load_image(parsed_object->bump_img, mlx);
+		else
+			objects->texture.map->map = NULL;
+	}
 	objects->texture.checkboard = NULL;
 }
 

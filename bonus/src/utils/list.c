@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:50:06 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/13 22:58:23 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/14 11:58:20 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,30 +49,29 @@ void	push_back(t_objlst **lst, t_objlst *new)
 	return ;
 }
 
-// static void	free_textures(t_texture	*texture)
-// {
-// 	// if (texture.checkboard != NULL)
-// 	// 	free(texture.checkboard);
-// 	printf("%d and %d\n", texture->checkboard->xheight, texture->checkboard->xwidth);
-// 	printf("%p\n", texture->checkboard);
-// 	exit(0);
-// 	if (texture->map != NULL)
-// 	{
-// 		if (texture->map->surface != NULL)
-// 		{
-// 			if (texture->map->surface->data.img != NULL)
-// 				free(texture->map->surface->data.img);
-// 			free(texture->map->surface);
-// 		}
-// 		if (texture->map->map != NULL)
-// 		{
-// 			if (texture->map->map->data.img)
-// 				free(texture->map->map->data.img);
-// 			free(texture->map->map);
-// 		}
-// 		free(texture->map);
-// 	}
-// }
+static void	free_textures(t_texture	texture)
+{
+	if (texture.checkboard != NULL)
+		free(texture.checkboard);
+	if (texture.map != NULL)
+	{
+		if (texture.map->surface != NULL)
+		{
+			printf("inside free\n");
+			if (texture.map->surface->data.img != NULL)
+				free(texture.map->surface->data.img);
+			free(texture.map->surface);
+		}
+		if (texture.map->map != NULL)
+		{
+			printf("inside bump\n");
+			if (texture.map->map->data.img)
+				free(texture.map->map->data.img);
+			free(texture.map->map);
+		}
+		free(texture.map);
+	}
+}
 
 /**
  * @brief free object list
@@ -88,9 +87,7 @@ void	free_list(t_objlst **lst)
 	{
 		temp = head;
 		head = head->next;
-		// printf("%d and %d\n", temp->texture.checkboard->xheight, temp->texture.checkboard->xwidth);
-		// printf("%p\n", temp->texture.checkboard);
-		//free_textures(&temp->texture);
+		free_textures(temp->texture);
 		free(temp->object);
 		free(temp);
 	}
@@ -110,6 +107,7 @@ void	free_parse_list(t_objlst **lst)
 	{
 		temp = head;
 		head = head->next;
+		free_textures(temp->texture);
 		free_parse_content(temp->object);
 		free(temp->object);
 		free(temp);

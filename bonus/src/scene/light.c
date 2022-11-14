@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:09:42 by kanykei           #+#    #+#             */
-/*   Updated: 2022/11/12 00:20:53 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/11/14 10:51:06 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*set_light(t_scene *scene, t_objlst *objects)
 	t_light		*light;
 
 	parsed_objects = objects->object;
-	new_objects = malloc(sizeof(t_objlst));
+	new_objects = ft_calloc(1, sizeof(t_objlst));
 	if (!new_objects)
 		return (NULL);
 	light = malloc(sizeof(t_light));
