@@ -23,7 +23,7 @@ $ make [filename.rt]
 
 ```
 
-## Output of the random scenes:
+## Output of random scenes:
 
 <p align="center">
   <img width="800" src="https://github.com/smkatash/42_miniRt/blob/main/rendered_img/snowman.png">
