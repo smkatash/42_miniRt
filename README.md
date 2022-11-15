@@ -16,10 +16,10 @@ $ cd bonus
 $ make
 
 # Render a predefined image
-$ make scene/[filename.rt]
+$ ./miniRT scene/[filename.rt]
 
 # Create .rt file and render scene individually
-$ make [filename.rt]
+$ ./miniRT [filename.rt]
 
 ```
 
